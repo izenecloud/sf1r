@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>商品排序 &mdash; sf1-doc 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sf1-doc 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="排序" href="sort.html"/>
+        <link rel="next" title="推荐" href="../recommend/Recommend.html"/>
+        <link rel="prev" title="属性排序" href="AttrSort.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> sf1-doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#id4">数据文件目录</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../config/HowTo.html">配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#sf1">SF1配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/HowTo.html">如何编译安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id2">依赖包安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id4">第三方库安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1">如何下载SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id6">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id7">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id8">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../search/Search.html">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../word_segment/word_segment.html">分词</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/Recommend.html">推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/QueryCorrection.html">查询纠错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/Matcher.html">自动比价</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/AutoFill.html">自动补全</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../API/search/API.html">搜索API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/search/API.html#id1">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/search/API.html#id2">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/document/API.html">文档操作API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id1">创建文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id2">删除文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id3">更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id4">原地更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id5">获取文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id6">获取文档数量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id7">记录分组点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#label">设置查询分组Label映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id8">获取频繁点击分组Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id9">获取重复文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id10">获取文档摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id11">获取相似文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id12">访问文档</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/auto-fill/API.html">查询自动填充</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/query-correction/API.html">查询自动纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/collection/API.html">collection日常维护与管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id1">检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id2">创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id3">删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id4">载入许可证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id5">重新构建索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#scdcollection">从SCD重建collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id6">停止collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id7">更新配置信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/commands/API.html">命令API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id1">建立索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id2">重新构建查询功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id3">重新构建挖掘功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id4">优化索引</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/recommend/API.html">推荐引擎API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#fbt-frequently-bought-together">FBT(Frequently Bought Together)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bab-bought-also-bought">BAB(Bought Also Bought)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#vav-viewed-also-view">VAV(Viewed Also View)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#boe-based-on-event">BOE(Based on Event)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bob-based-on-browse-history">BOB(Based on Browse History)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bos-based-on-shopping-cart">BOS(Based on Shopping Cart)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bor-based-on-random">BOR(Based on Random)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#baq-bought-after-query">BAQ(Bought after Query)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#tib-top-item-bundle">TIB(Top Item Bundle)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/log-analysis/API.html">日志分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id2">从系统事件日志删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id4">从用户请求日志中删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id6">获取频繁用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id10">添加用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id11">添加用户请求到日志服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id12">查询系统事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id16">显示用户请求</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Schema.html">B5M站点配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Schema.html#collection">collection集合</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Product.html">商品collection配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Product.html#id1">字段约定</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">sf1-doc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../Functions.html">功能介绍</a> &raquo;</li>
+      
+          <li><a href="sort.html">排序</a> &raquo;</li>
+      
+    <li>商品排序</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../_sources/functions/sort/ProductSort.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="id1">
+<h1>商品排序<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>商品排序，是以搜索引擎给出的相关度结果为基础，为了满足商品搜索的特定需求，针对商品分类、商品来源、受欢迎程度等信息，作进一步的排序。</p>
+<div class="section" id="id2">
+<h2>目标<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>商品排序的最终结果，达到的目标如下（优先级从高到低）：</p>
+<ul class="simple">
+<li>通过custom ranking，把特定的商品，排在前面。</li>
+<li>根据每个商品所属的category计算score，把category score高的商品，排在前面。</li>
+<li>有比价项的商品，排在前面。</li>
+<li>没有比价项的商品，通过merchant diversity，使来自不同商家的商品，轮流交替出现；</li>
+<li>每一轮各商家之间的排序，以merchant score为依据。</li>
+<li>上述排序方法在判断多个结果的ranking为相同的情况下，按照该商品的受欢迎程度(popularity score)以及搜索引擎给出的相关度(relevance score)为排序依据。</li>
+</ul>
+<p><strong>Custom Ranking</strong></p>
+<p>Custom ranking 是指对搜索结果的排名进行定制，把特定的商品，排在前面。</p>
+<p>首先，我们提供API set_custom_rank，用于设置某个query的搜索结果排名。该API请求的JSON例子如下：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span> <span class="s">&quot;ChnWiki&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">&quot;keywords&quot;</span><span class="p">:</span> <span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+    <span class="s">&quot;top_docid_list&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;111&quot;</span><span class="p">,</span> <span class="s">&quot;222&quot;</span><span class="p">,</span> <span class="s">&quot;333&quot;</span><span class="p">],</span>
+    <span class="s">&quot;exclude_docid_list&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;444&quot;</span><span class="p">,</span> <span class="s">&quot;555&quot;</span><span class="p">,</span> <span class="s">&quot;666&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>该API返回结果的JSON例子如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+   &quot;resource&quot;: {
+     &quot;top_docs&quot;: [
+       { &quot;DOCID&quot;: &quot;111&quot;, &quot;Title&quot;: &quot;iphone4S 手机&quot;},
+       { &quot;DOCID&quot;: &quot;222&quot;, &quot;Title&quot;: &quot;iphone4 手机&quot;},
+       { &quot;DOCID&quot;: &quot;333&quot;, &quot;Title&quot;: &quot;iphone3 手机&quot;}
+     ],
+     &quot;exclude_docs&quot;: [
+       { &quot;DOCID&quot;: &quot;444&quot;, &quot;Title&quot;: &quot;iphone4S 配件&quot;},
+       { &quot;DOCID&quot;: &quot;555&quot;, &quot;Title&quot;: &quot;iphone4 配件&quot;},
+       { &quot;DOCID&quot;: &quot;666&quot;, &quot;Title&quot;: &quot;iphone3 配件&quot;}
+     ]
+}
+</pre></div>
+</div>
+<p>最后，我们还提供了API get_custom_query，用于得到所有被定制排名的query。该API请求的JSON例子如下：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span> <span class="s">&quot;ChnWiki&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>该API返回结果的JSON例子如下</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;resources&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;iphone&quot;</span><span class="p">,</span> <span class="s">&quot;ipad&quot;</span><span class="p">,</span> <span class="s">&quot;imac&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Category Score</strong></p>
+<p>Category score是指给定query，得到对应的top labels。每个top label对应一个category score，排名在前的label，分数越高。
+对于每个doc，如果它的category属于其中某个top label，则得到对应的category score。</p>
+<p>top labels可以通过下面几种方法得到（优先级从高到低）:
+- API search的参数boost_group_label指定本次搜索对应的top labels。
+- API set_top_group_label 设置某个query对应的top labels。
+- API log_group_label用于记录每个分类的点击次数，点击次数最多的成为top labels。
+- 通过自动分类的方法，找到query最有可能对应的top label。</p>
+<p>下面是调用 API log_group_label请求的JSON例子。当用户点击某个分类时，需要调用该API记录点击次数。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span> <span class="s">&quot;b5mp&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">&quot;keywords&quot;</span><span class="p">:</span> <span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+    <span class="s">&quot;group_property&quot;</span><span class="p">:</span> <span class="s">&quot;Category&quot;</span><span class="p">,</span>
+    <span class="s">&quot;group_label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;数码&quot;</span><span class="p">,</span> <span class="s">&quot;手机通讯&quot;</span><span class="p">,</span> <span class="s">&quot;手机&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Merchant Diversity</strong></p>
+<p>Merchant diversity 是为了保证商家来源多样性的一种方法。</p>
+<p>在搜索结果里,为了让用户看到多种商家来源，有更多选择不同商家的机会，merchant diversity方法会在上述排序结果的基础上，使来自不同商家的商品，交替出现。</p>
+<p>注：该方法只影响没有比价项的商品，对那些有比价项的商品，由于已经对应多个商家，其排名将不受影响，保持不变。</p>
+<p><strong>Merchant Score</strong></p>
+<p>在上述merchant diversity的每一轮中，各商家之间的排序，以merchant score为依据。</p>
+<p>首先，我们提供API set_merchant_score，用于设置商家的总体分数，同时也可以设置该商家在某个分类下的分数。
+在排序时，假设该商品属于分类C，如果该商家在分类C下有分数，则使用该分数作为merchant score。
+否则，使用该商家的总体分数作为merchant score。如果没有设置过，默认merchant score为0。</p>
+<p>API set_merchant_score请求的JSON例子如下：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span> <span class="s">&quot;ChnWiki&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="s">&quot;merchant&quot;</span><span class="p">:</span> <span class="s">&quot;京东&quot;</span><span class="p">,</span>
+      <span class="s">&quot;score&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+      <span class="s">&quot;category_score&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s">&quot;category&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;手机数码&quot;</span><span class="p">,</span> <span class="s">&quot;手机通讯&quot;</span><span class="p">,</span> <span class="s">&quot;手机&quot;</span><span class="p">],</span> <span class="s">&quot;score&quot;</span><span class="p">:</span> <span class="mf">9.2</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="s">&quot;category&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;服饰鞋帽&quot;</span><span class="p">,</span> <span class="s">&quot;男装&quot;</span><span class="p">],</span> <span class="s">&quot;score&quot;</span><span class="p">:</span> <span class="mf">8.5</span> <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Popularity Score</strong></p>
+<p>Popularity score反映了商品的受欢迎程度。给定某个商品，把它对应的一些属性值作加权平均计算，就得到了popularity score。</p>
+<p>这些属性可以在下面的配置里指定，比如点击次数，分享次数，评论分数等等。由于这些属性值经常变化，系统会定期更新所有商品的popularity score。</p>
+<p><strong>Random Ranking</strong></p>
+<p>除了上述的merchant diversity之外，在某些场景下，为了给用户提供新奇感，我们还提供了一种随机排序。</p>
+<p>为了启用随机排序，除了需要在下面的配置里指定以外，还需要把API search的参数is_random_rank指定为true。</p>
+<p>注：每个query随机排序的结果，系统会在cache里保留1小时。1小时后，系统会返回另一种随机排序的结果</p>
+</div>
+<div class="section" id="sf1">
+<h2>SF1 配置<a class="headerlink" href="#sf1" title="Permalink to this headline">¶</a></h2>
+<p>下面是b5mp.xml里配置ProductRanking的例子：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;MiningBundle&gt;
+  &lt;Schema&gt;
+    &lt;Group&gt;
+      &lt;Property name=&quot;TargetCategory&quot; /&gt;
+      &lt;Property name=&quot;Source&quot; /&gt;
+    &lt;/Group&gt;
+
+    &lt;ProductRanking&gt;
+      &lt;Score type=&quot;custom&quot; weight=&quot;100&quot; /&gt;
+      &lt;Score type=&quot;category&quot; property=&quot;TargetCategory&quot; weight=&quot;10&quot; /&gt;
+      &lt;Score type=&quot;offer_item_count&quot; property=&quot;itemcount&quot; /&gt;
+      &lt;Score type=&quot;diversity&quot; property=&quot;Source&quot; /&gt;
+      &lt;Score type=&quot;merchant&quot; property=&quot;Source&quot; /&gt;
+      &lt;Score type=&quot;popularity&quot; weight=&quot;1&quot;&gt;
+        &lt;Score property=&quot;itemcount&quot; weight=&quot;1&quot; /&gt;
+        &lt;Score property=&quot;Score&quot; weight=&quot;0.8&quot; /&gt;
+        &lt;Score property=&quot;Fenxiang&quot; weight=&quot;0.5&quot; /&gt;
+        &lt;Score property=&quot;Guanzhu&quot; weight=&quot;0.5&quot; /&gt;
+        &lt;Score property=&quot;Xihuan&quot; weight=&quot;0.5&quot; /&gt;
+        &lt;Score property=&quot;BuyCount&quot; weight=&quot;0.5&quot; /&gt;
+        &lt;Score property=&quot;_ctr&quot; weight=&quot;0.5&quot; /&gt;
+        &lt;Score property=&quot;DATE&quot; weight=&quot;0.2&quot; /&gt;
+      &lt;/Score&gt;
+      &lt;Score type=&quot;random&quot; weight=&quot;1&quot; /&gt;
+      &lt;Score type=&quot;relevance&quot; weight=&quot;0.001&quot; /&gt;
+      &lt;Score type=&quot;fuzzy&quot; weight=&quot;0.1&quot; /&gt;
+    &lt;/ProductRanking&gt;
+
+  &lt;/Schema&gt;
+&lt;/MiningBundle&gt;
+</pre></div>
+</div>
+<p>ProductRanking的每个配置项都是可选的，可以根据实际需要进行配置，各配置项含义如下：</p>
+<ul class="simple">
+<li>Score type=&#8221;custom&#8221;里的weight，指定custom ranking的权重，由于比其它配置项的权重高，custom ranking的优先级是最高的。</li>
+<li>Score type=&#8221;category&#8221;里的property，指定category score的property，必须来自配置项Group。</li>
+<li>Score type=&#8221;offer_item_count&#8221;里的property，指定比价项个数的property，必须是数值类型。</li>
+<li>Score type=&#8221;diversity&#8221;里的property，指定merchant diversity的property，必须来自配置项Group。</li>
+<li>Score type=&#8221;merchant&#8221;里的property，指定merchant score的property，同样必须来自配置项Group。</li>
+<li>Score type=&#8221;popularity&#8221;里的weight，指定popularity score的权重。由于popularity score是多个属性值的加权平均，每一个属性值在popularity的子选项中配置。这些属性必须是数值类型、DATE或者_ctr(点击次数)，每一个属性都可以配置各自的weight作为权重。</li>
+<li>Score type=&#8221;random&#8221;里的weight，指定任意非零值，即代表启用random ranking。</li>
+<li>Score type=&#8221;relevance&#8221;里的weight，指定relevance score的权重。</li>
+<li>Score type=&#8221;fuzzy&#8221;里的weight，指定fuzzy score的权重。</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../recommend/Recommend.html" class="btn btn-neutral float-right" title="推荐"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="AttrSort.html" class="btn btn-neutral" title="属性排序"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Kevin Lin.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,979 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>查询分组-GroupBy Search &mdash; sf1-doc 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sf1-doc 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="搜索" href="Search.html"/>
+        <link rel="next" title="查询意图" href="QueryIntent.html"/>
+        <link rel="prev" title="结果展现" href="Render.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> sf1-doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#id4">数据文件目录</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../config/HowTo.html">配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#sf1">SF1配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/HowTo.html">如何编译安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id2">依赖包安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id4">第三方库安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1">如何下载SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id6">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id7">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id8">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="Search.html">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../word_segment/word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sort/sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/Recommend.html">推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/QueryCorrection.html">查询纠错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/Matcher.html">自动比价</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/AutoFill.html">自动补全</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../API/search/API.html">搜索API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/search/API.html#id1">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/search/API.html#id2">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/document/API.html">文档操作API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id1">创建文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id2">删除文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id3">更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id4">原地更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id5">获取文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id6">获取文档数量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id7">记录分组点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#label">设置查询分组Label映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id8">获取频繁点击分组Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id9">获取重复文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id10">获取文档摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id11">获取相似文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id12">访问文档</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/auto-fill/API.html">查询自动填充</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/query-correction/API.html">查询自动纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/collection/API.html">collection日常维护与管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id1">检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id2">创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id3">删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id4">载入许可证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id5">重新构建索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#scdcollection">从SCD重建collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id6">停止collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id7">更新配置信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/commands/API.html">命令API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id1">建立索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id2">重新构建查询功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id3">重新构建挖掘功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id4">优化索引</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/recommend/API.html">推荐引擎API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#fbt-frequently-bought-together">FBT(Frequently Bought Together)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bab-bought-also-bought">BAB(Bought Also Bought)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#vav-viewed-also-view">VAV(Viewed Also View)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#boe-based-on-event">BOE(Based on Event)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bob-based-on-browse-history">BOB(Based on Browse History)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bos-based-on-shopping-cart">BOS(Based on Shopping Cart)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bor-based-on-random">BOR(Based on Random)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#baq-bought-after-query">BAQ(Bought after Query)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#tib-top-item-bundle">TIB(Top Item Bundle)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/log-analysis/API.html">日志分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id2">从系统事件日志删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id4">从用户请求日志中删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id6">获取频繁用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id10">添加用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id11">添加用户请求到日志服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id12">查询系统事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id16">显示用户请求</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Schema.html">B5M站点配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Schema.html#collection">collection集合</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Product.html">商品collection配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Product.html#id1">字段约定</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">sf1-doc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../Functions.html">功能介绍</a> &raquo;</li>
+      
+          <li><a href="Search.html">搜索</a> &raquo;</li>
+      
+    <li>查询分组-GroupBy Search</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../_sources/functions/search/Group.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="groupby-search">
+<h1>查询分组-GroupBy Search<a class="headerlink" href="#groupby-search" title="Permalink to this headline">¶</a></h1>
+<p>查询结果分组是SF1搜索引擎的groupby特性，顾名思义，
+就是按照某个或某些属性值，将搜索结果分组。</p>
+<div class="section" id="id1">
+<h2>配置文件<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>如果需要基于某个属性对搜索结果进行分组（该属性的类型必须为string，
+int，float或datetime），必须在配置文件的MiningBundle/Schema/Group
+项对属性设置。</p>
+<p>此外，如果该属性是int或者float，还需要将该属性配置为filter（在配置
+文件的IndexBundle部分）。</p>
+<p>例如：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt; DocumentSchema &gt;
+...
+&lt; Property name = &quot; Category &quot; type = &quot; string &quot; / &gt;
+&lt; Property name = &quot; Price &quot; type = &quot; float &quot; / &gt;
+&lt; Property name = &quot; PlayTime &quot; type = &quot; datetime &quot; / &gt;
+&lt;/ DocumentSchema &gt;
+&lt; IndexBundle &gt;
+    &lt; Schema &gt;
+    &lt; Property name = &quot; Price &quot; &gt;
+        &lt; Indexing filter = &quot; yes &quot; multivalue = &quot; no &quot; doclen = &quot; yes &quot; tokenizer = &quot; &quot;
+rankweight = &quot; 0.1 &quot; / &gt;
+    &lt;/ Property &gt;
+    ...
+    &lt;/ Schema &gt;
+&lt;/ IndexBundle &gt;
+&lt; MiningBundle &gt;
+    &lt; Schema &gt;
+    ...
+    &lt; Group &gt;
+        &lt; Property name = &quot; Category &quot; / &gt;
+        &lt; Property name = &quot; Price &quot; / &gt;
+        &lt; Property name = &quot; PlayTime &quot; / &gt;
+    &lt;/ Group &gt;
+    &lt;/ Schema &gt;
+&lt;/ MiningBundle &gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="scd">
+<h2>SCD格式<a class="headerlink" href="#scd" title="Permalink to this headline">¶</a></h2>
+<p>如果groupby属性字段的数据类型是string，那么该字段可以分为多层属性。
+下面是该属性的SCD格式：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;PropertyName&gt;A&gt;B&gt;C,D&gt;E&gt;F...
+</pre></div>
+</div>
+<ul class="simple">
+<li>PropertyName表示需要对搜索结果进行groupby的属性名称</li>
+<li>该属性可以包含多个值，每个值之间用”，“或者”；“隔开。</li>
+<li>如果该属性有parent值，需要给出完整的路径，路径中间以”&gt;“隔开。</li>
+<li>如果在某些属性值中，存在”，“，”；“，”&gt;“，或者双引号号时，该属性必须
+用双引号引起来。对于属性值中包含双引号的情况，每个双引号必须重复写2次。</li>
+</ul>
+<p>例如：
+某属性值包含3级：</p>
+<ul>
+<li><p class="first">1级的值为John，Mark</p>
+<blockquote>
+<div><ul>
+<li><p class="first">2级的值为1+1&gt;2</p>
+<blockquote>
+<div><ul class="simple">
+<li>3级的值为”Mary“</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>该属性值的格式为：</p>
+<div class="highlight-python"><div class="highlight"><pre>“John,Mark”&gt;“1+1&gt;2”&gt;“ “ “Mary” ” ”
+</pre></div>
+</div>
+<p>Categroy字段实例：</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>&lt;Categroy&gt;创意生活，办公电脑&gt;网络设备，手机数码&gt;手机
+“John,Mark”&gt;“1+1&gt;2”&gt;“ “ “Mary” ” ”
+</pre></div>
+</div>
+</div></blockquote>
+<p>在该例子中，Categroy的属性值层次结构为：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="29%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Level 1</th>
+<th class="head">level 2</th>
+<th class="head">level 3</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>创意生活</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>电脑办公</td>
+<td>网络设备</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>手机数码</td>
+<td>手机通信</td>
+<td>手机</td>
+</tr>
+<tr class="row-odd"><td>John,Mark</td>
+<td>1+1&gt;2</td>
+<td>&#8220;Mary&#8221;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="api">
+<h2>获取分组结果的API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p>API的使用参见
+<a class="reference internal" href="../../API/search/API.html"><em>搜索API</em></a></p>
+<p>下面给出按某些属性对搜索结果分组的Request：</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+    &quot; collection &quot; : &quot; example &quot; ,
+    &quot; search &quot; : {
+        &quot; keywords &quot; : &quot; test &quot;
+        &quot; in &quot; : [ &quot; Title &quot; , &quot; Content &quot; ]
+    },
+    &quot; select &quot; : [ &quot; Title &quot; , &quot; Content &quot; ] ,
+    &quot; group &quot; : [
+        { &quot; property &quot; : &quot; Category &quot; } ,
+        { &quot; property &quot; : &quot; Price &quot; }
+    ]
+}
+</pre></div>
+</div>
+<p>分组结果在Response的group数组中，其中每个label为一个属性的分组结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot; group &quot; : [
+    { &quot; docume nt_cou nt &quot; : 100 ,
+      &quot; property &quot; : &quot; Category &quot; ,
+      &quot; labels &quot; : [
+        { &quot; label &quot; 厨房电器&quot; ,
+          &quot; do cument _count &quot; : 7 ,
+          &quot; sub_labels &quot; : [
+            { &quot; label &quot; : &quot;豆浆机&quot; ,&quot; docu ment_c ount &quot; : 5 }
+          ]
+        }
+       ...
+      ]
+    },
+    { &quot; docume nt_cou nt &quot; : 100 ,
+        &quot; property &quot; : &quot; Price &quot; ,
+        &quot; labels &quot; : [
+            { &quot; label &quot; : &quot; 100.0 &quot; ,&quot; docu ment_c ount &quot; : 4} ,
+            { &quot; label &quot; : &quot; 200.0 &quot; ,&quot; docu ment_c ount &quot; : 6} ,
+            ...
+        ]
+    }
+]
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-label-api">
+<h2>Select label API - 选择某一级属性值，得到该属性值下的所有搜索结果<a class="headerlink" href="#select-label-api" title="Permalink to this headline">¶</a></h2>
+<p>在获取到搜索结果的分组结果的基础上，用户可以选择其中一个分组，
+得到该分组的所有商品信息，该特性对用户起导航的作用。</p>
+<p>例如，选取前面的”厨房电器“这一分组。相应的Requset如下：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot; collection &quot;</span> <span class="p">:</span> <span class="s">&quot; example &quot;</span> <span class="p">,</span>
+    <span class="s">&quot; search &quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot; keywords &quot;</span> <span class="p">:</span> <span class="s">&quot;豆浆机&quot;</span> <span class="p">,</span>
+        <span class="s">&quot; in &quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s">&quot; Title &quot;</span> <span class="p">,</span> <span class="s">&quot; Content &quot;</span> <span class="p">]</span> <span class="p">,</span>
+        <span class="s">&quot; group_label &quot;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; Category &quot;</span> <span class="p">,</span>
+              <span class="s">&quot; value &quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s">&quot;厨房电器&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">,</span>
+            <span class="p">{</span> <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; Price &quot;</span> <span class="p">,</span>
+              <span class="s">&quot; value &quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s">&quot; 100.0 &quot;</span> <span class="p">]}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s">&quot; select &quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s">&quot; Title &quot;</span> <span class="p">,</span> <span class="s">&quot; Content &quot;</span> <span class="p">]</span> <span class="p">,</span>
+    <span class="s">&quot; group &quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; Category &quot;</span> <span class="p">}</span> <span class="p">,</span>
+        <span class="p">{</span> <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; Price &quot;</span> <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>使用该功能时：</dt>
+<dd><ul class="first last simple">
+<li>在search/group_label里，指定某一级属性值</li>
+<li>property是groupby的属性名称</li>
+<li>value是所选择的属性值，为数组类型，存放从root
+节点到该级的全路径。value[0]是一级节点值，value[1]是二级节点值
+,..,value[last]是叶子节点值。</li>
+<li>可指定多个lable。例如，有4个lable，分别是A1，A2，B1，B2。如果
+属性值”A1“，”A2“对应的属性为”A“，属性值”B1“，B2”对应的属性为“B”，
+那么搜索返回的结果符合条件（&#8221;A1&#8221; or &#8220;A2&#8221;） and（&#8221;B1&#8221; or &#8220;B2&#8221;）。</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="api-group-by-range">
+<h2>获取区间分组结果API&#8211;Group by Range<a class="headerlink" href="#api-group-by-range" title="Permalink to this headline">¶</a></h2>
+<p>用户可以得到区间形式的分组结果，主要是针对价格这种类型的属性。
+该特性只支持int或者float类型的属性。</p>
+<p>下面给出Request的例子：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot; collection &quot;</span> <span class="p">:</span> <span class="s">&quot; ChnWiki &quot;</span> <span class="p">,</span>
+    <span class="s">&quot; search &quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot; keywords &quot;</span> <span class="p">:</span> <span class="s">&quot; test &quot;</span><span class="p">,</span>
+        <span class="s">&quot; in &quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s">&quot; Title &quot;</span> <span class="p">,</span><span class="s">&quot; Content &quot;</span> <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s">&quot; select &quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s">&quot; Title &quot;</span> <span class="p">,</span><span class="s">&quot; Content &quot;</span> <span class="p">]</span> <span class="p">,</span>
+    <span class="s">&quot; group &quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; Price &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; range &quot;</span> <span class="p">:</span> <span class="n">true</span> <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在group参数中，需要设置进行区间分组的属性名称，
+如Price和Range参数值为true，上例是搜索关键词“test”
+时对搜索结果按价格区间分组。</p>
+<p>下面是该Requset的返回结果，其中label字段中是每个
+分组区间的值，值的格式是“start-end”。而document_count
+字段则给出了相应的文档数目。</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot; group &quot; : [
+ { &quot; docu ment_c ount &quot; : 100 ,
+   &quot; property &quot; : &quot; Price &quot; ,
+   &quot; labels &quot; : [
+        { &quot; label &quot; : &quot; 0 -99 &quot; ,
+          &quot; do cument _count &quot; : 4} ,
+        { &quot; label &quot; : &quot; 100 -199 &quot; ,
+          &quot; do cument _count &quot; : 6} ,
+        ...
+  ]
+ }
+]
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-range-label">
+<h2>Select range label-选择某一区间，得到该区间下的所有搜索结果<a class="headerlink" href="#select-range-label" title="Permalink to this headline">¶</a></h2>
+<p>在获取到搜索结果的区间分组的基础上，用户可以选取其中的
+一个区间，得到该区间中的所有商品信息，该特性对用户有很
+好的导航作用。</p>
+<p>下面给出Request的例子</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot; collection &quot;</span> <span class="p">:</span> <span class="s">&quot; ChnWiki &quot;</span> <span class="p">,</span>
+    <span class="s">&quot; search &quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot; keywords &quot;</span> <span class="p">:</span> <span class="s">&quot; test &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; in &quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s">&quot; Title &quot;</span> <span class="p">,</span> <span class="s">&quot; Content &quot;</span> <span class="p">]</span> <span class="p">,</span>
+        <span class="s">&quot; group_label &quot;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; Price &quot;</span> <span class="p">,</span>
+              <span class="s">&quot; value &quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s">&quot; 100 -200 &quot;</span> <span class="p">]}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s">&quot; select &quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s">&quot; Title &quot;</span> <span class="p">,</span> <span class="s">&quot; Content &quot;</span> <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>各个参数意义如下：</p>
+<ul class="simple">
+<li>search/group_label：在该参数中设置属性名称和相应的该属性的区间值。</li>
+<li>属性区间值的格式是“start-end”。也可以指定为“-end”格式，表示小于
+等于end；反之亦然。</li>
+<li>property参数是group_label中的属性名称。但是选择某个区间的同时，不能
+同时在group参数里指定该属性，因为区间结果是动态生成的。</li>
+</ul>
+</div>
+<div class="section" id="group-by-sub-property">
+<h2>Group by Sub-Property - 子属性分组<a class="headerlink" href="#group-by-sub-property" title="Permalink to this headline">¶</a></h2>
+<p>在属性分组特性中，用户不仅可以选择按属性分组，还可以进一步指定按照
+该属性的子属性分组。</p>
+<p>例如，可以在Groupby属性中指定“Source”，并进一步指定子属性“Score”，
+相应的Request如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+    &quot;collection&quot;: &quot;ChnWiki&quot;,
+    &quot;search&quot;: {
+        &quot;keywords&quot;: &quot;test&quot;，
+        &quot;in&quot;: [&quot;Title&quot;, &quot;Content&quot;]
+    },
+    &quot;select&quot;: [&quot;Title&quot;, &quot;Content&quot;],
+    &quot;group&quot;: [
+        { &quot;property&quot;: &quot;Source&quot;,
+           &quot;sub_property&quot;: &quot;Score&quot;
+        }
+    ]
+ }
+</pre></div>
+</div>
+<p>Response如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;group&quot;: [
+{ &quot;document_count&quot;: 100,
+  &quot;property&quot;: &quot;Source&quot;,
+  &quot;labels&quot;: [
+  { &quot;label&quot;: &quot;京东&quot;,
+    &quot;document_count&quot;: 7,
+    &quot;sub_labels&quot;: [
+      { &quot;label&quot;: &quot;3&quot;,
+        &quot;document_count&quot;: 5 },
+      { &quot;label&quot;: &quot;4&quot;,
+        &quot;document_count&quot;: 2 }
+    ]
+  },
+  { &quot;label&quot;: &quot;当当&quot;,
+    &quot;document_count&quot;: 10,
+    &quot;sub_labels&quot;: [
+      { &quot;label&quot;: &quot;4&quot;,
+        &quot;document_count&quot;: 6 },
+      { &quot;label&quot;: &quot;5&quot;,
+        &quot;document_count&quot;: 4 }
+    ]
+  },
+  ...
+  ]
+ }
+]
+</pre></div>
+</div>
+</div>
+<div class="section" id="group-by-date">
+<h2>Group by date - 按时间分组<a class="headerlink" href="#group-by-date" title="Permalink to this headline">¶</a></h2>
+<p>SF1支持对查询结果按时间分组，只需在group中指定
+datetime属性即可。</p>
+<p>按时间分组需要SCD文档包含Playtime属性，例如</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;PlayTime&gt;20120717193000;20120718193000;20120719193000
+</pre></div>
+</div>
+<p>从该例子可以看出Playtime的几点特性：</p>
+<ul>
+<li><p class="first">对个时间戳之间通过“，”或“；”分开</p>
+</li>
+<li><p class="first">每个时间戳遵循如下格式：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">YYYYMMDDhhmmss</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<dl class="docutils">
+<dt>解释如下：</dt>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">符号</th>
+<th class="head">意义</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>yyyy</td>
+<td>年</td>
+</tr>
+<tr class="row-odd"><td>MM</td>
+<td>月</td>
+</tr>
+<tr class="row-even"><td>DD</td>
+<td>日</td>
+</tr>
+<tr class="row-odd"><td>hh</td>
+<td>时</td>
+</tr>
+<tr class="row-even"><td>mm</td>
+<td>分</td>
+</tr>
+<tr class="row-odd"><td>ss</td>
+<td>秒</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p>下面给出Request和Response的例子：</p>
+<p>Request:</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+    &quot;collection&quot;: &quot;ChnWiki&quot;,
+    &quot;search&quot;: {
+        &quot;keywords&quot;: &quot;test&quot;，
+        &quot;in&quot;: [&quot;Title&quot;, &quot;Content&quot;]
+    },
+    &quot;select&quot;: [&quot;Title&quot;, &quot;Content&quot;],
+    &quot;group&quot;: [
+        { &quot;property&quot;: &quot;PlayTime&quot;,
+          &quot;unit&quot;: &quot;M&quot; }
+    ]
+}
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>上例中unit属性指定了Response返回结果的格式，意义如下：</dt>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="23%" />
+<col width="30%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">unit值</th>
+<th class="head">意义</th>
+<th class="head">示例</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“Y”</td>
+<td>年</td>
+<td>“2012”</td>
+</tr>
+<tr class="row-odd"><td>“M”</td>
+<td>月</td>
+<td>“2012-07”</td>
+</tr>
+<tr class="row-even"><td>“D”</td>
+<td>日</td>
+<td>“2012-07-17”</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p>Response:</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;group&quot;: [
+{ &quot;document_count&quot;: 100,
+  &quot;property&quot;: &quot;PlayTime&quot;,
+  &quot;labels&quot;: [
+    { &quot;label&quot;: &quot;2012-07&quot;,
+      &quot;document_count&quot;: 4 },
+    { &quot;label&quot;: &quot;2012-08&quot;,
+      &quot;document_count&quot;: 6 },
+    ...
+  ]
+}
+]
+</pre></div>
+</div>
+<p>Select Data Label</p>
+<ul class="simple">
+<li>用户可以在group_label里指定date，这样返回的文档就属于
+特定的标签</li>
+<li>group_label/value的格式定义如下：</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">group_label/value示例</th>
+<th class="head">可能的返回结果</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>[&#8220;2012&#8221;]</td>
+<td>2012年</td>
+</tr>
+<tr class="row-odd"><td>[&#8220;201-07&#8221;]</td>
+<td>2012年7月</td>
+</tr>
+<tr class="row-even"><td>[&#8220;2012-07-17&#8221;]</td>
+<td>2012年7月12日</td>
+</tr>
+</tbody>
+</table>
+<p>下面给出月份标签的请求示例：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;collection&quot;</span><span class="p">:</span> <span class="s">&quot;ChnWiki&quot;</span><span class="p">,</span>
+    <span class="s">&quot;search&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;keywords&quot;</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+        <span class="s">&quot;in&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;Title&quot;</span><span class="p">,</span> <span class="s">&quot;Content&quot;</span><span class="p">],</span>
+        <span class="s">&quot;group_label&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s">&quot;property&quot;</span><span class="p">:</span> <span class="s">&quot;PlayTime&quot;</span><span class="p">,</span>
+              <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;2012-07&quot;</span><span class="p">]</span> <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s">&quot;select&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;Title&quot;</span><span class="p">,</span> <span class="s">&quot;Content&quot;</span><span class="p">]</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="auto-select-top-label">
+<h2>Auto Select Top Label - 顶级标签智能选取特性<a class="headerlink" href="#auto-select-top-label" title="Permalink to this headline">¶</a></h2>
+<p>该特性允许SF1搜索时自动选取顶级标签，该特性对于
+产品搜索十分有用。</p>
+<p>例如，在关键词为“iphone”的搜索中，假设顶级标签为
+“数码&gt;手机通讯&gt;手机”，那么将仅返回属于标签
+“数码&gt;手机通讯&gt;手机”的文档。</p>
+<p>激活该特性</p>
+<p>在search的Request中，对于需要使用该特性的属性，只
+需要在group_label中将该属性相关的value置空即可，例如：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;collection&quot;</span><span class="p">:</span> <span class="s">&quot;b5mp&quot;</span><span class="p">,</span>
+    <span class="s">&quot;search&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;keywords&quot;</span><span class="p">:</span> <span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+        <span class="s">&quot;group_label&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span> <span class="s">&quot;property&quot;</span><span class="p">:</span> <span class="s">&quot;Category&quot;</span><span class="p">,</span>
+            <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="p">[]</span> <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>默认情况下，只自动选取一级顶级标签，用户如果需要选取多级，
+则需要使用auto_select_limit指定：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;collection&quot;</span><span class="p">:</span> <span class="s">&quot;b5mp&quot;</span><span class="p">,</span>
+    <span class="s">&quot;search&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;keywords&quot;</span><span class="p">:</span> <span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+        <span class="s">&quot;group_label&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s">&quot;property&quot;</span><span class="p">:</span> <span class="s">&quot;Category&quot;</span><span class="p">,</span>
+              <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="p">[],</span>
+              <span class="s">&quot;auto_select_limit&quot;</span><span class="p">:</span> <span class="mi">3</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果顶级标签存在，Response则返回相应的结果：</p>
+<div class="highlight-python"><div class="highlight"><pre>&quot;top_group_label&quot;: [
+  { &quot;group_property&quot;: &quot;Category&quot;,
+    &quot;group_label&quot;: [
+      [&quot;数码&quot;, &quot;手机通讯&quot;, &quot;手机&quot;],
+      [&quot;苹果商城&quot;, &quot;iPhone&quot;],
+      [&quot;手机&quot;, &quot;苹果&quot;]
+    ]
+   }
+ ]
+</pre></div>
+</div>
+<p>当该顶级标签不存在是，则不返回top_group_label属性。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">该特性使用的等级标签可以通过get_freq_group_labels
+查看。如果不存在则可以通过set_top_group_label设置。
+此外，顶级标签也可以通过计算点击频率最高的标签获得。</p>
+</div>
+</div>
+</div>
+<div class="section" id="attrby-search">
+<h1>查询分组-AttrBy Search<a class="headerlink" href="#attrby-search" title="Permalink to this headline">¶</a></h1>
+<p>按Attribute分组属于SF1搜索引擎的AttrBy特性，即为将搜索结果按照商品的Attribute
+属性进行分组。</p>
+<div class="section" id="attribute">
+<h2>商品属性（Attribute）信息<a class="headerlink" href="#attribute" title="Permalink to this headline">¶</a></h2>
+<p>SCD中商品属性字段的内容格式如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;PropertyName&gt;name:value,name:value...
+</pre></div>
+</div>
+<p>解释如下：</p>
+<ul class="simple">
+<li>PropertyName是字段名称，字段内容是属性名称和属性值的集合</li>
+<li>每个属性之间用“，”隔开</li>
+<li>属性名称和值之间用“：”分割</li>
+<li>如果某个属性名称包含多个属性值，例如某个属性包含3个属性值A，B，C，
+每个属性之间要用“|”隔开。</li>
+<li>如果属性名称或者属性值中包含“：<a href="#id2"><span class="problematic" id="id3">|</span></a>”或者双引号字符，那么属性名称
+或者属性值必须用双引号引起来。</li>
+</ul>
+<p>下面给出一个SCD的例子：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt; DOCID &gt;134454555
+&lt; Title &gt;女士风衣
+&lt; Content &gt;时尚女士风衣，大减价
+&lt; Attribute &gt;品牌：Two in one/欧艾尼，领子：圆领，季节：春季|夏季|秋季，年份：2011，尺码:S|M|L|XL
+</pre></div>
+</div>
+<p>下标给出该scd中的k-v对照：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">元素</th>
+<th class="head">属性</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>品牌</td>
+<td>Two In One/欧艾尼</td>
+</tr>
+<tr class="row-odd"><td>领子</td>
+<td>圆领</td>
+</tr>
+<tr class="row-even"><td>季节</td>
+<td>春季|夏季|秋季</td>
+</tr>
+<tr class="row-odd"><td>年份</td>
+<td>2011</td>
+</tr>
+<tr class="row-even"><td>尺码</td>
+<td>S|M|L|XL</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h2>配置文件设置<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>在配置文件中，需要将商品属性字段加入到MiningBundle/Schema/Attr节点中。
+如果希望某写属性名称不包含在搜索结果的属性集合中，可以将属性名称加在
+Exclude配置中。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Attr字段中最多允许配置一个属性</p>
+</div>
+<p>下面给出一个配置的例子：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt; DocumentSchema &gt;
+    ...
+    &lt; Property name/=0Attribute type/=0string / &gt;
+&lt;/ DocumentSchema &gt;
+...
+&lt; MiningBundle &gt;
+    &lt; Schema &gt;
+        ...
+            &lt; Attr &gt;
+            &lt; Property name/=0Attribute / &gt;
+            &lt; Exclude name/=0ISBN / &gt;
+            &lt;/ Attr &gt;
+    &lt;/ Schema &gt;
+&lt;/ MiningBundle &gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="attributeapi">
+<h2>获取Attribute分组结果的API<a class="headerlink" href="#attributeapi" title="Permalink to this headline">¶</a></h2>
+<p>API的详细介绍请参考
+<a class="reference internal" href="../../API/search/API.html"><em>搜索API</em></a></p>
+<p>下面给出一个JSON请求的例子：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot; collection &quot;</span> <span class="p">:</span> <span class="s">&quot; example &quot;</span> <span class="p">,</span>
+    <span class="s">&quot; search &quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot; keywords &quot;</span> <span class="p">:</span> <span class="s">&quot; test &quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot; attr &quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot; attr_result &quot;</span> <span class="p">:</span> <span class="n">true</span> <span class="p">,</span>
+        <span class="s">&quot; attr_top &quot;</span> <span class="p">:</span> <span class="mi">5</span>
+    <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>其中，各个参数意义如下：</p>
+<ul class="simple">
+<li>attr/attr_result：指定是否需要在搜索结果中返回的属性集</li>
+<li>attr/attr_top：默认值为0，0表示在结果集中返回所有的属性集合
+如果大于0，将返回文档数排在最前面的attr_top个属性值结合。</li>
+</ul>
+<p>下面给出返回的结果：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot; attr &quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s">&quot;document_count &quot;</span> <span class="p">:</span> <span class="mi">10</span> <span class="p">,</span>
+          <span class="s">&quot;attr_name &quot;</span> <span class="p">:</span> <span class="s">&quot;品牌&quot;</span> <span class="p">,</span>
+          <span class="s">&quot; labels &quot;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s">&quot; label &quot;</span> <span class="p">:</span> <span class="s">&quot;阿依莲&quot;</span> <span class="p">,</span>
+              <span class="s">&quot; document_count &quot;</span> <span class="p">:</span> <span class="mi">7</span><span class="p">},</span>
+            <span class="p">{</span> <span class="s">&quot;label &quot;</span> <span class="p">:</span> <span class="s">&quot;淑女屋&quot;</span> <span class="p">,</span>
+               <span class="s">&quot;document_count&quot;</span> <span class="p">:</span> <span class="mi">3</span> <span class="p">},</span>
+           <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span> <span class="s">&quot;documen_count &quot;</span> <span class="p">:</span> <span class="mi">8</span> <span class="p">,</span>
+          <span class="s">&quot;attr_name &quot;</span> <span class="p">:</span> <span class="s">&quot;尺码&quot;</span><span class="p">,</span>
+          <span class="s">&quot; labels &quot;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s">&quot; label &quot;</span> <span class="p">:</span> <span class="s">&quot; L &quot;</span> <span class="p">,</span>
+              <span class="s">&quot; document _count &quot;</span> <span class="p">:</span><span class="mi">5</span><span class="p">},</span>
+            <span class="p">{</span> <span class="s">&quot; label &quot;</span> <span class="p">:</span> <span class="s">&quot; M &quot;</span> <span class="p">,</span>
+              <span class="s">&quot; document_count &quot;</span> <span class="p">:</span><span class="mi">4</span><span class="p">},</span>
+            <span class="p">{</span> <span class="s">&quot; label &quot;</span> <span class="p">:</span> <span class="s">&quot; XL &quot;</span> <span class="p">,</span>
+              <span class="s">&quot; document_count &quot;</span> <span class="p">:</span><span class="mi">3</span><span class="p">},</span>
+           <span class="p">]</span>
+        <span class="p">}</span>
+     <span class="p">]</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-labels-api-attributeattribute">
+<h2>Select Labels API - 根据搜索返回的Attribute分组信息选择需要的商品Attribute值<a class="headerlink" href="#select-labels-api-attributeattribute" title="Permalink to this headline">¶</a></h2>
+<p>API的详细介绍请参考
+<a class="reference internal" href="../../API/search/API.html"><em>搜索API</em></a></p>
+<p>下面给出JSON请求的例子：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot; collection &quot;</span> <span class="p">:</span> <span class="s">&quot; example &quot;</span> <span class="p">,</span>
+    <span class="s">&quot; search &quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot; keywords &quot;</span> <span class="p">:</span> <span class="s">&quot; test &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; attr_label &quot;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s">&quot; attr_name &quot;</span> <span class="p">:</span> <span class="s">&quot;品牌&quot;</span> <span class="p">,</span>
+              <span class="s">&quot; attr_value &quot;</span> <span class="p">:</span> <span class="s">&quot;阿依莲&quot;</span> <span class="p">}</span> <span class="p">,</span>
+            <span class="p">{</span> <span class="s">&quot; attr_name &quot;</span> <span class="p">:</span> <span class="s">&quot;尺码&quot;</span> <span class="p">,</span>
+              <span class="s">&quot; attr_value &quot;</span> <span class="p">:</span> <span class="s">&quot; L &quot;</span> <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s">&quot; attr &quot;</span> <span class="p">:</span> <span class="p">{</span>
+       <span class="s">&quot; attr_result &quot;</span> <span class="p">:</span> <span class="n">true</span> <span class="p">,</span>
+       <span class="s">&quot; attr_top &quot;</span> <span class="p">:</span> <span class="mi">5</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="QueryIntent.html" class="btn btn-neutral float-right" title="查询意图"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Render.html" class="btn btn-neutral" title="结果展现"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Kevin Lin.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>日志分析 &mdash; sf1-doc 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sf1-doc 0.1 documentation" href="../../index.html"/>
+        <link rel="next" title="B5M站点配置说明" href="../../operation/Schema.html"/>
+        <link rel="prev" title="推荐引擎API" href="../recommend/API.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> sf1-doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#id4">数据文件目录</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../config/HowTo.html">配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#sf1">SF1配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/HowTo.html">如何编译安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id2">依赖包安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id4">第三方库安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1">如何下载SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id6">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id7">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id8">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../functions/Functions.html">功能介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/search/Search.html">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/index/Index.html">索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/word_segment/word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/sort/sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/recommend/Recommend.html">推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/data-mining/QueryCorrection.html">查询纠错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/data-mining/Matcher.html">自动比价</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/data-mining/AutoFill.html">自动补全</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../search/API.html">搜索API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../search/API.html#id1">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search/API.html#id2">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../document/API.html">文档操作API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id1">创建文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id2">删除文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id3">更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id4">原地更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id5">获取文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id6">获取文档数量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id7">记录分组点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#label">设置查询分组Label映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id8">获取频繁点击分组Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id9">获取重复文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id10">获取文档摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id11">获取相似文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id12">访问文档</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../auto-fill/API.html">查询自动填充</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query-correction/API.html">查询自动纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collection/API.html">collection日常维护与管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id1">检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id2">创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id3">删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id4">载入许可证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id5">重新构建索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#scdcollection">从SCD重建collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id6">停止collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id7">更新配置信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commands/API.html">命令API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id1">建立索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id2">重新构建查询功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id3">重新构建挖掘功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id4">优化索引</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../recommend/API.html">推荐引擎API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#fbt-frequently-bought-together">FBT(Frequently Bought Together)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#bab-bought-also-bought">BAB(Bought Also Bought)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#vav-viewed-also-view">VAV(Viewed Also View)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#boe-based-on-event">BOE(Based on Event)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#bob-based-on-browse-history">BOB(Based on Browse History)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#bos-based-on-shopping-cart">BOS(Based on Shopping Cart)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#bor-based-on-random">BOR(Based on Random)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#baq-bought-after-query">BAQ(Bought after Query)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#tib-top-item-bundle">TIB(Top Item Bundle)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">日志分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">从系统事件日志删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">从用户请求日志中删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">获取频繁用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">添加用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">添加用户请求到日志服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">查询系统事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">显示用户请求</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Schema.html">B5M站点配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Schema.html#collection">collection集合</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Product.html">商品collection配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Product.html#id1">字段约定</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">sf1-doc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>日志分析</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../_sources/API/log-analysis/API.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="id1">
+<h1>日志分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>从系统事件日志删除记录<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>调用函数：log_analysis::delete_record_from_system_events</p>
+<p>在系统事件日志中删除满足条件的记录。无返回结果。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>conditions(数组类型)：删除记录的 <a class="reference external" href="ConditionArrayParse.html">条件</a></p>
+</li>
+</ul>
+<ul class="simple">
+<li>JSON请求的例子：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;conditions&quot;</span><span class="p">:[</span>
+    <span class="p">{</span><span class="s">&quot;property&quot;</span><span class="p">:</span><span class="s">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s">&quot;operator&quot;</span><span class="p">:</span><span class="s">&quot;range&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">:[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]},</span>
+    <span class="p">{</span><span class="s">&quot;property&quot;</span><span class="p">:</span><span class="s">&quot;level&quot;</span><span class="p">,</span> <span class="s">&quot;operator&quot;</span><span class="p">:</span><span class="s">&quot;in&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">:[</span><span class="s">&quot;warn&quot;</span><span class="p">,</span> <span class="s">&quot;error&quot;</span><span class="p">]}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>从用户请求日志中删除记录<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>调用函数：log_analysis::delete_record_from_user_queries</p>
+<p>在用户请求日志中删除中满足条件的记录。无返回结果。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>conditions(数组类型)：删除记录的 <a class="reference external" href="ConditionArrayParse.html">条件</a></p>
+</li>
+</ul>
+<ul class="simple">
+<li>JSON请求的例子：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;conditions&quot;</span><span class="p">:[</span>
+    <span class="p">{</span><span class="s">&quot;property&quot;</span><span class="p">:</span><span class="s">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s">&quot;operator&quot;</span><span class="p">:</span><span class="s">&quot;range&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">:[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]},</span>
+    <span class="p">{</span><span class="s">&quot;property&quot;</span><span class="p">:</span><span class="s">&quot;level&quot;</span><span class="p">,</span> <span class="s">&quot;operator&quot;</span><span class="p">:</span><span class="s">&quot;in&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">:[</span><span class="s">&quot;warn&quot;</span><span class="p">,</span> <span class="s">&quot;error&quot;</span><span class="p">]}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>获取频繁用户请求<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>调用函数：log_analysis::get_freq_user_queries_from_logserver</p>
+<p>从日志服务器获取最频繁的用户请求。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>collection(字符串类型)：collection名字</p>
+<p>conditions(数组类型)：结果满足的 <a class="reference external" href="ConditionArrayParse.html">条件</a></p>
+</li>
+</ul>
+<blockquote>
+<div>sort(数组类型)：对结果进行 <a class="reference external" href="SortParse.html">排序</a></div></blockquote>
+<blockquote>
+<div>select(数组类型)： <a class="reference external" href="SelectParse.html">选择</a> 输出的列</div></blockquote>
+<blockquote>
+<div><p>groupby(字符串类型)：指定按哪个属性分组</p>
+<p>limit(非负整数类型)：指定返回请求的数量</p>
+</div></blockquote>
+<ul>
+<li><p class="first">输出参数：</p>
+<p>user_queries(对象类型)：所有满足条件的查询结果</p>
+</li>
+<li><p class="first">JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h2>添加用户请求<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>调用函数：log_analysis::inject_user_queries</p>
+<p>添加用户请求。无返回结果</p>
+<ul>
+<li><p class="first">输入参数</p>
+<p>user_queries(数组类型)：包含以下属性的查询数组</p>
+<blockquote>
+<div><p>query(字符串类型)：关键字</p>
+<p>collection(字符串类型)：collection名字</p>
+<p>hit_docs_num(非负整数类型=0)：命中文档数</p>
+<p>page_start(非负整数类型=0)：索引起始页</p>
+<p>page_count(非负整数类型=0)：每页文档数</p>
+<p>duration(字符串类型=0)：持续时间，格式为HH:MM:SS.ffffffffff，ffffffffff为秒的小数部分，可以忽略</p>
+<p>timestamp(字符串类型=now)：时间戳，格式为YYYY-mm-dd HH:MM:SS.ffffffffff，如果不指定，则使用当前时间</p>
+</div></blockquote>
+</li>
+<li><p class="first">JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;query&quot;</span><span class="p">:</span><span class="s">&quot;a&quot;</span><span class="p">,</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>添加用户请求到日志服务器<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>调用函数：log_analysis::inject_user_queries_to_logserver</p>
+<p>添加用户请求到日志服务器。无返回结果</p>
+<ul>
+<li><p class="first">输入参数</p>
+<p>user_queries(数组类型)：包含以下属性的查询数组</p>
+<blockquote>
+<div><p>query(字符串类型)：关键字</p>
+<p>collection(字符串类型)：collection名字</p>
+<p>hit_docs_num(非负整数类型)：命中文档数，默认为0</p>
+<p>page_start(非负整数类型)：索引起始页，默认为0</p>
+<p>page_count(非负整数类型)：每页文档数，默认为0</p>
+<p>duration(字符串类型)：持续时间，格式为HH:MM:SS.ffffffffff，ffffffffff为秒的小数部分，可以忽略，默认为0</p>
+<p>timestamp(字符串类型)：时间戳，格式为YYYY-mm-dd HH:MM:SS.ffffffffff，默认为当前时间</p>
+</div></blockquote>
+</li>
+<li><p class="first">JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;query&quot;</span><span class="p">:</span><span class="s">&quot;a&quot;</span><span class="p">,</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>查询系统事件<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>调用函数：log_analysis::system_events</p>
+<p>查询满足条件的系统事件。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>select(数组类型)： <a class="reference external" href="SelectParse.html">选择</a> 输出的列</p>
+</li>
+</ul>
+<blockquote>
+<div>conditions(数组类型)：结果满足的 <a class="reference external" href="ConditionArrayParse.html">条件</a></div></blockquote>
+<blockquote>
+<div>sort(数组类型)：对结果进行 <a class="reference external" href="SortParse.html">排序</a></div></blockquote>
+<ul>
+<li><p class="first">输出参数：</p>
+<p>system_events(对象类型)：所有满足条件的系统事件</p>
+</li>
+<li><p class="first">JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;select&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;source&quot;</span><span class="p">,</span> <span class="s">&quot;content&quot;</span><span class="p">,</span> <span class="s">&quot;timestamp&quot;</span><span class="p">],</span>
+  <span class="s">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s">&quot;property&quot;</span><span class="p">:</span><span class="s">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s">&quot;operator&quot;</span><span class="p">:</span><span class="s">&quot;range&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">:[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]},</span>
+    <span class="p">{</span><span class="s">&quot;property&quot;</span><span class="p">:</span><span class="s">&quot;level&quot;</span><span class="p">,</span> <span class="s">&quot;operator&quot;</span><span class="p">:</span><span class="s">&quot;in&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">:[</span><span class="s">&quot;warn&quot;</span><span class="p">,</span> <span class="s">&quot;error&quot;</span><span class="p">]}</span>
+  <span class="p">],</span>
+  <span class="s">&quot;sort&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;timestamp&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;header&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">},</span>
+  <span class="s">&quot;system_events&quot;</span><span class="p">:[</span>
+    <span class="p">{</span><span class="s">&quot;level&quot;</span><span class="p">:</span><span class="s">&quot;error&quot;</span><span class="p">,</span> <span class="s">&quot;source&quot;</span><span class="p">:</span><span class="s">&quot;SYS&quot;</span><span class="p">,</span> <span class="s">&quot;content&quot;</span><span class="p">:</span><span class="s">&quot;Out of memory&quot;</span><span class="p">,</span> <span class="s">&quot;timestamp&quot;</span><span class="p">:</span><span class="s">&quot;2010-Jul-16 18:11:38&quot;</span> <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>显示用户请求<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<p>调用函数：log_analysis::user_queries</p>
+<p>显示满足条件的用户查询。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>collection(字符串类型)：collection名字</p>
+<p>conditions(数组类型)：结果满足的 <a class="reference external" href="ConditionArrayParse.html">条件</a></p>
+</li>
+</ul>
+<blockquote>
+<div>sort(数组类型)：对结果进行 <a class="reference external" href="SortParse.html">排序</a></div></blockquote>
+<blockquote>
+<div>select(数组类型)： <a class="reference external" href="SelectParse.html">选择</a> 输出的列</div></blockquote>
+<blockquote>
+<div><p>groupby(字符串类型):指定按哪个属性分组</p>
+<p>limit(非负整数类型)：指定返回请求的数量</p>
+</div></blockquote>
+<ul>
+<li><p class="first">输出参数：</p>
+<p>user_queries(对象类型)：所有满足条件的查询结果</p>
+</li>
+<li><p class="first">JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot; collection &quot;</span> <span class="p">:</span> <span class="s">&quot; b5mp &quot;</span><span class="p">,</span>
+  <span class="s">&quot; conditions &quot;</span> <span class="p">:[</span>
+    <span class="p">{</span>
+      <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; TIMESTAMP &quot;</span> <span class="p">,</span>
+      <span class="s">&quot; operator &quot;</span> <span class="p">:</span> <span class="s">&quot; &gt;= &quot;</span> <span class="p">,</span>
+      <span class="s">&quot; value &quot;</span> <span class="p">:[</span> <span class="s">&quot; 20120529 T000000 &quot;</span> <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; TIMESTAMP &quot;</span> <span class="p">,</span>
+      <span class="s">&quot; operator &quot;</span> <span class="p">:</span> <span class="s">&quot; &lt;= &quot;</span> <span class="p">,</span>
+      <span class="s">&quot; value &quot;</span> <span class="p">:[</span> <span class="s">&quot; 20120628 T235959 &quot;</span> <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; hit_docs_num &quot;</span> <span class="p">,</span>
+      <span class="s">&quot; operator &quot;</span> <span class="p">:</span> <span class="s">&quot; &gt;&quot;</span> <span class="p">,</span><span class="s">&quot; value &quot;</span> <span class="p">:[</span> <span class="mi">0</span> <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s">&quot; sort &quot;</span> <span class="p">:[</span> <span class="p">{</span> <span class="s">&quot; order &quot;</span> <span class="p">:</span> <span class="s">&quot; DESC &quot;</span> <span class="p">,</span> <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; COUNT &quot;</span> <span class="p">}</span> <span class="p">]</span> <span class="p">,</span>
+  <span class="s">&quot; select &quot;</span> <span class="p">:[</span>
+    <span class="p">{</span> <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; query &quot;</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="p">{</span> <span class="s">&quot; func &quot;</span> <span class="p">:</span> <span class="s">&quot; COUNT &quot;</span> <span class="p">,</span> <span class="s">&quot; property &quot;</span> <span class="p">:</span> <span class="s">&quot; query &quot;</span> <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s">&quot; groupby &quot;</span> <span class="p">:[</span> <span class="s">&quot; query &quot;</span> <span class="p">],</span>
+  <span class="s">&quot; limit &quot;</span> <span class="p">:</span><span class="mi">10</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot; header &quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s">&quot; success &quot;</span> <span class="p">:</span> <span class="n">true</span> <span class="p">},</span>
+  <span class="s">&quot; user_queries &quot;</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="s">&quot; count &quot;</span> <span class="p">:</span> <span class="s">&quot; 110 &quot;</span> <span class="p">,</span> <span class="s">&quot; query &quot;</span> <span class="p">:</span> <span class="s">&quot; iphone &quot;</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="p">{</span> <span class="s">&quot; count &quot;</span> <span class="p">:</span> <span class="s">&quot; 95 &quot;</span> <span class="p">,</span> <span class="s">&quot; query &quot;</span> <span class="p">:</span> <span class="s">&quot; ipad &quot;</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="p">{</span> <span class="s">&quot; count &quot;</span> <span class="p">:</span> <span class="s">&quot; 83 &quot;</span> <span class="p">,</span> <span class="s">&quot; query &quot;</span> <span class="p">:</span> <span class="s">&quot; apple &quot;</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="p">{</span> <span class="s">&quot; count &quot;</span> <span class="p">:</span> <span class="s">&quot; 80 &quot;</span> <span class="p">,</span> <span class="s">&quot; query &quot;</span> <span class="p">:</span> <span class="s">&quot; nokia &quot;</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="p">{</span> <span class="s">&quot; count &quot;</span> <span class="p">:</span> <span class="s">&quot; 75 &quot;</span> <span class="p">,</span> <span class="s">&quot; query &quot;</span> <span class="p">:</span> <span class="s">&quot; 手机 &quot;</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="p">{</span> <span class="s">&quot; count &quot;</span> <span class="p">:</span> <span class="s">&quot; 72 &quot;</span> <span class="p">,</span> <span class="s">&quot; query &quot;</span> <span class="p">:</span> <span class="s">&quot; 笔记本 &quot;</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="p">{</span> <span class="s">&quot; count &quot;</span> <span class="p">:</span> <span class="s">&quot; 69 &quot;</span> <span class="p">,</span> <span class="s">&quot; query &quot;</span> <span class="p">:</span> <span class="s">&quot; 搜索引擎 &quot;</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="p">{</span> <span class="s">&quot; count &quot;</span> <span class="p">:</span> <span class="s">&quot; 65 &quot;</span> <span class="p">,</span> <span class="s">&quot; query &quot;</span> <span class="p">:</span> <span class="s">&quot; 推荐引擎 &quot;</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="p">{</span> <span class="s">&quot; count &quot;</span> <span class="p">:</span> <span class="s">&quot; 60 &quot;</span> <span class="p">,</span> <span class="s">&quot; query &quot;</span> <span class="p">:</span> <span class="s">&quot; 用户搜索日志 &quot;</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="p">{</span> <span class="s">&quot; count &quot;</span> <span class="p">:</span> <span class="s">&quot; 50 &quot;</span> <span class="p">,</span> <span class="s">&quot; query &quot;</span> <span class="p">:</span> <span class="s">&quot; 点评 &quot;</span> <span class="p">}</span>
+  <span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../operation/Schema.html" class="btn btn-neutral float-right" title="B5M站点配置说明"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../recommend/API.html" class="btn btn-neutral" title="推荐引擎API"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Kevin Lin.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

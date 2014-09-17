@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>如何编译安装 &mdash; sf1-doc 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sf1-doc 0.1 documentation" href="../index.html"/>
+        <link rel="next" title="功能介绍" href="../functions/Functions.html"/>
+        <link rel="prev" title="配置说明" href="../config/HowTo.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> sf1-doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic-concepts/BasicConcepts.html">基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basic-concepts/BasicConcepts.html#collection">collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-concepts/BasicConcepts.html#id4">数据文件目录</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../config/HowTo.html">配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#sf1">SF1配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">如何编译安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">依赖包安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">第三方库安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sf1">如何下载SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">如何运行二进制文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/Functions.html">功能介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../functions/search/Search.html">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/index/Index.html">索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/word_segment/word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/sort/sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/recommend/Recommend.html">推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/QueryCorrection.html">查询纠错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/Matcher.html">自动比价</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/AutoFill.html">自动补全</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../API/search/API.html">搜索API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/search/API.html#id1">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/search/API.html#id2">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/document/API.html">文档操作API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id1">创建文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id2">删除文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id3">更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id4">原地更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id5">获取文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id6">获取文档数量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id7">记录分组点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#label">设置查询分组Label映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id8">获取频繁点击分组Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id9">获取重复文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id10">获取文档摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id11">获取相似文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id12">访问文档</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/auto-fill/API.html">查询自动填充</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API/query-correction/API.html">查询自动纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API/collection/API.html">collection日常维护与管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id1">检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id2">创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id3">删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id4">载入许可证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id5">重新构建索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#scdcollection">从SCD重建collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id6">停止collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id7">更新配置信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/commands/API.html">命令API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id1">建立索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id2">重新构建查询功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id3">重新构建挖掘功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id4">优化索引</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/recommend/API.html">推荐引擎API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#fbt-frequently-bought-together">FBT(Frequently Bought Together)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bab-bought-also-bought">BAB(Bought Also Bought)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#vav-viewed-also-view">VAV(Viewed Also View)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#boe-based-on-event">BOE(Based on Event)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bob-based-on-browse-history">BOB(Based on Browse History)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bos-based-on-shopping-cart">BOS(Based on Shopping Cart)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bor-based-on-random">BOR(Based on Random)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#baq-bought-after-query">BAQ(Bought after Query)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#tib-top-item-bundle">TIB(Top Item Bundle)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/log-analysis/API.html">日志分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id2">从系统事件日志删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id4">从用户请求日志中删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id6">获取频繁用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id10">添加用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id11">添加用户请求到日志服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id12">查询系统事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id16">显示用户请求</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../operation/Schema.html">B5M站点配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operation/Schema.html#collection">collection集合</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../operation/Product.html">商品collection配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operation/Product.html#id1">字段约定</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">sf1-doc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>如何编译安装</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/build/HowTo.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="id1">
+<h1>如何编译安装<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>SF1安装包包括二进制文件和所有依赖的动态链接库，还有一些资源文件，
+这些文件主要是用于查询纠错，TG，命名实体识别，文本分类等特征。</p>
+<div class="section" id="id2">
+<h2>依赖包安装<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>需要在打包和编译之前安装的依赖包如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>cmake build-essential ruby rubygems ruby1.8-dev rake
+libxml2-dev libcurl3 libcurl4-openssl-dev libbz2-dev
+doxygen bzip2 libsqlite3-dev pkg-config libmysqlclient15-dev libnuma-dev
+</pre></div>
+</div>
+<p>对于Debian/Ubuntu系统，使用命令：</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install xxx xxx xxx
+</pre></div>
+</div>
+<p>对于CentOS/Fedora/Redhat系统，使用命令：</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo yum install libjpeg-devel libpng-devel libxml2-devel sqlite-devel bzip2-devel libcurl-devel libuuid-devel pcre-devel readline-devel mysql-devel
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">需要特别指出的是，对于CentOS 6系统，上述的yum不应当包含mysql-devel，
+因为默认的libmysqlclient（版本号为libmysqlclient.so.16）是无法工作的，
+SF1在连接MySQL时会出现段错误，需要手动升级到新版本，
+例如libmysqlclient.so.18，下载地址在 <a class="reference external" href="http://www6.atomicorp.com/channels/atomic/centos/6/x86_64/RPMS/">这里</a>, 并且需要手动安装：</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>sudo rpm -Uvh mysqlclient18-5.5.28-6.el6.art.x86_64.rpm
+cd /usr/lib64/mysql
+sudo ln -s libmysqlclient.so.18.0.0 libmysqlclient.so
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>第三方库安装<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>需要手动安装的第三方库包括：</p>
+<p><a class="reference external" href="https://sourceforge.net/projects/boost/files/boost/1.53.0/boost_1_53_0.tar.bz2/download">boost 1.53</a></p>
+<p><a class="reference external" href="http://fallabs.com/tokyocabinet/">Tokyo Cabinet</a></p>
+<p><a class="reference external" href="http://code.google.com/p/google-glog/downloads/list">google-glog</a></p>
+<p><a class="reference external" href="http://www.apache.org/dyn/closer.cgi?path=/thrift/0.7.0/thrift-0.7.0.tar.gz">thrift</a></p>
+<p><a class="reference external" href="https://ssl.izenesoft.cn/projects/3rdparty-repository">图像依赖库</a></p>
+<p>以上依赖库除了boost外均在3rdparty-repository下有备份，可以直接从该仓库下找到对应的文件编译安装。</p>
+<p>另外，不建议采用系统默认的方式安装boost，而应当采用编译安装：</p>
+<div class="highlight-python"><div class="highlight"><pre>./booststrap.sh
+./b2
+./b2 install
+</pre></div>
+</div>
+<p>因为默认复制的方式安装boost，会导致符号链接被覆盖，从而影响CMake在打包过程中的依赖判断.</p>
+</div>
+<div class="section" id="sf1ruby-driver">
+<h2>安装SF1的Ruby Driver<a class="headerlink" href="#sf1ruby-driver" title="Permalink to this headline">¶</a></h2>
+<p>F1的Ruby driver有2个用途：通过socket向SF1发送API；同步资源文件。安装方法如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>git clone git@izenesoft.cn:driver-ruby.git
+cd driver-ruby
+rake install
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">这里需要ruby 1.9.3版本方可运行。</p>
+</div>
+</div>
+<div class="section" id="sf1">
+<h2>如何下载SF1代码<a class="headerlink" href="#sf1" title="Permalink to this headline">¶</a></h2>
+<p>例如，在本地新建目录codebase，在该目录下，新建一个脚本clone.sh，内容如下。
+运行该脚本后，所有SF1相关的代码库都会被下载。</p>
+<div class="highlight-python"><div class="highlight"><pre>#!/usr/bin/env bash
+
+projects=(driver-ruby cmake izenelib icma ijma wisekma ilplib imllib idmlib sf1r-engine sf1r-logserver)
+
+element_count=${#projects[@]}
+index=0
+while [ &quot;$index&quot; -lt &quot;$element_count&quot; ]
+do
+    name=${projects[$index]}
+    if [ ! -d $name ];then
+        echo &quot;clone $name ...&quot;
+        git clone git@izenesoft.cn:$name.git
+    fi
+
+    let &quot;index = $index + 1&quot;
+done
+
+#同步SF1资源文件，需要确保ruby driver安装成功
+cd sf1r-engine
+sf1r-resource pull --force
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>如何编译SF1代码<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>在sf1r-engine目录下，运行如下命令，会编译SF1相关的代码库。</p>
+<div class="highlight-python"><div class="highlight"><pre>./compile_all.sh 4
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">参数4代表启动4个线程同时编译，加快编译速度，可以根据自己机器的配置，选择合适的参数值。</p>
+</div>
+<p>也可以自行用cmake分别编译每个代码仓库，例如：</p>
+<div class="highlight-python"><div class="highlight"><pre>cd izenelib
+mkdir build
+cd build
+cmake ..
+make
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">需要说明的是，安装开发环境，所有代码仓库都会依赖相应的环境变量设置，在相应的.bashrc或者.bash_profile里需要有如下设置：</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>export IZENELIB=&quot;/home/yourname/codebase/izenelib&quot;
+export ILPLIB=&quot;/home/yourname/codebase/ilplib&quot;
+export IDMLIB=&quot;/home/yourname/codebase/idmlib&quot;
+export IMLLIB=&quot;/home/yourname/codebase/imllib&quot;
+export IISE_ROOT=&quot;/home/yourname/codebase/iise&quot;
+export IZENECMA=&quot;/home/yourname/codebase/icma&quot;
+export IZENEJMA=&quot;/home/yourname/codebase/ijma&quot;
+export WISEKMA=&quot;/home/yourname/codebase/wisekma&quot;
+export EXTRA_CMAKE_MODULES_DIRS=&quot;/home/yourname/codebase/cmake&quot;
+export LIBXML2=&quot;/usr/include/libxml2&quot;
+export WKO_BUILD=&quot;ia64-glibc27-gcc41&quot;
+export LD_LIBRARY_PATH=/usr/local/lib:$IZENELIB/lib:$IDMLIB/lib:$IMLLIB/lib:$IISE_ROOT/lib:$WISEKMA:$IZENECMA/lib:$IZENEJMA/lib:$LD_LIBRARY_PATH
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>如何打包<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>打包好的SF1是针对线上环境，区分于上边描述的开发环境。</p>
+<div class="highlight-python"><div class="highlight"><pre>cd $SF1_ROOT
+./sf1r-resource pull --force
+cd build
+make
+make package
+</pre></div>
+</div>
+<p>运行上面的命令后，会在目录$SF1_ROOT/build下生成压缩包sf1r-engine.tar.gz。</p>
+</div>
+<div class="section" id="id8">
+<h2>编辑打包脚本<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>当你要添加其它的第三方库的时候，必须要编辑打包脚本， 请参考 $SF1_ROOT/source/Packaging.cmake</p>
+</div>
+<div class="section" id="id9">
+<h2>如何运行二进制文件<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>tar xf sf1r.tar.gz
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PACKAGE_DIR/lib:$PACKAGE_DIR/lib-thirdparty
+cd $PACKAGE_DIR
+./CobraProcess -F config
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">需要设置环境变量 LD_LIBRARY_PATH</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../functions/Functions.html" class="btn btn-neutral float-right" title="功能介绍"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../config/HowTo.html" class="btn btn-neutral" title="配置说明"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Kevin Lin.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

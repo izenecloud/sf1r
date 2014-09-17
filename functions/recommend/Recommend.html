@@ -1,0 +1,767 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>推荐 &mdash; sf1-doc 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sf1-doc 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="功能介绍" href="../Functions.html"/>
+        <link rel="next" title="查询纠错" href="../data-mining/QueryCorrection.html"/>
+        <link rel="prev" title="商品排序" href="../sort/ProductSort.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> sf1-doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#id4">数据文件目录</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../config/HowTo.html">配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#sf1">SF1配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/HowTo.html">如何编译安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id2">依赖包安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id4">第三方库安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1">如何下载SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id6">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id7">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id8">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../search/Search.html">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../word_segment/word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sort/sort.html">排序</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/QueryCorrection.html">查询纠错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/Matcher.html">自动比价</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/AutoFill.html">自动补全</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../API/search/API.html">搜索API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/search/API.html#id1">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/search/API.html#id2">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/document/API.html">文档操作API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id1">创建文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id2">删除文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id3">更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id4">原地更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id5">获取文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id6">获取文档数量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id7">记录分组点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#label">设置查询分组Label映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id8">获取频繁点击分组Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id9">获取重复文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id10">获取文档摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id11">获取相似文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id12">访问文档</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/auto-fill/API.html">查询自动填充</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/query-correction/API.html">查询自动纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/collection/API.html">collection日常维护与管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id1">检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id2">创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id3">删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id4">载入许可证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id5">重新构建索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#scdcollection">从SCD重建collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id6">停止collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id7">更新配置信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/commands/API.html">命令API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id1">建立索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id2">重新构建查询功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id3">重新构建挖掘功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id4">优化索引</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/recommend/API.html">推荐引擎API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#fbt-frequently-bought-together">FBT(Frequently Bought Together)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bab-bought-also-bought">BAB(Bought Also Bought)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#vav-viewed-also-view">VAV(Viewed Also View)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#boe-based-on-event">BOE(Based on Event)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bob-based-on-browse-history">BOB(Based on Browse History)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bos-based-on-shopping-cart">BOS(Based on Shopping Cart)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bor-based-on-random">BOR(Based on Random)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#baq-bought-after-query">BAQ(Bought after Query)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#tib-top-item-bundle">TIB(Top Item Bundle)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/log-analysis/API.html">日志分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id2">从系统事件日志删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id4">从用户请求日志中删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id6">获取频繁用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id10">添加用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id11">添加用户请求到日志服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id12">查询系统事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id16">显示用户请求</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Schema.html">B5M站点配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Schema.html#collection">collection集合</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Product.html">商品collection配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Product.html#id1">字段约定</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">sf1-doc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../Functions.html">功能介绍</a> &raquo;</li>
+      
+    <li>推荐</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../_sources/functions/recommend/Recommend.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="id1">
+<h1>推荐<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>导入已有的数据<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>一些电子商务网站可能已经有了用户、商品和订单的数据。这些已有的数据可以以SCD文件的形式被加载到我们的推荐系统。
+在SCD文件被放到它们所对应的路径里之后，必须要调用index() API来将它们加载入推荐系统。</p>
+</div>
+<div class="section" id="id3">
+<h2>用户和商品<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>每当用户和商品数据有任何变化，你需要调用下面的API。这些数据在SF1中被存储为文档。文档API中的DOCID就是推荐API中的ITEMID。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Table</th>
+<th class="head">Add</th>
+<th class="head">Update</th>
+<th class="head">Remove</th>
+<th class="head">Get</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>user</td>
+<td>add_user</td>
+<td>update_user</td>
+<td>remove_user</td>
+<td>get_user</td>
+</tr>
+<tr class="row-odd"><td>item = doc</td>
+<td>create</td>
+<td>update</td>
+<td>destroy</td>
+<td>get</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h2>用户行为<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>各种用户行为被用来帮助我们的系统为每个用户推荐个性化的结果。</p>
+<div class="section" id="id5">
+<h3>访问商品<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>每当一个用户访问了一个商品（也即这个用户浏览了商品所在的网页），需要调用visit_item API。</p>
+<p>这被用于VAV和BOB推荐类型。</p>
+</div>
+<div class="section" id="id6">
+<h3>购物篮<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>每当一个用户的购物篮被改变了，例如</p>
+<ul class="simple">
+<li>用户在购物篮里添加或者删除了某商品。</li>
+<li>用户的购物篮因为订单提交了而变为空。</li>
+</ul>
+<p>在上述的情况下，需要调用update_shopping_cart API。</p>
+<p>这被用于BOS和BOE推荐类型。</p>
+</div>
+<div class="section" id="id7">
+<h3>购买商品<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>每当用户提交一个订单，需要调用purchase_item API。</p>
+<p>这被用于BOE推荐类型。</p>
+</div>
+<div class="section" id="id8">
+<h3>用户偏好<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>每当用户对某商品表示了偏好，需要调用track_event API。</p>
+<p>这被用于BOE推荐类型。</p>
+<p>在collection配置文件中，你可以添加任何偏好类型到&lt;RecommendBundle&gt;&lt;Schema&gt;&lt;Track&gt;。
+比如，以下是config/example.xml中配置的4种偏好类型。</p>
+<ul class="simple">
+<li>wish_list：用户他的wish list添加了一个商品</li>
+<li>own：用户已经拥有了某商品</li>
+<li>like：用户喜欢某个商品</li>
+<li>favorite：用户把某个商品加入到“最爱”中。</li>
+</ul>
+<p>以下事件类型是默认支持的，它们被用来剔除商品：</p>
+<ul class="simple">
+<li>not_rec_result：用户对某商品不感兴趣，所以我们的推荐系统将不会对此用户推荐这件商品。</li>
+<li>not_rec_input：用户不想让某件商品被用来向他做推荐，所以我们的推荐系统将不会在对此用户推荐的决策中使用这件商品。</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>评价商品<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>每当用户对一个商品评分，需要调用rate_item API。</p>
+<p>这被用于BOE推荐类型。</p>
+<p>评分分为1、2、3、4、5五个等级。他们的意义如下：</p>
+<ul class="simple">
+<li>1、我讨厌它</li>
+<li>2、我不喜欢它</li>
+<li>3、它还可以</li>
+<li>4、我喜欢它</li>
+<li>5、我爱死它了</li>
+</ul>
+</div>
+</div>
+<div class="section" id="api">
+<h2>推荐API图文介绍<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p>通过使用我们的推荐API，可以实时的上传数据并且获得推荐结果，相应的API接口参看
+<a class="reference internal" href="../../API/recommend/API.html"><em>推荐引擎API</em></a></p>
+<p>do_recommend API支持7种推荐类型。你可能已经在一些电子商务网站使用过它们，如Amazon.</p>
+<div class="section" id="fbt-frequently-bought-together">
+<h3>FBT(Frequently Bought Together)<a class="headerlink" href="#fbt-frequently-bought-together" title="Permalink to this headline">¶</a></h3>
+<p>它通常给出了在一个订单中通常与输入商品一起购买的商品。</p>
+<p>例如，给定如下的输入商品：</p>
+<img alt="../../_images/fbt_1.png" src="../../_images/fbt_1.png" />
+<p>系统推荐了另外的2件商品：</p>
+<img alt="../../_images/fbt_2.png" src="../../_images/fbt_2.png" />
+</div>
+<div class="section" id="bab-bought-also-bought">
+<h3>BAB(Bought Also Bought)<a class="headerlink" href="#bab-bought-also-bought" title="Permalink to this headline">¶</a></h3>
+<p>它给出了通常用户买了输入商品时还买了哪些商品。</p>
+<p>例如：</p>
+<img alt="../../_images/bab.png" src="../../_images/bab.png" />
+</div>
+<div class="section" id="vav-viewed-also-view">
+<h3>VAV(Viewed Also View)<a class="headerlink" href="#vav-viewed-also-view" title="Permalink to this headline">¶</a></h3>
+<p>它给出了通常用户看了输入商品时还看了哪些商品。</p>
+</div>
+<div class="section" id="boe-based-on-event">
+<h3>BOE(Based On Event)<a class="headerlink" href="#boe-based-on-event" title="Permalink to this headline">¶</a></h3>
+<p>它根据除了查看商品外的用户行为给出推荐的商品，因为查看商品的行为专门用于BOB推荐类型。</p>
+<p>例如：</p>
+<img alt="../../_images/BOE.png" src="../../_images/BOE.png" />
+<p>在上面的例子中，有一个名为&#8221;Fix this recommendation&#8221;的链接，它链向类似如下的内容：</p>
+<img alt="../../_images/BOE_reason.png" src="../../_images/BOE_reason.png" />
+<p>它给出了系统推荐这些商品的原因。do_recommend API也返回了包含reasons的结果。</p>
+<p>基于这些原因，用户可以给出更多的偏好和评分来改善推荐系统。</p>
+</div>
+<div class="section" id="bob-based-on-browse-history">
+<h3>BOB(Based on Browse History)<a class="headerlink" href="#bob-based-on-browse-history" title="Permalink to this headline">¶</a></h3>
+<p>它基于用户的浏览历史给出了推荐的商品。</p>
+<p>例如：</p>
+<img alt="../../_images/BOB.png" src="../../_images/BOB.png" />
+</div>
+<div class="section" id="bos-based-on-shopping-cart">
+<h3>BOS(Based on Shopping Cart)<a class="headerlink" href="#bos-based-on-shopping-cart" title="Permalink to this headline">¶</a></h3>
+<p>它基于用户的购物篮给出了推荐的商品。</p>
+<p>例如：</p>
+<img alt="../../_images/BOS.png" src="../../_images/BOS.png" />
+</div>
+<div class="section" id="tib-top-item-bundle">
+<h3>TIB(Top Item Bundle)<a class="headerlink" href="#tib-top-item-bundle" title="Permalink to this headline">¶</a></h3>
+<p>top_item_bundle API是第7种推荐类型。
+它给出了在一个订单里，哪些商品被购买得最频繁，也即最畅销的商品系列。</p>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>配置文件<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>在config/sf1config.xml中，可以配置如下选项：</p>
+<ul class="simple">
+<li>CollectionDataDirectory配置推荐数据的路径。</li>
+<li>CronPara配置推荐任务的定时执行。</li>
+<li>在CacheSize中， 为了针对do_recommend() API获得更好的性能，可以为以下cache配置更大的容量：
+purchase配置购买矩阵的cache容量，在rec_type是BAB，BOE，BOB和BOS时使用；
+visit配置访问矩阵的cache容量，在rec_type是VAV时使用；
+index配置索引缓冲的容量，在rec_type是FBT时使用。</li>
+</ul>
+<p>下面是一个默认的配置，你可以根据自己的需求修改：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;RecommendBundle&gt;
+  &lt;Parameter&gt;
+    &lt;CollectionDataDirectory&gt;default-recommend-dir&lt;/CollectionDataDirectory&gt;
+    &lt;CronPara value=&quot;0 0 * * *&quot; /&gt;
+    &lt;!-- 1G for purchase matrix, 512M for visit matrix, 10M for index buffer --&gt;
+    &lt;CacheSize purchase=&quot;1073741824&quot; visit=&quot;536870912&quot; index=&quot;10485760&quot; /&gt;
+    &lt;FreqItemSet enable=&quot;no&quot; minfreq=&quot;10&quot; /&gt;
+  &lt;/Parameter&gt;
+&lt;/RecommendBundle&gt;
+</pre></div>
+</div>
+<p>在collection配置文件中，比如config/example.xml，可以配置以下选项：</p>
+<ul class="simple">
+<li>DocumentSchema配置商品的属性。DOCID属性在所有的推荐API中被称为ITEMID。</li>
+<li>User配置用户的属性。</li>
+<li>Track配置用户事件的属性，用于track_event()和do_recommend() API。</li>
+</ul>
+<p>下面是一个默认的配置，你可以根据自己的需求修改：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DocumentSchema&gt;
+  &lt;Property name=&quot;DOCID&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;DATE&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;Title&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;Content&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;URL&quot; type=&quot;string&quot;/&gt;
+&lt;/DocumentSchema&gt;
+
+&lt;RecommendBundle&gt;
+  &lt;Schema&gt;
+    &lt;User&gt;
+      &lt;Property name=&quot;gender&quot; /&gt;
+      &lt;Property name=&quot;age&quot; /&gt;
+      &lt;Property name=&quot;area&quot; /&gt;
+    &lt;/User&gt;
+    &lt;Track&gt;
+      &lt;Event name=&quot;wish_list&quot; /&gt;
+      &lt;Event name=&quot;own&quot; /&gt;
+      &lt;Event name=&quot;like&quot; /&gt;
+      &lt;Event name=&quot;favorite&quot; /&gt;
+    &lt;/Track&gt;
+  &lt;/Schema&gt;
+&lt;/RecommendBundle&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="scd">
+<h2>SCD格式<a class="headerlink" href="#scd" title="Permalink to this headline">¶</a></h2>
+<p>有3种SCD类型：index，user，order
+在SCD文件被放到它们对应的目录下之后，你需要调用index() API去把它们加载入SF1系统。</p>
+<div class="section" id="index-scd">
+<h3>index SCD<a class="headerlink" href="#index-scd" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>index SCD不仅用于推荐任务中的item数据，也用于SF1中的搜索和数据挖掘任务。</li>
+<li>它包含商品的数据。</li>
+<li>DOCID域对于每个商品项都是必需的，它就是order SCD和所有推荐API中的ITEMID。</li>
+</ul>
+<p>目录：collection/example/scd/index</p>
+<p>例如：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DOCID&gt;item_001
+&lt;Title&gt;iphone
+&lt;Content&gt;digital device
+&lt;URL&gt;www.shop.com/product/item_001
+</pre></div>
+</div>
+</div>
+<div class="section" id="user-scd">
+<h3>user SCD<a class="headerlink" href="#user-scd" title="Permalink to this headline">¶</a></h3>
+<p>它包含用户的配置数据。USERID对于每个用户都是必需的。</p>
+<p>目录：collection/example/scd/recommend/user</p>
+<p>例如：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;USERID&gt;user_001
+&lt;gender&gt;male
+&lt;age&gt;23
+&lt;area&gt;Beijing
+</pre></div>
+</div>
+</div>
+<div class="section" id="order-scd">
+<h3>order SCD<a class="headerlink" href="#order-scd" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>它包含购买的数据。</li>
+<li>USERID和ITEMID对于每个记录都是必需的。</li>
+<li>ORDERID代表订单id。如果缺省，这条记录将被视为一条新的记录。</li>
+<li>如果多个记录的ORDERID是一致的，那么这些记录将被合并视为一个订单。</li>
+<li>DATE域的格式是&#8221;YYYY-mm-dd&#8221;。如果缺省，当前的时间将会被使用。</li>
+</ul>
+<p>目录：collection/example/scd/recommend/order</p>
+<p>例如：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;USERID&gt;user_001
+&lt;ITEMID&gt;item_001
+&lt;ORDERID&gt;order_001
+&lt;DATE&gt;2011-04-11
+&lt;price&gt;3000
+&lt;quantity&gt;1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>分布式部署<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>可以将SF1服务部署在多台机器上，以下是最经常使用的用例。</p>
+<div class="section" id="id12">
+<h3>一台机器上<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>以下是默认的配置，只有一台机器运行搜索和推荐服务。</p>
+<p>在example.xml中：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Collection ...&gt;
+  &lt;DocumentSchema&gt; ...
+  &lt;IndexBundle&gt; ...
+  &lt;MiningBundle&gt; ...
+  &lt;RecommendBundle&gt;...
+&lt;/Collection&gt;
+</pre></div>
+</div>
+<p>在sf1config.xml中：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;SF1Config ...&gt;
+  &lt;Deployment&gt;...
+    &lt;DistributedTopology enable=&quot;n&quot; type=&quot;search&quot; ...&gt;
+    &lt;DistributedTopology enable=&quot;n&quot; type=&quot;recommend&quot; ...&gt;
+  &lt;/Deployment&gt;
+&lt;/SF1Config&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>搜索和推荐主控在同一台机器上<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>以下是一个在A机器上运行搜索服务，在A和B上运行推荐服务的例子，</p>
+<ul class="simple">
+<li>A机器作为单个的搜索节点</li>
+<li>A机器作为推荐主控和1号worker</li>
+<li>B机器作为推荐2号worker</li>
+</ul>
+<p>A机器上的example.xml：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Collection ...&gt;
+  &lt;DocumentSchema&gt; ...
+  &lt;IndexBundle&gt; ...
+  &lt;MiningBundle&gt; ...
+  &lt;RecommendBundle&gt;...
+&lt;/Collection&gt;
+</pre></div>
+</div>
+<p>A机器上的sf1config.xml:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;SF1Config ...&gt;
+  &lt;Deployment&gt;
+    ...
+    &lt;DistributedCommon clusterid=&quot;cluster_001&quot; ... /&gt;
+
+    &lt;DistributedTopology enable=&quot;n&quot; type=&quot;search&quot; nodenum=&quot;2&quot;&gt;
+      &lt;CurrentSf1rNode nodeid=&quot;1&quot; replicaid=&quot;1&quot;&gt;
+        &lt;MasterServer enable=&quot;y&quot; name=&quot;undefined&quot; shardnum=&quot;2&quot;&gt;
+          &lt;Collection name=&quot;example&quot; distributive=&quot;y&quot;/&gt;
+        &lt;/MasterServer&gt;
+
+        &lt;WorkerServer enable=&quot;y&quot; shardid=&quot;1&quot;&gt;
+          &lt;Collection name=&quot;example&quot;/&gt;
+        &lt;/WorkerServer&gt;
+      &lt;/CurrentSf1rNode&gt;
+    &lt;/DistributedTopology&gt;
+
+    &lt;DistributedTopology enable=&quot;y&quot; type=&quot;recommend&quot; nodenum=&quot;2&quot;&gt;
+      &lt;CurrentSf1rNode nodeid=&quot;1&quot; replicaid=&quot;1&quot;&gt;
+        &lt;MasterServer enable=&quot;y&quot; name=&quot;undefined&quot; shardnum=&quot;2&quot;&gt;
+          &lt;Collection name=&quot;example&quot; distributive=&quot;y&quot; shardids=&quot;1,2&quot;/&gt;
+        &lt;/MasterServer&gt;
+
+        &lt;WorkerServer enable=&quot;y&quot; shardid=&quot;1&quot;&gt;
+          &lt;Collection name=&quot;example&quot;/&gt;
+        &lt;/WorkerServer&gt;
+      &lt;/CurrentSf1rNode&gt;
+    &lt;/DistributedTopology&gt;
+    ...
+  &lt;/Deployment&gt;
+&lt;/SF1Config&gt;
+</pre></div>
+</div>
+<p>B机器上的example.xml:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Collection ...&gt;
+  &lt;DocumentSchema&gt; ...
+  &lt;RecommendBundle&gt;...
+&lt;/Collection&gt;
+</pre></div>
+</div>
+<p>B机器上的sf1config.xml:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;SF1Config ...&gt;
+  &lt;Deployment&gt;
+    ...
+    &lt;DistributedCommon clusterid=&quot;cluster_001&quot; ... /&gt;
+
+    &lt;DistributedTopology enable=&quot;n&quot; type=&quot;search&quot; nodenum=&quot;2&quot;&gt;
+      &lt;CurrentSf1rNode nodeid=&quot;1&quot; replicaid=&quot;1&quot;&gt;
+        &lt;MasterServer enable=&quot;y&quot; name=&quot;undefined&quot; shardnum=&quot;2&quot;&gt;
+          &lt;Collection name=&quot;example&quot; distributive=&quot;y&quot;/&gt;
+        &lt;/MasterServer&gt;
+
+        &lt;WorkerServer enable=&quot;y&quot; shardid=&quot;1&quot;&gt;
+          &lt;Collection name=&quot;example&quot;/&gt;
+        &lt;/WorkerServer&gt;
+      &lt;/CurrentSf1rNode&gt;
+    &lt;/DistributedTopology&gt;
+
+    &lt;DistributedTopology enable=&quot;y&quot; type=&quot;recommend&quot; nodenum=&quot;2&quot;&gt;
+      &lt;CurrentSf1rNode nodeid=&quot;2&quot; replicaid=&quot;1&quot;&gt;
+        &lt;MasterServer enable=&quot;n&quot; name=&quot;undefined&quot; shardnum=&quot;2&quot;&gt;
+          &lt;Collection name=&quot;example&quot; distributive=&quot;y&quot; shardids=&quot;1,2&quot;/&gt;
+        &lt;/MasterServer&gt;
+
+        &lt;WorkerServer enable=&quot;y&quot; shardid=&quot;2&quot;&gt;
+          &lt;Collection name=&quot;example&quot;/&gt;
+        &lt;/WorkerServer&gt;
+      &lt;/CurrentSf1rNode&gt;
+    &lt;/DistributedTopology&gt;
+    ...
+  &lt;/Deployment&gt;
+&lt;/SF1Config&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>搜索和推荐主控在不同的机器上<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>以下是一个在A机器上运行搜索服务，在B和C上运行推荐服务的例子，</p>
+<ul class="simple">
+<li>A机器作为搜索主控和worker</li>
+<li>B机器作为推荐主控和1号worker</li>
+<li>C机器作为推荐2号worker</li>
+</ul>
+<p>A机器上的example.xml：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Collection ...&gt;
+  &lt;DocumentSchema&gt; ...
+  &lt;IndexBundle&gt; ...
+  &lt;MiningBundle&gt; ...
+&lt;/Collection&gt;
+</pre></div>
+</div>
+<p>A机器上的sf1config.xml:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;SF1Config ...&gt;
+  &lt;Deployment&gt;
+    ...
+    &lt;DistributedCommon clusterid=&quot;cluster_001&quot; ... /&gt;
+
+    &lt;DistributedTopology enable=&quot;y&quot; type=&quot;search&quot; nodenum=&quot;2&quot;&gt;
+      &lt;CurrentSf1rNode nodeid=&quot;1&quot; replicaid=&quot;1&quot;&gt;
+        &lt;MasterServer enable=&quot;y&quot; name=&quot;undefined&quot; shardnum=&quot;2&quot;&gt;
+          &lt;Collection name=&quot;example&quot; distributive=&quot;y&quot;/&gt;
+        &lt;/MasterServer&gt;
+
+        &lt;WorkerServer enable=&quot;y&quot; shardid=&quot;1&quot;&gt;
+          &lt;Collection name=&quot;example&quot;/&gt;
+        &lt;/WorkerServer&gt;
+      &lt;/CurrentSf1rNode&gt;
+    &lt;/DistributedTopology&gt;
+
+    &lt;DistributedTopology enable=&quot;n&quot; type=&quot;recommend&quot; nodenum=&quot;2&quot;&gt;
+      ...
+    &lt;/DistributedTopology&gt;
+    ...
+  &lt;/Deployment&gt;
+&lt;/SF1Config&gt;
+</pre></div>
+</div>
+<p>B机器上的example.xml:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Collection ...&gt;
+  &lt;DocumentSchema&gt; ...
+  &lt;RecommendBundle&gt; ...
+&lt;/Collection&gt;
+</pre></div>
+</div>
+<p>B机器上的sf1config.xml:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;SF1Config ...&gt;
+  &lt;Deployment&gt;
+    ...
+    &lt;DistributedCommon clusterid=&quot;cluster_001&quot; ... /&gt;
+
+    &lt;DistributedTopology enable=&quot;n&quot; type=&quot;search&quot; nodenum=&quot;2&quot;&gt;
+      ...
+    &lt;/DistributedTopology&gt;
+
+    &lt;DistributedTopology enable=&quot;y&quot; type=&quot;recommend&quot; nodenum=&quot;2&quot;&gt;
+      &lt;CurrentSf1rNode nodeid=&quot;1&quot; replicaid=&quot;1&quot;&gt;
+        &lt;MasterServer enable=&quot;y&quot; name=&quot;undefined&quot; shardnum=&quot;2&quot;&gt;
+          &lt;Collection name=&quot;example&quot; distributive=&quot;y&quot; shardids=&quot;1,2&quot;/&gt;
+        &lt;/MasterServer&gt;
+
+        &lt;WorkerServer enable=&quot;y&quot; shardid=&quot;1&quot;&gt;
+          &lt;Collection name=&quot;example&quot;/&gt;
+        &lt;/WorkerServer&gt;
+      &lt;/CurrentSf1rNode&gt;
+    &lt;/DistributedTopology&gt;
+
+    ...
+  &lt;/Deployment&gt;
+&lt;/SF1Config&gt;
+</pre></div>
+</div>
+<p>C机器上的example.xml:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Collection ...&gt;
+  &lt;DocumentSchema&gt; ...
+  &lt;RecommendBundle&gt; ...
+&lt;/Collection&gt;
+</pre></div>
+</div>
+<p>C机器上的sf1config.xml:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;SF1Config ...&gt;
+  &lt;Deployment&gt;
+    ...
+    &lt;DistributedCommon clusterid=&quot;cluster_001&quot; ... /&gt;
+
+    &lt;DistributedTopology enable=&quot;n&quot; type=&quot;search&quot; nodenum=&quot;2&quot;&gt;
+      ...
+    &lt;/DistributedTopology&gt;
+
+    &lt;DistributedTopology enable=&quot;y&quot; type=&quot;recommend&quot; nodenum=&quot;2&quot;&gt;
+      &lt;CurrentSf1rNode nodeid=&quot;1&quot; replicaid=&quot;1&quot;&gt;
+        &lt;MasterServer enable=&quot;n&quot; name=&quot;undefined&quot; shardnum=&quot;2&quot;&gt;
+          &lt;Collection name=&quot;example&quot; distributive=&quot;y&quot; shardids=&quot;1,2&quot;/&gt;
+        &lt;/MasterServer&gt;
+
+        &lt;WorkerServer enable=&quot;y&quot; shardid=&quot;2&quot;&gt;
+          &lt;Collection name=&quot;example&quot;/&gt;
+        &lt;/WorkerServer&gt;
+      &lt;/CurrentSf1rNode&gt;
+    &lt;/DistributedTopology&gt;
+
+    ...
+  &lt;/Deployment&gt;
+&lt;/SF1Config&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../data-mining/QueryCorrection.html" class="btn btn-neutral float-right" title="查询纠错"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../sort/ProductSort.html" class="btn btn-neutral" title="商品排序"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Kevin Lin.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>同义词 &mdash; sf1-doc 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sf1-doc 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="分词" href="word_segment.html"/>
+        <link rel="next" title="使用方法和配置" href="segmentconfig.html"/>
+        <link rel="prev" title="统计分词" href="statisticscover.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> sf1-doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#id4">数据文件目录</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../config/HowTo.html">配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#sf1">SF1配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/HowTo.html">如何编译安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id2">依赖包安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id4">第三方库安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1">如何下载SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id6">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id7">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id8">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../search/Search.html">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sort/sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/Recommend.html">推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/QueryCorrection.html">查询纠错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/Matcher.html">自动比价</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-mining/AutoFill.html">自动补全</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../API/search/API.html">搜索API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/search/API.html#id1">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/search/API.html#id2">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/document/API.html">文档操作API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id1">创建文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id2">删除文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id3">更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id4">原地更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id5">获取文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id6">获取文档数量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id7">记录分组点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#label">设置查询分组Label映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id8">获取频繁点击分组Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id9">获取重复文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id10">获取文档摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id11">获取相似文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/document/API.html#id12">访问文档</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/auto-fill/API.html">查询自动填充</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/query-correction/API.html">查询自动纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/collection/API.html">collection日常维护与管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id1">检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id2">创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id3">删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id4">载入许可证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id5">重新构建索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#scdcollection">从SCD重建collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id6">停止collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/collection/API.html#id7">更新配置信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/commands/API.html">命令API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id1">建立索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id2">重新构建查询功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id3">重新构建挖掘功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/commands/API.html#id4">优化索引</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/recommend/API.html">推荐引擎API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#fbt-frequently-bought-together">FBT(Frequently Bought Together)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bab-bought-also-bought">BAB(Bought Also Bought)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#vav-viewed-also-view">VAV(Viewed Also View)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#boe-based-on-event">BOE(Based on Event)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bob-based-on-browse-history">BOB(Based on Browse History)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bos-based-on-shopping-cart">BOS(Based on Shopping Cart)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#bor-based-on-random">BOR(Based on Random)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#baq-bought-after-query">BAQ(Bought after Query)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/recommend/API.html#tib-top-item-bundle">TIB(Top Item Bundle)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/log-analysis/API.html">日志分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id2">从系统事件日志删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id4">从用户请求日志中删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id6">获取频繁用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id10">添加用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id11">添加用户请求到日志服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id12">查询系统事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/log-analysis/API.html#id16">显示用户请求</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Schema.html">B5M站点配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Schema.html#collection">collection集合</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Product.html">商品collection配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Product.html#id1">字段约定</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">sf1-doc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../Functions.html">功能介绍</a> &raquo;</li>
+      
+          <li><a href="word_segment.html">分词</a> &raquo;</li>
+      
+    <li>同义词</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../_sources/functions/word_segment/Synonyms.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="id1">
+<h1>同义词<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>介绍<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>由于中文普遍有一义多词的同义词现象存在，例如：“电脑和计算机”，从而导致用户在检索某个特定含义时具有多种表达方式。因此，为了提高用户检索的召回率，需要对用户检索词的同义词进行同样的处理。</p>
+</div>
+<div class="section" id="id3">
+<h2>使用<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>在Sf1r中，要起用同义词分析，可以在用户请求参数中做如下设置(&#8220;use_synonym_extension&#8221;设置为true)：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;chinese-wiki-dist&quot;</span><span class="p">,</span>
+  <span class="s">&quot;search&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;keywords&quot;</span><span class="p">:</span><span class="s">&quot;中国&quot;</span><span class="p">,</span>
+    <span class="s">&quot;analyzer&quot;</span><span class="p">:</span>
+    <span class="p">{</span>
+      <span class="s">&quot;use_synonym_extension&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+      <span class="s">&quot;apply_la&quot;</span><span class="p">:</span><span class="n">true</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>同义词词典资源文件位置为，[Your location]/icma/db/icwb/utf8/synonym.txt，SF1中采用了定时更新同义词词典的策略。</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="segmentconfig.html" class="btn btn-neutral float-right" title="使用方法和配置"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="statisticscover.html" class="btn btn-neutral" title="统计分词"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Kevin Lin.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

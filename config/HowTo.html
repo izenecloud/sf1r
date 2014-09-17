@@ -1,0 +1,1685 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>配置说明 &mdash; sf1-doc 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sf1-doc 0.1 documentation" href="../index.html"/>
+        <link rel="next" title="如何编译安装" href="../build/HowTo.html"/>
+        <link rel="prev" title="基本概念" href="../basic-concepts/BasicConcepts.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> sf1-doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../basic-concepts/BasicConcepts.html">基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basic-concepts/BasicConcepts.html#collection">collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-concepts/BasicConcepts.html#id4">数据文件目录</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sf1">SF1配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../build/HowTo.html">如何编译安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id2">依赖包安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id4">第三方库安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#sf1">如何下载SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id6">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id7">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id8">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id9">如何运行二进制文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/Functions.html">功能介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../functions/search/Search.html">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/index/Index.html">索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/word_segment/word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/sort/sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/recommend/Recommend.html">推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/QueryCorrection.html">查询纠错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/Matcher.html">自动比价</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/AutoFill.html">自动补全</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../API/search/API.html">搜索API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/search/API.html#id1">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/search/API.html#id2">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/document/API.html">文档操作API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id1">创建文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id2">删除文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id3">更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id4">原地更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id5">获取文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id6">获取文档数量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id7">记录分组点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#label">设置查询分组Label映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id8">获取频繁点击分组Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id9">获取重复文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id10">获取文档摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id11">获取相似文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id12">访问文档</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/auto-fill/API.html">查询自动填充</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API/query-correction/API.html">查询自动纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API/collection/API.html">collection日常维护与管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id1">检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id2">创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id3">删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id4">载入许可证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id5">重新构建索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#scdcollection">从SCD重建collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id6">停止collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id7">更新配置信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/commands/API.html">命令API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id1">建立索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id2">重新构建查询功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id3">重新构建挖掘功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id4">优化索引</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/recommend/API.html">推荐引擎API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#fbt-frequently-bought-together">FBT(Frequently Bought Together)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bab-bought-also-bought">BAB(Bought Also Bought)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#vav-viewed-also-view">VAV(Viewed Also View)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#boe-based-on-event">BOE(Based on Event)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bob-based-on-browse-history">BOB(Based on Browse History)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bos-based-on-shopping-cart">BOS(Based on Shopping Cart)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bor-based-on-random">BOR(Based on Random)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#baq-bought-after-query">BAQ(Bought after Query)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#tib-top-item-bundle">TIB(Top Item Bundle)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/log-analysis/API.html">日志分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id2">从系统事件日志删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id4">从用户请求日志中删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id6">获取频繁用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id10">添加用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id11">添加用户请求到日志服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id12">查询系统事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id16">显示用户请求</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../operation/Schema.html">B5M站点配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operation/Schema.html#collection">collection集合</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../operation/Product.html">商品collection配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operation/Product.html#id1">字段约定</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">sf1-doc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>配置说明</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/config/HowTo.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="id1">
+<h1>配置说明<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sf1">
+<h2>SF1配置文件说明<a class="headerlink" href="#sf1" title="Permalink to this headline">¶</a></h2>
+<p>SF1配置文件主要包含以下几个方面：</p>
+<p>1.System：全局参数设置，包括索引/挖掘特性/推荐特性的默认参数设置，线程个数，语言分析器设置等。</p>
+<p>2.Collection：定义集合中文档的结构和具体的索引/挖掘参数。</p>
+<p>3.Deployment：分布式配置。</p>
+</div>
+<div class="section" id="system">
+<h2>System<a class="headerlink" href="#system" title="Permalink to this headline">¶</a></h2>
+<p>通过标准结构定义文件对SF1的配置文件进行验证，必须将结构定义文件sf1r-config.xsd和SF1的XML配置文件放在同一目录下。</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;SF1Config xsi:schemaLocation=&quot;http://www.izenesoft.com sf1r-config.xsd&quot;
+    &lt;System&gt;
+    .
+    .
+    &lt;BundlesDefault&gt;
+        &lt;xxxBundle&gt;
+        &lt;/xxxBundle&gt;
+        .
+        .
+    &lt;/BundlesDefault&gt;
+    &lt;Tokenizing&gt;
+    &lt;/Tokenizing&gt;
+    &lt;LanguageAnalyzer&gt;
+    &lt;/LanguageAnalyzer&gt;
+    &lt;/System&gt;
+    &lt;Deployment&gt;
+    &lt;/Deployment&gt;
+&lt;/SF1Config&gt;
+</pre></div>
+</div>
+<div class="section" id="resource">
+<h3>Resource<a class="headerlink" href="#resource" title="Permalink to this headline">¶</a></h3>
+<p>该参数表示加载资源的绝对路径.</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Resource path=&quot;@SF1RENGINE_ROOT@/package/resource&quot;/&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="workingdir">
+<h3>WorkingDir<a class="headerlink" href="#workingdir" title="Permalink to this headline">¶</a></h3>
+<p>该参数表示资源运行路径.</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;WorkingDir path=&quot;@SF1RENGINE_ROOT@/bin&quot;/&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="logconnection">
+<h3>LogConnection<a class="headerlink" href="#logconnection" title="Permalink to this headline">¶</a></h3>
+<p>该参数表示选择日志数据库。</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;LogConnection str=&quot;sqlite3://./log/COBRA&quot;/&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">连接sqlite3则str=&#8221;sqlite3://./log/COBRA&#8221;，连接mysql则str=&#8221;mysql://root:123456&#64;127.0.0.1:3306/SF1R&#8221;。</p>
+</div>
+</div>
+<div class="section" id="logserverconnection">
+<h3>LogServerConnection<a class="headerlink" href="#logserverconnection" title="Permalink to this headline">¶</a></h3>
+<p>该参数表示连接日志服务器命令.</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;LogServerConnection host=&quot;10.10.99.121&quot; rpcport=&quot;18811&quot; rpc_thread_num=&quot;30&quot; driverport=&quot;18812&quot;/&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="cassandraconnection">
+<h3>CassandraConnection<a class="headerlink" href="#cassandraconnection" title="Permalink to this headline">¶</a></h3>
+<p>该参数表示连接Cassandra命令。</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;CassandraConnection str=&quot;cassandra://10.10.99.107&quot;/&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">可指定用户名和密码，str=&#8221;cassandra://[username:passpord&#64;]host:port&#8221;。不支持IPv6，若参数不符合格式则认为是禁用Cassandra。</p>
+</div>
+</div>
+<div class="section" id="indexbundle">
+<h3>IndexBundle<a class="headerlink" href="#indexbundle" title="Permalink to this headline">¶</a></h3>
+<p>设置索引相关的默认参数.</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Parameter&gt;
+  &lt;CollectionDataDirectory&gt;default-collection-dir&lt;/CollectionDataDirectory&gt;
+  &lt;IndexStrategy memorypoolsize=&quot;128000000&quot;
+                 indexlevel=&quot;wordlevel&quot;
+                 indexpolicy=&quot;default&quot;
+                 mergepolicy=&quot;memory&quot;
+                 cron=&quot;0 4 1 1 *&quot;
+                 autorebuild=&quot;y&quot;/&gt;
+  &lt;Sia triggerqa=&quot;n&quot;
+       enable_parallel_searching=&quot;n&quot;
+       enable_forceget_doc=&quot;n&quot;
+       doccachenum=&quot;20000&quot;
+       searchcachenum=&quot;1000&quot;
+       refreshsearchcache=&quot;n&quot;
+       refreshcacheinterval=&quot;3600&quot;
+       filtercachenum=&quot;1000&quot;
+       mastersearchcachenum=&quot;1000&quot;
+       topknum=&quot;4000&quot; knntopknum=&quot;30&quot;
+       knndist=&quot;32&quot;
+       sortcacheupdateinterval=&quot;1800&quot;
+       encoding=&quot;UTF-8&quot;
+       wildcardtype=&quot;unigram&quot;
+       indexunigramproperty=&quot;n&quot;
+       unigramsearchmode=&quot;n&quot;
+       multilanggranularity=&quot;field&quot;/&gt;
+  &lt;LanguageIdentifier dbpath=&quot;@ilplib_LANGUAGEIDENTIFIER_DB@&quot;/&gt;
+&lt;/Parameter&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">元素</th>
+<th class="head">属性</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CollectionDdataDirectory</td>
+<td>&nbsp;</td>
+<td>用来指定集合数据的索引目录</td>
+</tr>
+<tr class="row-odd"><td>IndexStratege</td>
+<td>memorypoolsize</td>
+<td>用于索引的内存池字节数。如果小于5,000,000性能会大大下降。</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>indexpolicy</td>
+<td>有两种选择：1）default，表示只有当索引结束时，才能对文档进行检索，
+创建索引速度很快；2）realtime，表示可以进行实时检索。</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>indexlevel</td>
+<td>指定索引级别，有两种选择：1）doclevel。2）wordlevel。</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>mergepolicy</td>
+<td>指定合并方法，有两种选择：1）file，对于某些类型的硬盘可能效率较低，
+2）memory，额外的内存消耗等于最大列表长度。</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>cron</td>
+<td>指令执行周期，格式为&#8221;分 小时 天 月 星期&#8221;</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>autorebuild</td>
+<td>指定是否自动重新编译</td>
+</tr>
+<tr class="row-odd"><td>Sia</td>
+<td>triggerqa</td>
+<td>指定查询请求是否进入问答模式，默认&#8221;n&#8221;</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>enable_parallel_searching</td>
+<td>指定是否允许并行检索，默认&#8221;n&#8221;</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>enable_forceget_doc</td>
+<td>指定是否允许获取已删除的文档，默认&#8221;n&#8221;</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>doccachenum</td>
+<td>指定检索程序中原始文档的缓存个数。值越大则内存消耗越大。默认2000</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>searchcachenum</td>
+<td>指定检索程序中检索结果的缓存个数。值越大则内存消耗越大。默认1000</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>refreshsearchcache</td>
+<td>指定是否定期清除检索缓存</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>refreshcacheinterval</td>
+<td>指定清除检索缓存的周期，单位为秒，默认3600</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>filtercachenum</td>
+<td>指定检索程序中的filter结果的缓存个数。值越大内存消耗越大。默认1000</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>mastersearchcachenum</td>
+<td>指定master检索缓存个数</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>topknum</td>
+<td>指定查询结果的个数</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>knntopknum</td>
+<td>指定KNN查询结果的个数（现已不用）</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>knndist</td>
+<td>指定KNN查询的Hamming距离（现已不用）</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>sortcacheupdateinterval</td>
+<td>指定对检索排序结果的更新周期，单位为秒</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>encoding</td>
+<td>指定编码的类型，包括&#8221;UTF-8&#8221;，&#8221;EUC-KR&#8221;，&#8221;GBK&#8221;</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>wildcardtype</td>
+<td>指定通配符类型，可选&#8221;unigram&#8221;和&#8221;trie&#8221;</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>indexunigramproperty</td>
+<td>指定是否对属性的一元词语进行索引（现已不用）</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>unigramsearchmode</td>
+<td>指定是否为一元搜索模式（现已不用）</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>multilanggranularity</td>
+<td>指定分词的粒度，默认&#8221;field&#8221;（现已不用）</td>
+</tr>
+<tr class="row-odd"><td>LanguageIdentifier</td>
+<td>dbpath</td>
+<td>指定语言识别器的资源文件路径</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="productbundle">
+<h3>ProductBundle<a class="headerlink" href="#productbundle" title="Permalink to this headline">¶</a></h3>
+<p>设置产品相关的默认参数.</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Parameter&gt;
+  &lt;CollectionDataDirectory&gt;default-collection-dir&lt;/CollectionDataDirectory&gt;
+  &lt;CronPara value=&quot;0 1 * * *&quot;/&gt;
+  &lt;CassandraStorage enable=&quot;yes&quot; keyspace=&quot;B5MO&quot;&gt;
+&lt;/Parameter&gt;
+</pre></div>
+</div>
+<p>CronPara/value：指定计算价格趋势的启动时间。</p>
+<p>CassandraStorage/enable：指定是否需要计算价格趋势。</p>
+<p>CassandraStorage/keyspace：指定对哪个表计算价格趋势，默认为&#8221;SF1R&#8221;。</p>
+</div>
+<div class="section" id="miningbundle">
+<h3>MiningBundle<a class="headerlink" href="#miningbundle" title="Permalink to this headline">¶</a></h3>
+<p>设置挖掘相关的默认参数.</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Parameter&gt;
+  &lt;CollectionDataDirectory&gt;default-collection-dir&lt;/CollectionDataDirectory&gt;
+  &lt;TaxonomyPara topdocnum=&quot;100&quot;
+                levels=&quot;3&quot;
+                perlevelnum=&quot;8&quot;
+                candlabelnum=&quot;250&quot;
+                enablenec=&quot;n&quot;
+                maxpeopnum=&quot;20&quot;
+                maxlocnum=&quot;20&quot;
+                maxorgnum=&quot;20&quot;/&gt;
+  &lt;AutofillPara cron=&quot;30 2 * * *&quot;/&gt;
+  &lt;FuzzyIndexMergePara cron=&quot;30 3 * * *&quot;/&gt;
+  &lt;RecommendPara recommendnum=&quot;9&quot; cron=&quot;0 2 * * *&quot;/&gt;
+  &lt;SimilarityPara docnumlimit=&quot;100&quot; termnumlimit=&quot;400000&quot; enableesa=&quot;n&quot;/&gt;
+  &lt;ClassificationPara customizetraining=&quot;n&quot; trainingencoding=&quot;UTF-8&quot;/&gt;
+  &lt;IsePara buildimageindex=&quot;y&quot;
+           storeimagelocally=&quot;n&quot;
+           maximagenum=&quot;1000000&quot;
+           relatedimagenum=&quot;50&quot;/&gt;
+  &lt;QueryCorrectionPara enableEK=&quot;y&quot; enableCN=&quot;y&quot;/&gt;
+  &lt;ProductRankingPara cron=&quot;0 23 * * *&quot;/&gt;
+&lt;/Parameter&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="15%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">元素</th>
+<th class="head">属性</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>TaxonomyPara</td>
+<td>topdocnum</td>
+<td>指定排名靠前的文档数，数值越大则TG可以利用更多的信息生成导航信息，范围[50,300]，
+默认100</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>levels</td>
+<td>指定运行时创建的分类树的层数，范围[1,3]，如果为1则为链式结构，默认3</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>perlevelnum</td>
+<td>指定分类树每一层的最大标签数，范围[2,20]，默认8</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>candlabelnum</td>
+<td>指定用于生成分类树的候选标签数量，范围[200,400]，默认250</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>enablenec</td>
+<td>指定是否使用命名体分类，默认&#8221;n&#8221;</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>maxpeopnum</td>
+<td>指定排序的人名个数，只有在使用命名体分类时有效，范围[1,50]，默认20</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>maxlocnum</td>
+<td>指定排序的地名个数，只有在使用命名体分类时有效，范围[1,50]，默认20</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>maxorgnum</td>
+<td>指定排序的机构名个数，只有在使用命名体分类时有效，范围[1,50]，默认20</td>
+</tr>
+<tr class="row-even"><td>AutofillPara</td>
+<td>cron</td>
+<td>指定自动填充的更新时间</td>
+</tr>
+<tr class="row-odd"><td>FuzzyIndexMergePara</td>
+<td>cron</td>
+<td>指定模糊索引合并时间</td>
+</tr>
+<tr class="row-even"><td>RecommendPara</td>
+<td>recommendnum</td>
+<td>指定显示的推荐条目的个数，范围[1,50]，默认10</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>cron</td>
+<td>指定MiningQueryLogHandler启动时间</td>
+</tr>
+<tr class="row-even"><td>SimilarityPara</td>
+<td>docnumlimit</td>
+<td>指定每一个词对应的记录列表中文档个数（idf）的限制范围，该属性值越大则相似度越高，
+同时离线计算花费的时间越多。范围[100,500]，默认100</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>termnumlimit</td>
+<td>指定文档中用于剪枝的词的个数（tf）限制，该属性值越大则相似度越高，同时离线计算
+花费的时间越多。范围[100-500000]，默认400000</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>enableesa</td>
+<td>指定是否使用Explicit Semantic Analysis（ESA）计算相似度，默认&#8221;n&#8221;</td>
+</tr>
+<tr class="row-odd"><td>ClassificationPara</td>
+<td>customizetraining</td>
+<td>指定是否允许自定义分类器训练</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>trainingencoding</td>
+<td>指定编码</td>
+</tr>
+<tr class="row-odd"><td>IsePara</td>
+<td>buildimageindex</td>
+<td>指定是否在索引中建立图像表示，默认&#8221;n&#8221;（现已不用）</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>storeimagelocally</td>
+<td>指定是否在服务器本地对图像进行备份，默认&#8221;n&#8221;（现已不用）</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>maximagenum</td>
+<td>指定最大图像个数，范围[1,1000000]，默认1000000（现已不用）</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>relatedimagenum</td>
+<td>指定相关图像个数，范围[1,100]，默认50（现已不用）</td>
+</tr>
+<tr class="row-odd"><td>QueryCorrectionPara</td>
+<td>enableEK</td>
+<td>查询纠错是否支持英文</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>enableCN</td>
+<td>查询纠错是否支持中文</td>
+</tr>
+<tr class="row-odd"><td>ProductRankingPara</td>
+<td>cron</td>
+<td>指定ProductScore启动时间</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="recommendbundle">
+<h3>RecommendBundle<a class="headerlink" href="#recommendbundle" title="Permalink to this headline">¶</a></h3>
+<p>设置推荐相关的默认参数.</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Parameter&gt;
+  &lt;CollectionDataDirectory&gt;default-recommend-dir&lt;/CollectionDataDirectory&gt;
+  &lt;CronPara value=&quot;0 0 * * *&quot;/&gt;
+  &lt;CacheSize purchase=&quot;1073741824&quot; visit=&quot;536870912&quot; index=&quot;104857600&quot;/&gt;
+  &lt;FreqItemSet enable=&quot;no&quot; minfreq=&quot;10&quot;/&gt;
+  &lt;CassandraStorage enable=&quot;no&quot; keyspace=&quot;recommend_001&quot;/&gt;
+&lt;/Parameter&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="11%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">元素</th>
+<th class="head">属性</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CollectionDataDirectory</td>
+<td>&nbsp;</td>
+<td>指定数据的索引目录</td>
+</tr>
+<tr class="row-odd"><td>CronPara</td>
+<td>value</td>
+<td>指定任务启动时间</td>
+</tr>
+<tr class="row-even"><td>CacheSize</td>
+<td>purchase</td>
+<td>指定分配内存大小</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>visit</td>
+<td>指定可用内存大小</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>index</td>
+<td>指定索引内存大小</td>
+</tr>
+<tr class="row-odd"><td>FreqItemSet</td>
+<td>enable</td>
+<td>指定是否支持频繁项目集</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>minfreq</td>
+<td>指定频繁项目集阈值</td>
+</tr>
+<tr class="row-odd"><td>CassandraStorage</td>
+<td>enable</td>
+<td>指定是否将推荐数据存入Cassandra，否则将存在本地</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>keyspace</td>
+<td>指定将推荐数据存入哪个表，默认&#8221;SF1R&#8221;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tokenizing">
+<h3>Tokenizing<a class="headerlink" href="#tokenizing" title="Permalink to this headline">¶</a></h3>
+<p>标记解析器将一篇文本解析为一个个的字符串和标记符号。默认情况下，所有的非字母字符（如空格，特殊
+字符）都被视为divide界定符。例如，对字符串“SF-1 Revolution!”进行解析，将会返回“SF”，“1” 和 “Revolution”。</p>
+<p>下面是解析器的相关配置.</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;Tokenizer id=&quot;tok_divide&quot; method=&quot;divide&quot; value=&quot;@#$&quot; code=&quot;&quot;/&gt;
+&lt;Tokenizer id=&quot;tok_unite&quot; method=&quot;unite&quot; value=&quot;/&quot; code=&quot;&quot;/&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">属性</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>指定解析器的名称</td>
+</tr>
+<tr class="row-odd"><td>method</td>
+<td>指定解析器的操作方法，有3种选择：1）allow，被设置为allow的字符将不再是界定符。2）divide，被设置为divide的界定符
+表示分割操作，即&#8221;A&#64;B&#8221;=&gt;&#8221;A&#8221;,&#8221;B&#8221;。3）unite，被设置为unite的界定符表示连接操作，即&#8221;A&#64;B&#8221;=&gt;&#8221;AB&#8221;</td>
+</tr>
+<tr class="row-even"><td>value</td>
+<td>用字符串指定method作用的字符参数</td>
+</tr>
+<tr class="row-odd"><td>code</td>
+<td>用UCS2码指定method作用的字符参数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="languageanalyzer">
+<h3>LanguageAnalyzer<a class="headerlink" href="#languageanalyzer" title="Permalink to this headline">¶</a></h3>
+<p>SF1-R 中有多种语言分析方法，其中一些是基于字符的分析方法，还有一些是基于语言的分析方法。标记解析器的解析结果作为分析器的输入，分析器对这些字符进行分析，得到一系列的字符。最终我们对这些字符再进行索引，搜索和挖掘。
+下面是关于语言分析器的一些配置信息.</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;LanguageAnalyzer dictionarypath=&quot;@wisekma_KNOWLEDGE@&quot; updatedictinterval=&quot;300&quot;&gt;
+  &lt;Method id=&quot;la_token&quot; analysis=&quot;token&quot;/&gt;
+  &lt;Method id=&quot;la_char&quot; analysis=&quot;char&quot;/&gt;
+  &lt;Method id=&quot;la_unigram_all&quot; analysis=&quot;char&quot; advoption=&quot;all&quot; casesensitive=&quot;no&quot;/&gt;
+  &lt;Method id=&quot;la_unigram&quot; analysis=&quot;char&quot; advoption=&quot;part&quot; casesensitive=&quot;no&quot;/&gt;
+  &lt;Method id=&quot;la_ngram&quot;
+          analysis=&quot;ngram&quot;
+          min=&quot;2&quot;
+          max=&quot;3&quot;
+          maxno=&quot;2194967296&quot;
+          apart=&quot;n&quot;
+          idxflag=&quot;second&quot;
+          schflag=&quot;second&quot;/&gt;
+  &lt;Method id=&quot;la_bigram&quot;
+          analysis=&quot;ngram&quot;
+          min=&quot;2&quot;
+          max=&quot;2&quot;
+          maxno=&quot;2194967296&quot;
+          apart=&quot;n&quot;
+          idxflag=&quot;second&quot;/&gt;
+  &lt;Method id=&quot;la_eng&quot; analysis=&quot;english&quot; casesensitive=&quot;no&quot;&gt;
+    &lt;settings mode=&quot;all&quot; option=&quot;S+&quot; dictionarypath=&quot;&quot;/&gt;
+  &lt;/Method&gt;
+  &lt;Method id=&quot;inner_la_korall_sia&quot; analysis=&quot;korean&quot; casesensitive=&quot;no&quot;&gt;
+    &lt;settings mode=&quot;label&quot; option=&quot;R+S+&quot; specialchar=&quot;#&quot; dictionarypath=&quot;&quot;/&gt;
+  &lt;/Method&gt;
+  &lt;Method id=&quot;inner_la_cnall_sia_2&quot; analysis=&quot;chinese&quot; casesensitive=&quot;no&quot;&gt;
+    &lt;settings mode=&quot;label&quot; option=&quot;R+S-V-T2&quot; specialchar=&quot;#&quot; dictionarypath=&quot;@izenecma_KNOWLEDGE@&quot;/&gt;
+  &lt;/Method&gt;
+  &lt;Method id=&quot;inner_la_cnall_sia&quot; analysis=&quot;chinese&quot; casesensitive=&quot;no&quot;&gt;
+    &lt;settings mode=&quot;label&quot; option=&quot;R+S-V-T3&quot; specialchar=&quot;#&quot; dictionarypath=&quot;@izenecma_KNOWLEDGE@&quot;/&gt;
+  &lt;/Method&gt;
+  &lt;Method id=&quot;inner_la_cnall_ia&quot; analysis=&quot;chinese&quot; casesensitive=&quot;no&quot;&gt;
+    &lt;settings mode=&quot;label&quot; option=&quot;R+S-V-T4&quot; specialchar=&quot;#&quot; dictionarypath=&quot;@izenecma_KNOWLEDGE@&quot;/&gt;
+  &lt;/Method&gt;
+  &lt;Method id=&quot;inner_la_cnall_sa&quot; analysis=&quot;chinese&quot; casesensitive=&quot;no&quot;&gt;
+    &lt;settings mode=&quot;label&quot; option=&quot;R+S-T5&quot; specialchar=&quot;#&quot; dictionarypath=&quot;@izenecma_KNOWLEDGE@&quot;/&gt;
+  &lt;/Method&gt;
+  &lt;Method id=&quot;la_sia_without_overlap&quot;
+          analysis=&quot;multilang&quot;
+          advoption=&quot;default,inner_la_korall_sia;en,inner_la_cnall_sa;cn,inner_la_cnall_sa&quot;/&gt;
+  &lt;Method id=&quot;la_sia&quot;
+          analysis=&quot;multilang&quot;
+          advoption=&quot;default,inner_la_korall_sia;en,inner_la_cnall_sa;cn,inner_la_cnall_sia&quot;/&gt;
+  &lt;Method id=&quot;la_sia_with_unigram&quot;
+          analysis=&quot;multilang&quot;
+          advoption=&quot;default,inner_la_korall_sia;en,inner_la_cnall_sa;cn,inner_la_cnall_ia&quot;/&gt;
+&lt;/LanguageAnalyzer&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="16%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">元素</th>
+<th class="head">属性</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>LanguageAnalyzer</td>
+<td>dictionarypath</td>
+<td>指定分析器辞典的路径</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>updatedictinterval</td>
+<td>指定词典更新时间</td>
+</tr>
+<tr class="row-even"><td>Method</td>
+<td>id</td>
+<td>指定分析器名称</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>analysis</td>
+<td>指定分析器的类型，有两大类，1）语言独立的，包括token,ngram,char。2）语言
+相关的，包括english,korean,chinese,multilang</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>advoption</td>
+<td>分析器为char时，
+分析器为multilang时，指定具体配置方法，详细解释见下文</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>casesensitive</td>
+<td>指定是否大小写敏感，默认yes</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>min</td>
+<td>分析器为ngram时有效，指定N-Gram中N的最小值</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>max</td>
+<td>分析器为ngram时有效，指定N-Gram中N的最大值</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>maxno</td>
+<td>分析器为ngram时有效，指定由一个标记串分析得到的词的最大数量</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>apart</td>
+<td>分析器为ngram时有效，指定是否将中日韩字符和其他字符区分对待</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>idxflag</td>
+<td>指定索引返回词的类型，有4种选择，1）all，返回所有词。2）prime，返回标记解析器的
+解析结果。3）second，返回语言分析器的分析结果。4）none，不返回任何词。默认all</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>schflag</td>
+<td>指定检索返回词的类型，有4种选择，同上，默认second</td>
+</tr>
+<tr class="row-even"><td>Method/settings</td>
+<td>mode</td>
+<td>分析器为语言相关时有效，设置分析器输出哪种类型的词语，有3种选择，1）all，解析结
+果和分析结果。2）noun，分析结果。3）label，通常用于挖掘特性</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>option</td>
+<td>分析器为语言相关时有效，详细解释见下文</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>specialchar</td>
+<td>指定的字符不作为界定符，相等于method中的allow</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>dictionarypath</td>
+<td>指定分析器的辞典路径，会覆盖LanguageAnalyzer中指定的路径</td>
+</tr>
+</tbody>
+</table>
+<p>分析器类型的详细描述如下:</p>
+<p><strong>token</strong></p>
+<p>这种方法不作任何操作，仅将标记解析器的解析结果作为输出，即LAManager的输出。</p>
+<p><strong>ngram</strong></p>
+<p>由NGram分析器得到分析结果。</p>
+<p><strong>char</strong></p>
+<p>由Char分析器抽取为一个个的字。part属性指定是否将数字，字母等符号分割开来，默认y</p>
+<p><strong>chinese</strong></p>
+<p>使用Chinese Morpheme Analysis(CMA)分析器抽取词语，CMA中集成了英文的词干分析器，因此也可以处理中英混合文本。</p>
+<p>option的描述如下：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="5%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">选项</th>
+<th class="head">设置</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>C</td>
+<td><cite>+</cite></td>
+<td>从复合名词中抽取名词</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td><cite>*</cite></td>
+<td>从复合名字中抽取名词，且将这些名词加入辞典</td>
+</tr>
+<tr class="row-even"><td>R</td>
+<td>0/-</td>
+<td>返回所有的分析结果</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td><cite>+</cite></td>
+<td>使用排名最靠前的两种分析结果</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>1-9</td>
+<td>指定抽取多少个排名靠前的分析结果</td>
+</tr>
+<tr class="row-odd"><td>S</td>
+<td><cite>-</cite></td>
+<td>混合在中文文本中的英文单词会被原样抽取出来</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td><cite>+</cite></td>
+<td>对英文单词进行词干化处理</td>
+</tr>
+<tr class="row-odd"><td>T</td>
+<td>1</td>
+<td>统计方法，正确率最高，速度较慢</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>2</td>
+<td>最大匹配方法，正确率较低，速度较快</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>3</td>
+<td>最小匹配方法，正确率较低，速度较快，召回率较高</td>
+</tr>
+</tbody>
+</table>
+<p><strong>korea</strong></p>
+<p>使用Korean Morphological Analyzer(KMA)分析器抽取词语，KMA集成了英文的词干分析器，因此也可以处理韩英混合文本。</p>
+<p>option的描述如下:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="5%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">选项</th>
+<th class="head">设置</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>C</td>
+<td><cite>+</cite></td>
+<td>同chinese</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td><cite>*</cite></td>
+<td>同chinese</td>
+</tr>
+<tr class="row-even"><td>R</td>
+<td>0/-</td>
+<td>同chinese</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td><cite>+</cite></td>
+<td>同chinese</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>1-9</td>
+<td>同chinese</td>
+</tr>
+<tr class="row-odd"><td>S</td>
+<td><cite>-</cite></td>
+<td>同chinese</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td><cite>+</cite></td>
+<td>同chinese</td>
+</tr>
+<tr class="row-odd"><td>N</td>
+<td>0</td>
+<td>不抽取数字</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>1-9</td>
+<td>表示对最少包含多少个数字字符的数字进行抽取</td>
+</tr>
+<tr class="row-odd"><td>B</td>
+<td><cite>-</cite></td>
+<td>将标记字符串中的数字和量化单位分开，如&#8221;10千米&#8221;=&#8221;10&#8221;,&#8221;千米&#8221;</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td><cite>+</cite></td>
+<td>不将标记字符串中的数字和量化单位分开</td>
+</tr>
+<tr class="row-odd"><td>H</td>
+<td><cite>-</cite></td>
+<td>将中文字符转换为等价的韩语字符</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td><cite>+</cite></td>
+<td>如果中文字符和与其对应的韩语字符一起出现，抽取其中的中文字符</td>
+</tr>
+<tr class="row-odd"><td>V</td>
+<td><cite>-</cite></td>
+<td>不抽取动词和形容词的词根</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td><cite>+</cite></td>
+<td>对于具有1个以上音节的动词和形容词进行词干化处理</td>
+</tr>
+</tbody>
+</table>
+<p><strong>english</strong></p>
+<p>英文分析器与其他语言（包括丹麦语，荷兰语，芬兰语等）类似，均进行词干化处理，每个词根最终作为一个检索词。</p>
+<p><strong>multilang</strong></p>
+<p>多语言分析器不是一个独立的分析器，而是配置多种分析器来处理多语言的混合文档，核心选项是advoption，该选项可以配置为cn(中文),
+en(英文)，jp(日文)，kr(韩文)和default(所有语言)。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>&#8220;default&#8221;</strong> 只能指定给一个分析器，而且指定了&#8221;default&#8221; 的分析器配置必须放在多种语言分析器前面。其它语言的配置作为可选项， 每一种语言都可以采用一种处理模式。共有4种处理模式:
+<strong>&#8220;none&#8221;</strong> 不对该语言做任何处理。使用&#8221;default&#8221;语言分析器对该语言进行处理。
+<strong>&#8220;char&#8221;</strong> 将该语言文本分为一个个独立的字符。例如, 采用&#8221;char&#8221;模式处理英语文本，给定&#8221;ABC&#8221;字符串，将得到&#8221;A&#8221;,&#8221;B&#8221;和&#8221;C&#8221;3个词。
+<strong>&#8220;string&#8221;</strong> 利用标点符号对该语言文本进行切分。例如,利用该模式处理英文文本，给定&#8221;ABC DE&#8221;字符串，将返回&#8221;ABC&#8221;,&#8221;DE&#8221;两个词。
+<strong>&#8220;ma&#8221;</strong> 指定一个语言分析器对该语言文本进行处理。对不同语言的设置用分号&#8221;；&#8221;隔开。例如: advoption = &#8220;default, inner la korall mia; cn, char&#8221;，意为利用&#8221;char&#8221;模式处理中文，利用inner_la_korall_mia处理其它语言。</p>
+</div>
+</div>
+</div>
+<div class="section" id="collection">
+<h2>Collection<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h2>
+<p>SF1中，collection(集合)是具有相同结构的文档集合，collection配置文件主要包含6个部分：</p>
+<p>1.SCD文件路径</p>
+<p>2.DocumentSchema</p>
+<p>3.IndexBundle</p>
+<p>4.ProductBundle</p>
+<p>5.MiningBundle</p>
+<p>6.RecommendBundle</p>
+<div class="section" id="scd">
+<h3>SCD文件设置<a class="headerlink" href="#scd" title="Permalink to this headline">¶</a></h3>
+<p>配置文件放在config目录下，配置文件的名称为&#8221;CollectionName.xml&#8221;，用户需要给出一个具体的CollectionName.</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+  &lt;Date format=&quot;none_time_t&quot;/&gt;
+  &lt;Path basepath=&quot;collection/tuanm&quot;&gt;&lt;!-- The default location can be overwritten --&gt;
+    &lt;SCD path=&quot;&quot;/&gt;&lt;!-- default: basepath/scd --&gt;
+    &lt;CollectionData path=&quot;&quot;/&gt;&lt;!-- default: basepath/collection-data --&gt;
+    &lt;Query path=&quot;&quot;/&gt;&lt;!-- default: basepath/query-data --&gt;
+  &lt;/Path&gt;
+}
+</pre></div>
+</div>
+<p>Data：用来指定文档创建时间的格式，有4种选项： <strong>none_time_t</strong> ：用14个数字填充格式YYYYMMDDHHmmSS。 <strong>time_t</strong> ：表示UNIX time()的值，如果得到的值是错误的，将被视为no_data。
+<strong>utc_sec</strong> ：将创建索引的时间作为collection的创建时间。  <strong>no_data</strong> ：设置创建时间为1970:01:01 09:00:00。</p>
+<p>basepath：collection的路径，必须由用户手动设置。</p>
+<p>SCD：SCD目录的路径，默认为$basepath/scd，SCD文件必须放在scd/index目录下。</p>
+<p>CollectionData：索引相关数据的路径，默认为$basepath/collection-data。</p>
+<p>Query：查询相关数据的路径，默认为$basepath/query-data。</p>
+</div>
+<div class="section" id="documentschema">
+<h3>DocumentSchema<a class="headerlink" href="#documentschema" title="Permalink to this headline">¶</a></h3>
+<p>定义了文档的所有属性信息，包括属性名和属性值的类型，属性值的类型选项为：string/float/int8/int16/int32/int64/datatime。</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+  &lt;DocumentSchema&gt;
+    &lt;Property name=&quot;DOCID&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;uuid&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;DATE&quot; type=&quot;datetime&quot;/&gt;
+    &lt;Property name=&quot;ComUrl&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;ProdDocid&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;ProdName&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;Source&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;UserName&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;UsefulVoteTotal&quot; type=&quot;int32&quot;/&gt;
+    &lt;Property name=&quot;UsefulVote&quot; type=&quot;int32&quot;/&gt;
+    &lt;Property name=&quot;Content&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;Advantage&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;Disadvantage&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;Title&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;City&quot; type=&quot;string&quot;/&gt;
+    &lt;Property name=&quot;Score&quot; type=&quot;int32&quot;/&gt;
+  &lt;/DocumentSchema&gt;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>IndexBundle<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>SF1通过检查IndexBundle的配置参数绝对需要对哪些属性建立索引，一般对string类型的字段建立倒排索引，如Title，Content；
+对数值型字段建立BTree索引，如Price。</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+  &lt;IndexBundle&gt;
+    &lt;Schema&gt;
+      &lt;Property name=&quot;Title&quot;&gt;
+        &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.8&quot;/&gt;
+      &lt;/Property&gt;
+      &lt;Property name=&quot;Price&quot;&gt;
+        &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; range=&quot;yes&quot;/&gt;
+      &lt;/Property&gt;
+      &lt;Property name=&quot;TargetCategory&quot;&gt;
+        &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.6&quot;/&gt;
+      &lt;/Property&gt;
+      &lt;Property name=&quot;Category&quot;&gt;
+        &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.6&quot;/&gt;
+      &lt;/Property&gt;
+      &lt;Property name=&quot;Attribute&quot;&gt;
+        &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.2&quot;/&gt;
+      &lt;/Property&gt;
+      &lt;Property name=&quot;CommentCount&quot;&gt;
+        &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot;/&gt;
+      &lt;/Property&gt;
+      &lt;Property name=&quot;Score&quot;&gt;
+        &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot;/&gt;
+      &lt;/Property&gt;
+      &lt;Property name=&quot;mobile&quot;&gt;
+        &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot;/&gt;
+      &lt;/Property&gt;
+      &lt;VirtualProperty name=&quot;Combined&quot;&gt;
+        &lt;SubProperty name=&quot;Title&quot;/&gt;
+        &lt;SubProperty name=&quot;Source&quot;/&gt;
+        &lt;SubProperty name=&quot;Category&quot;/&gt;
+      &lt;/VirtualProperty&gt;
+    &lt;/Schema&gt;
+  &lt;/IndexBundle&gt;
+}
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="10%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">元素</th>
+<th class="head">属性</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Property</td>
+<td>name</td>
+<td>文档中的属性名称</td>
+</tr>
+<tr class="row-odd"><td>Property/Indexing</td>
+<td>filter</td>
+<td>指定该属性是否作为过滤器，true表示BTree索引，即可进行排序或设置筛选条件，false表示倒排
+索引，即可用来检索用户的查询</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>multivalue</td>
+<td>指定该属性是否可以应用于多值过滤器</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>doclen</td>
+<td>指定是否将此属性存储到文档的长度中</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>analyzer</td>
+<td>指定索引过程中分析器的类型，只能对string类型的属性设置</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>tokenizer</td>
+<td>指定索引过程中解析器的类型，可指定多个解析器，只能对string类型的属性设置</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>range</td>
+<td>是否支持范围形式的值，只能对数值类型的属性设置</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>rankweight</td>
+<td>指定该属性所占的权重</td>
+</tr>
+<tr class="row-even"><td>VirtualProperty</td>
+<td>name</td>
+<td>虚拟属性名称</td>
+</tr>
+<tr class="row-odd"><td>VirtualProperty/
+Subproperty</td>
+<td>name</td>
+<td>虚拟属性的子属性名称</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h3>ProductBundle<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>产品的相关配置。</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+  &lt;ProductBundle&gt;
+    &lt;Schema mode=&quot;o&quot; id=&quot;b5m&quot;&gt;
+      &lt;PriceProperty name=&quot;Price&quot;/&gt;
+      &lt;DateProperty name=&quot;DATE&quot;/&gt;
+      &lt;DOCIDProperty name=&quot;DOCID&quot;/&gt;
+      &lt;UuidProperty name=&quot;uuid&quot;/&gt;
+      &lt;ItemCountProperty name=&quot;itemcount&quot;/&gt;
+      &lt;PriceTrend&gt;
+        &lt;GroupProperty name=&quot;TargetCategory&quot;/&gt;
+        &lt;GroupProperty name=&quot;Source&quot;/&gt;
+        &lt;TimeInterval days=&quot;2&quot;/&gt;
+        &lt;TimeInterval days=&quot;7&quot;/&gt;
+        &lt;TimeInterval days=&quot;183&quot;/&gt;
+        &lt;TimeInterval days=&quot;365&quot;/&gt;
+      &lt;/PriceTrend&gt;
+    &lt;/Schema&gt;
+  &lt;/ProductBundle&gt;
+}
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="7%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">元素</th>
+<th class="head">属性</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Schema</td>
+<td>mode</td>
+<td>选择模式，可为a/m/o，具体含义？？？</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>id</td>
+<td>产品名称</td>
+</tr>
+<tr class="row-even"><td>Schema/Price-
+Property</td>
+<td>name</td>
+<td>价格的属性名称</td>
+</tr>
+<tr class="row-odd"><td>Schema/Data-
+Property</td>
+<td>name</td>
+<td>日期的属性名称</td>
+</tr>
+<tr class="row-even"><td>Schema/DOCID-
+Property</td>
+<td>name</td>
+<td>DOCID的属性名称</td>
+</tr>
+<tr class="row-odd"><td>Schema/Uuid-
+Property</td>
+<td>name</td>
+<td>uuid的属性名称</td>
+</tr>
+<tr class="row-even"><td>Schema/Item-
+CountProperty</td>
+<td>name</td>
+<td>物品数量的属性名称</td>
+</tr>
+<tr class="row-odd"><td>PriceTrend/
+GroupProperty</td>
+<td>name</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>PriceTrend/
+TimeInterval</td>
+<td>days</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h3>MiningBundle<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>定义了挖掘特性在哪些属性上进行操作。</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+&lt;MiningBundle&gt;
+  &lt;Schema&gt;
+    &lt;QueryRecommend&gt;
+      &lt;QueryLog/&gt;
+    &lt;/QueryRecommend&gt;
+    &lt;Group&gt;
+      &lt;Property name=&quot;TargetCategory&quot;/&gt;
+      &lt;Property name=&quot;Source&quot;/&gt;
+      &lt;Property name=&quot;SubSource&quot;/&gt;
+    &lt;/Group&gt;
+    &lt;Attr&gt;
+      &lt;Property name=&quot;Attribute&quot;/&gt;
+      &lt;Exclude name=&quot;ISBN&quot;/&gt;
+    &lt;/Attr&gt;
+    &lt;ProductRanking&gt;
+      &lt;Score type=&quot;diversity&quot; property=&quot;Source&quot;/&gt;
+      &lt;Score type=&quot;merchant&quot; property=&quot;Source&quot;/&gt;
+      &lt;Score type=&quot;category&quot; property=&quot;TargetCategory&quot; weight=&quot;1&quot;/&gt;
+      &lt;Score type=&quot;relevance&quot; weight=&quot;0.01&quot;/&gt;
+    &lt;/ProductRanking&gt;
+    &lt;Summarization&gt;
+      &lt;DocidProperty name=&quot;DOCID&quot;/&gt;
+      &lt;ContentProperty name=&quot;Content&quot;/&gt;
+      &lt;TitleProperty name=&quot;Title&quot;/&gt;
+      &lt;OpinionProperty name=&quot;Opinion&quot;/&gt;
+      &lt;OpinionWorkingPath path=&quot;./collection/b5mc/opinion_working/&quot;/&gt;
+      &lt;OpinionSyncId name=&quot;b5m&quot;/&gt;
+    &lt;/Summarization&gt;
+    &lt;SuffixMatch&gt;
+      &lt;Property name=&quot;Title&quot;/&gt;
+      &lt;TokenizeDictionary path=&quot;fmindex_dic&quot;/&gt;
+      &lt;Incremental enable=&quot;no&quot;/&gt;
+      &lt;FilterProperty name=&quot;TargetCategory&quot; filtertype=&quot;group&quot;/&gt;
+      &lt;FilterProperty name=&quot;Source&quot; filtertype=&quot;group&quot;/&gt;
+      &lt;FilterProperty name=&quot;SubSource&quot; filtertype=&quot;group&quot;/&gt;
+      &lt;FilterProperty name=&quot;Price&quot; filtertype=&quot;numeric&quot;/&gt;
+    &lt;/SuffixMatch&gt;
+  &lt;/Schema&gt;
+&lt;/MiningBundle&gt;
+}
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="8%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">元素</th>
+<th class="head">属性</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>QueryRecommend/
+Querylog</td>
+<td>&nbsp;</td>
+<td>在推荐模块中使用用户的查询记录</td>
+</tr>
+<tr class="row-odd"><td>Group/Property</td>
+<td>name</td>
+<td>使用分组特性的属性名列表，类型必须为string</td>
+</tr>
+<tr class="row-even"><td>Attr/Property</td>
+<td>name</td>
+<td>使用attrby特性的属性名列表，类型必须为string</td>
+</tr>
+<tr class="row-odd"><td>Attr/Exclude</td>
+<td>name</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>ProductRanking/score</td>
+<td>type</td>
+<td>类型</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>property</td>
+<td>属性名称</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>weight</td>
+<td>权重</td>
+</tr>
+<tr class="row-odd"><td>Summarization/Docid-
+Property</td>
+<td>name</td>
+<td>Docid概述使用的属性</td>
+</tr>
+<tr class="row-even"><td>Summarization/Con-
+tentProperty</td>
+<td>name</td>
+<td>uuid概述使用的属性</td>
+</tr>
+<tr class="row-odd"><td>Summarization/Title-
+Property</td>
+<td>name</td>
+<td>标题概述使用的属性</td>
+</tr>
+<tr class="row-even"><td>Summarization/Opi-
+nionProperty</td>
+<td>name</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Summarization/Opi-
+nionWorkingPath</td>
+<td>name</td>
+<td>概述中选项的路径</td>
+</tr>
+<tr class="row-even"><td>Summarization/Opi-
+nionSyncld</td>
+<td>name</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>SuffixMatch/Property</td>
+<td>name</td>
+<td>后缀匹配使用的属性</td>
+</tr>
+<tr class="row-even"><td>SuffixMatch/
+TokenizeDictionary</td>
+<td>path</td>
+<td>后缀匹配使用的分析器词典路径</td>
+</tr>
+<tr class="row-odd"><td>SuffixMatch/
+Incremental</td>
+<td>enable</td>
+<td>指定后缀匹配是否是支持动态增长</td>
+</tr>
+<tr class="row-even"><td>Suffixmatch/
+FilterProperty</td>
+<td>name</td>
+<td>后缀匹配过滤器的名称</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>filter-
+type</td>
+<td>后缀匹配过滤器的类型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h3>RecommendBundle<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>推荐相关配置。</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+  &lt;RecommendBundle&gt;
+    &lt;Schema&gt;
+      &lt;User&gt;
+        &lt;Property name=&quot;gender&quot; /&gt;
+        &lt;Property name=&quot;age&quot; /&gt;
+        &lt;Property name=&quot;area&quot; /&gt;
+      &lt;/User&gt;
+      &lt;Item&gt;
+        &lt;Property name=&quot;name&quot; /&gt;
+        &lt;Property name=&quot;link&quot; /&gt;
+        &lt;Property name=&quot;price&quot; /&gt;
+        &lt;Property name=&quot;category&quot; /&gt;
+      &lt;/Item&gt;
+      &lt;Track&gt;
+        &lt;Event name=&quot;wish_list&quot; /&gt;
+        &lt;Event name=&quot;own&quot; /&gt;
+        &lt;Event name=&quot;like&quot; /&gt;
+        &lt;Event name=&quot;favorite&quot; /&gt;
+      &lt;/Track&gt;
+    &lt;/Schema&gt;
+  &lt;/RecommendBundle&gt;
+}
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="6%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">元素</th>
+<th class="head">属性</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>User/Property</td>
+<td>name</td>
+<td>用户与推荐相关的属性名称</td>
+</tr>
+<tr class="row-odd"><td>Item/Property</td>
+<td>name</td>
+<td>物品与推荐相关的属性名称</td>
+</tr>
+<tr class="row-even"><td>Trace/Event</td>
+<td>name</td>
+<td>事件与推荐相关的属性名称</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
+<p>分布式配置。</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;BrokerAgent usecache=&quot;n&quot; threadnum=&quot;50&quot; enabletest=&quot;y&quot; port=&quot;18181&quot;/&gt;
+&lt;DistributedCommon clusterid=&quot;@LOCAL_HOST_USER_NAME@&quot;
+                   username=&quot;@LOCAL_HOST_USER_NAME@&quot;
+                   localhost=&quot;@LOCAL_HOST_IP@&quot;
+                   workerport=&quot;18151&quot;
+                   masterport=&quot;18131&quot;
+                   datarecvport=&quot;18121&quot;
+                   filesyncport=&quot;18141&quot;/&gt;
+&lt;DistributedTopology enable=&quot;n&quot; nodenum=&quot;2&quot;&gt;
+  &lt;CurrentSf1rNode nodeid=&quot;1&quot; replicaid=&quot;1&quot;&gt;
+    &lt;MasterServer enable=&quot;n&quot; name=&quot;undefined&quot;&gt;
+      &lt;DistributedService type=&quot;search&quot;&gt;
+        &lt;Collection name=&quot;web&quot; distributive=&quot;n&quot;/&gt;
+        &lt;Collection name=&quot;qa&quot; distributive=&quot;n&quot;/&gt;
+        &lt;Collection name=&quot;b5mo&quot; distributive=&quot;n&quot;/&gt;
+        &lt;Collection name=&quot;b5mc&quot; distributive=&quot;n&quot;/&gt;
+        &lt;Collection name=&quot;b5mp&quot; distributive=&quot;y&quot; shardids=&quot;1,2&quot;/&gt;
+      &lt;/DistributedService&gt;
+    &lt;/MasterServer&gt;
+    &lt;WorkerServer enable=&quot;n&quot;&gt;
+      &lt;DistributedService type=&quot;search&quot;&gt;
+        &lt;Collection name=&quot;b5mp&quot;&gt;
+      &lt;/DistributedService&gt;
+    &lt;/WorkerServer&gt;
+  &lt;/CurrentSf1rNode&gt;
+&lt;/DistributedTopology&gt;
+&lt;DistributedUtil&gt;
+  &lt;ZooKeeper disable=&quot;n&quot;
+             servers=&quot;10.10.99.121:2181,10.10.99.122:2181,10.10.99.123:2181&quot;
+             sessiontimeout=&quot;5000&quot;/&gt;
+ &lt;DFS type=&quot;hdfs&quot; supportfuse=&quot;y&quot; mountdir=&quot;/mnt/hdfs&quot; server=&quot;localhost&quot; port=&quot;9000&quot;/&gt;
+&lt;/DistributedUtil&gt;
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="12%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">元素</th>
+<th class="head">属性</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>BrokerAgent</td>
+<td>usecache</td>
+<td>指定是否使用cache</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>threadnum</td>
+<td>sf1服务器的线程数量</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>enabletest</td>
+<td>指定是否支持测试</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>port</td>
+<td>sf1服务器的端口号</td>
+</tr>
+<tr class="row-even"><td>DistributedCommon</td>
+<td>clusterid</td>
+<td>集群编号</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>username</td>
+<td>用户名</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>localhost</td>
+<td>本地主机ip</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>workerport</td>
+<td>worker节点端口号</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>masterport</td>
+<td>master节点端口号</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>datarecvport</td>
+<td>data节点端口号</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>filesyncport</td>
+<td>文件同步节点端口号</td>
+</tr>
+<tr class="row-odd"><td>DistributedTopology</td>
+<td>enable</td>
+<td>指定是否允许分布式sf1</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>nodenum</td>
+<td>指定集群的节点数量</td>
+</tr>
+<tr class="row-odd"><td>DistributedTopology/CurrentSf1rNode</td>
+<td>nodeid</td>
+<td>当前节点的编号</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>replicaid</td>
+<td>当前节点的副本编号</td>
+</tr>
+<tr class="row-odd"><td>DistributedTopology/CurrentSf1r-
+Node/MasterServer</td>
+<td>enable</td>
+<td>当前节点是否是master</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>name</td>
+<td>当前节点名字</td>
+</tr>
+<tr class="row-odd"><td>DistributedTopology/CurrentSf1rNode/
+MasterServer/DistributedService</td>
+<td>type</td>
+<td>当前节点的作用</td>
+</tr>
+<tr class="row-even"><td>DistributedTopology/CurrentSf1rNode/
+MasterServer/DistributedService/Co-
+llection</td>
+<td>name</td>
+<td>collection名字</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>distributive</td>
+<td>指定是否是分布式</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>shardids</td>
+<td>shard的编号</td>
+</tr>
+<tr class="row-odd"><td>DistributedTopology/CurrentSf1rNode/
+WorkerServer</td>
+<td>enable</td>
+<td>当前节点是否是worker</td>
+</tr>
+<tr class="row-even"><td>DistributedTopology/CurrentSf1rNode/
+WorkerServer/DistributedService</td>
+<td>type</td>
+<td>当前节点的作用</td>
+</tr>
+<tr class="row-odd"><td>DistributedTopology/CurrentSf1rNode/
+WorkerServer/DistributedService/Co-
+llection</td>
+<td>name</td>
+<td>collection名字</td>
+</tr>
+<tr class="row-even"><td>DistributedUtil/Zookeeper</td>
+<td>disable</td>
+<td>是否禁止zookeeper连接，只有在非分布式情况下才能禁止</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>servers</td>
+<td>zookeeper服务器ip</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>sessiontimeout</td>
+<td>指定超时时间</td>
+</tr>
+<tr class="row-odd"><td>DFS</td>
+<td>type</td>
+<td>指定DFS类型</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>supportfuse</td>
+<td>是否支持FUSE，默认&#8221;y&#8221;</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>mountdir</td>
+<td>DFS的装载ip</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>server</td>
+<td>DFS服务器的ip</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>port</td>
+<td>DFS的端口号</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../build/HowTo.html" class="btn btn-neutral float-right" title="如何编译安装"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../basic-concepts/BasicConcepts.html" class="btn btn-neutral" title="基本概念"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Kevin Lin.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

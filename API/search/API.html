@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>搜索API &mdash; sf1-doc 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sf1-doc 0.1 documentation" href="../../index.html"/>
+        <link rel="next" title="文档操作API" href="../document/API.html"/>
+        <link rel="prev" title="自动补全" href="../../functions/data-mining/AutoFill.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> sf1-doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#id4">数据文件目录</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../config/HowTo.html">配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#sf1">SF1配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/HowTo.html">如何编译安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id2">依赖包安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id4">第三方库安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1">如何下载SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id6">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id7">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id8">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../functions/Functions.html">功能介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/search/Search.html">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/index/Index.html">索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/word_segment/word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/sort/sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/recommend/Recommend.html">推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/data-mining/QueryCorrection.html">查询纠错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/data-mining/Matcher.html">自动比价</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/data-mining/AutoFill.html">自动补全</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">搜索API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../document/API.html">文档操作API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id1">创建文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id2">删除文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id3">更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id4">原地更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id5">获取文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id6">获取文档数量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id7">记录分组点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#label">设置查询分组Label映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id8">获取频繁点击分组Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id9">获取重复文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id10">获取文档摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id11">获取相似文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id12">访问文档</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../auto-fill/API.html">查询自动填充</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query-correction/API.html">查询自动纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collection/API.html">collection日常维护与管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id1">检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id2">创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id3">删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id4">载入许可证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id5">重新构建索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#scdcollection">从SCD重建collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id6">停止collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id7">更新配置信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commands/API.html">命令API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id1">建立索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id2">重新构建查询功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id3">重新构建挖掘功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id4">优化索引</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../recommend/API.html">推荐引擎API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#fbt-frequently-bought-together">FBT(Frequently Bought Together)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#bab-bought-also-bought">BAB(Bought Also Bought)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#vav-viewed-also-view">VAV(Viewed Also View)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#boe-based-on-event">BOE(Based on Event)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#bob-based-on-browse-history">BOB(Based on Browse History)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#bos-based-on-shopping-cart">BOS(Based on Shopping Cart)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#bor-based-on-random">BOR(Based on Random)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#baq-bought-after-query">BAQ(Bought after Query)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recommend/API.html#tib-top-item-bundle">TIB(Top Item Bundle)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../log-analysis/API.html">日志分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id2">从系统事件日志删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id4">从用户请求日志中删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id6">获取频繁用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id10">添加用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id11">添加用户请求到日志服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id12">查询系统事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id16">显示用户请求</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Schema.html">B5M站点配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Schema.html#collection">collection集合</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Product.html">商品collection配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Product.html#id1">字段约定</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">sf1-doc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>搜索API</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../_sources/API/search/API.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="api">
+<h1>搜索API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<p>该API提供SF1的核心功能：全文检索，请求(Request)和响应(Response)都以JSON串的
+格式包装。</p>
+<p>URI: <a class="reference external" href="http://server/sf1r/documents/search">http://server/sf1r/documents/search</a></p>
+<div class="section" id="id1">
+<h2>参数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>请求中各参数说明如下：</p>
+<ul>
+<li><p class="first">collection（字符串类型）：collection名称</p>
+</li>
+<li><p class="first">search（对象类型）：提供和搜索相关的参数</p>
+<blockquote>
+<div><ul>
+<li><p class="first">keywords（字符串类型）：用户输入的搜索关键词</p>
+</li>
+<li><p class="first">in（数组类型）：设置搜索在哪儿字段上执行，默认为在所有字段上执行。</p>
+</li>
+<li><p class="first">ranking_model：文档相关度的计算模型。SF1内部有3种模型供用户选择：</p>
+<blockquote>
+<div><ul class="simple">
+<li>plm模型</li>
+<li>bm25模型</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">searching_mode：搜索模式。SF1提供了多种常用的搜索模式:</p>
+<blockquote>
+<div><ul class="simple">
+<li>and（默认）</li>
+<li>or</li>
+<li>wand</li>
+<li>suffix</li>
+<li>knn</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">analyzer：关键字分析器的相关参数：</p>
+<blockquote>
+<div><ul class="simple">
+<li>use_synonym_extension（布尔类型）：使用使用同义词扩展，默认false。</li>
+<li>apply_la（布尔类型）：是否对关键字分词，默认true。</li>
+<li>use_original_keyword（布尔类型）：默认false。</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">query_abbreviation（整数类型）: 指定原始query搜索结果为空时，返回经过查询缩写处理过的搜索结果的个数</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">select（数组类型）：设置搜索结果包含哪些字段。</p>
+</li>
+<li><p class="first">conditions（数组类型）：搜索结果的过滤条件，需要指定在哪儿属性设置过滤条件。</p>
+<blockquote>
+<div><ul>
+<li><p class="first">property（字符串类型）：属性名称</p>
+</li>
+<li><p class="first">operator（字符串类型）：条件操作符。包含如下：</p>
+<blockquote>
+<div><ul class="simple">
+<li>=  ：等于操作符</li>
+<li>&lt;&gt; ：不等于操作符</li>
+<li>&lt;  ：小于操作符</li>
+<li>&lt;= : 小于等于操作符</li>
+<li>&gt;  : 大于操作符</li>
+<li>&gt;= : 大于等于操作符</li>
+<li>between ：区间操作符</li>
+<li>in : 属于操作符</li>
+<li>not_in : 不属于操作符</li>
+<li>starts_with : 前缀操作符，仅适用于字符串属性</li>
+<li>ends_with : 后缀操作符，仅适用于字符串属性</li>
+<li>contains : 包含操作符，仅适用于字符串属性</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">value：属性值</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>sort（数组类型）：对搜索结果排序</dt>
+<dd><ul class="first last">
+<li><p class="first">property（字符串)：属性名称（按该属性排序）</p>
+</li>
+<li><p class="first">order（字符串）：升序或降序</p>
+<blockquote>
+<div><ul class="simple">
+<li>ASC：升序</li>
+<li>DESC：降序</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">limit（整数类型）：限制返回文档的个数，默认20。</p>
+</li>
+<li><dl class="first docutils">
+<dt>offset（整数类型）：该参数一般和limit一起使用，默认0。如果每页返回10个文档，则第一页</dt>
+<dd><p class="first last">的参数应该是“limit=10，offset=0”，第二页的参数设置“limit=10，offset=10“</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">remove_duplicated_result（布尔类型）：设置搜索结果中是否去除重复文档，默认true，该参数只有当去重服务在&lt;MiningBundle&gt;里配置方才有效。</p>
+</li>
+</ul>
+<p>响应中各参数说明如下：</p>
+<ul>
+<li><p class="first">total_count（整数类型）：匹配文档总数，如果查询为Suffix模式，则该数值为估计值。</p>
+</li>
+<li><p class="first">top_k_count（整数类型）：返回实际的top k结果数目。</p>
+</li>
+<li><p class="first">resources（数组类型）：该参数中的每一个对象都是一个文档。每个文档由一系列的K-V对组成，key即为属性名称，而v  alue即为属性值。下面给出可能出现的特殊的属性：</p>
+<blockquote>
+<div><ul class="simple">
+<li>DOCID（字符串类型）：</li>
+<li>_id（整数类型）：SF1内部用来标示文档的ID</li>
+<li>_duplicate_document_count（整数类型）：和该文档重复的文档数目，该参数仅当去重计算模块配置时方才有效</li>
+<li>_similar_document_count（整数类型）：和该文档相似的文档数目，该参数仅当语义相似度计算模块配置时方才有效</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">related_queries（数组类型）：字符串类型的数组，标识相关联的查询请求。</p>
+</li>
+<li><p class="first">taxonomy（对象类型）：分类结果：</p>
+<blockquote>
+<div><ul>
+<li><p class="first">labels（数组类型）：分类标签</p>
+<blockquote>
+<div><ul class="simple">
+<li>label（字符串类型）：标签名称</li>
+<li>document_count（整数类型）：属于该标签的文档数</li>
+<li>sub_labels（数组类型）：子标签数组，结构与本标签一致。</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">range（对象类型）：属性值的范围</p>
+<blockquote>
+<div><ul class="simple">
+<li>max（浮点数类型）：最大属性值</li>
+<li>min（浮点数类型）：最小属性值</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">count（Map类型）： 返回查询对应某属性的个数，类似Select Count(*) 语义</p>
+</li>
+<li><p class="first">refined_query（字符串类型）：在查询结果数目小于设定的阈值时，重新定义的查询请求。</p>
+</li>
+<li><p class="first">group（数组类型）：每个对象标识每个属性的分组结果</p>
+<blockquote>
+<div><ul>
+<li><p class="first">property（字符串类型）：属性名</p>
+</li>
+<li><p class="first">document_count（整数类型）：搜索结果中包含该属性的文档数目</p>
+</li>
+<li><p class="first">labels（数组类型）：分组标签。每个标签表示一个属性值，有如下域：</p>
+<blockquote>
+<div><ul class="simple">
+<li>label（字符串类型）：标签名称，标识属性值</li>
+<li>document_count（整数类型）：该标签下的文档数目</li>
+<li>sub_labels（数组类型）：子标签数组，与本标签有相同的结构。</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">attr（数组类型）：属性数组，每个对象标识一个属性。该数组按照document_count降序排列。</p>
+<blockquote>
+<div><ul>
+<li><p class="first">attr_name（字符串类型）：属性名称</p>
+</li>
+<li><p class="first">document_count（整数类型）：搜索结果中包含该属性的文档的数目。</p>
+</li>
+<li><p class="first">labels（数组类型）：组标签。每个对象标识一个属性标签，具有如下结构：</p>
+<blockquote>
+<div><ul class="simple">
+<li>label（字符串类型）：标签名，标识属性值</li>
+<li>document_count（整数类型）：搜索结果中包含该标签的文档数目</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">top_group_label（数组类型）：每个对象代表一个为属性自动选择的组标签。</p>
+<blockquote>
+<div><ul class="simple">
+<li>group_property（字符串类型）：属性名</li>
+<li>group_label（数组类型）：组标签数组，每个对象代表从root节点到leaf节点的路径。</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>示例<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>下面给出search的请求与响应示例：</p>
+<p>请求：</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+    &quot;collection&quot;: &quot;ChnWiki&quot;,
+
+    &quot;search&quot;: {
+        &quot;keywords&quot;: &quot;test&quot;,
+        &quot;log_keywords&quot;: true,
+        &quot;ranking_model&quot;: &quot;plm&quot;,
+        &quot;analyzer&quot;: {
+            &quot;use_synonym_extension&quot;: true,
+            &quot;apply_la&quot;: true,
+            &quot;use_original_keyword&quot;: true
+         },
+        &quot;in&quot;: [
+            {&quot;property&quot;: &quot;title&quot;},
+            {&quot;property&quot;: &quot;content&quot;}
+        ]
+    },
+
+    &quot;group&quot;: [
+        {&quot;property&quot;: &quot;area&quot;},
+        {&quot;property&quot;: &quot;price&quot;}
+    ],
+
+    &quot;attr&quot;: {
+        &quot;attr_result&quot;: true
+    }
+
+    // operator list
+    // - equal, =
+    // - not_equal, &lt;&gt;
+    // - greater_than, &gt;
+    // - greater_than_or_equal, &gt;=
+    // - less_than, &lt;
+    // - less_than_or_equal, &lt;=
+    // - in
+    // - between
+    // - starts_with
+    // - ends_with
+    // - contains
+    &quot;conditions&quot;: [
+        {&quot;property&quot;: &quot;id&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;value&quot;: 10},
+        {&quot;property&quot;: &quot;id&quot;, &quot;operator&quot;: &quot;in&quot;, &quot;value&quot;: [10, 20, 30]}
+        {&quot;property&quot;: &quot;price&quot;, &quot;operator&quot;: &quot;between&quot;, &quot;value&quot;: [10.0, 20.0]}
+    ],
+
+    &quot;select&quot;: [
+        { &quot;property&quot;: &quot;title&quot; }
+        { &quot;property&quot;: &quot;content&quot;,
+        &quot;highlight&quot;: false,
+        &quot;snippet&quot;: true,
+        &quot;summary&quot;: false,
+        &quot;summary_sentence_count&quot;: 3,
+        &quot;summary_property_alias&quot;: &quot;content.summary&quot; }
+    ],
+
+    &quot;sort&quot;: [
+        { &quot;property&quot;: &quot;title&quot; },
+        { &quot;property&quot;: &quot;content&quot;, &quot;order&quot;: &quot;ASC&quot;},
+        { &quot;property&quot;: &quot;_rank&quot;, &quot;order&quot;: &quot;DESC&quot;}
+    ],
+
+    &quot;limit&quot;: &quot;20&quot;,
+    &quot;offset&quot;: &quot;0&quot;,
+    &quot;remove_duplicated_result&quot;: true,
+}
+</pre></div>
+</div>
+<p>响应：</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+    &quot;header&quot;: { &quot;success&quot;: true },
+    &quot;errors&quot;: [
+        &quot;Error message 1&quot;,
+        &quot;Error message 2&quot;
+    ],
+
+    &quot;resources&quot;: [
+        { &quot;title&quot;: &quot;xxx&quot;,
+        &quot;content&quot;: &quot;xxx&quot;},
+        { &quot;title&quot;: &quot;yyy&quot;,
+        &quot;content&quot;: &quot;yyy&quot;}
+    ],
+
+    &quot;related_queries&quot;: [&quot;a&quot;, &quot;b&quot;],
+
+    &quot;taxonomy&quot;: {
+        &quot;labels&quot;: [
+        { &quot;label&quot;: &quot;animal&quot;,
+            &quot;document_count&quot;: 10,
+            &quot;sub_labels&quot;: [
+            { &quot;label&quot;: &quot;dog&quot;,
+                &quot;document_count&quot;: 6 },
+            { &quot;label&quot;: &quot;cat&quot;,
+                &quot;document_count&quot;: 4 }
+            ]
+        },
+        { &quot;label&quot;: &quot;music&quot;,
+            &quot;document_count&quot;: 5 }
+        ]
+    },
+
+    &quot;group&quot;: [
+        { &quot;document_count&quot;: 10,
+        &quot;property&quot;: &quot;area&quot;,
+        &quot;labels&quot;: [
+            { &quot;label&quot;: &quot;China&quot;,
+            &quot;document_count&quot;: 7,
+            &quot;sub_labels&quot;: [
+                { &quot;label&quot;: &quot;Shanghai&quot;,
+                &quot;document_count&quot;: 5 },
+                { &quot;label&quot;: &quot;Beijing&quot;,
+                &quot;document_count&quot;: 2 }
+            ]
+            },
+            { &quot;label&quot;: &quot;America&quot;,
+            &quot;document_count&quot;: 3 }
+        ]
+        },
+        { &quot;document_count&quot;: 10,
+        &quot;property&quot;: &quot;price&quot;,
+        &quot;labels&quot;: [
+            { &quot;label&quot;: &quot;100&quot;,
+            &quot;document_count&quot;: 4 },
+            {&quot;label&quot;: &quot;200&quot;,
+            &quot;document_count&quot;: 6 }
+        ]
+        }
+    ]
+
+    &quot;attr&quot;: [
+        { &quot;document_count&quot;: 10,
+        &quot;attr_name&quot;: &quot;品牌&quot;,
+        &quot;labels&quot;: [
+            { &quot;label&quot;: &quot;阿依莲&quot;,
+            &quot;document_count&quot;: 7},
+            { &quot;label&quot;: &quot;淑女屋&quot;,
+            &quot;document_count&quot;: 3}
+        ]
+        },
+        { &quot;document_count&quot;: 8,
+        &quot;attr_name&quot;: &quot;尺码&quot;,
+        &quot;labels&quot;: [
+            { &quot;label&quot;: &quot;L&quot;,
+            &quot;document_count&quot;: 5},
+            { &quot;label&quot;: &quot;M&quot;,
+            &quot;document_count&quot;: 4},
+            { &quot;label&quot;: &quot;XL&quot;,
+            &quot;document_count&quot;: 3}
+        ]
+        }
+    ]
+}
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../document/API.html" class="btn btn-neutral float-right" title="文档操作API"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../functions/data-mining/AutoFill.html" class="btn btn-neutral" title="自动补全"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Kevin Lin.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

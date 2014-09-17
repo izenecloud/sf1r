@@ -1,0 +1,888 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>推荐引擎API &mdash; sf1-doc 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sf1-doc 0.1 documentation" href="../../index.html"/>
+        <link rel="next" title="日志分析" href="../log-analysis/API.html"/>
+        <link rel="prev" title="命令API" href="../commands/API.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> sf1-doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#id4">数据文件目录</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../config/HowTo.html">配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#sf1">SF1配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config/HowTo.html#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/HowTo.html">如何编译安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id2">依赖包安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id4">第三方库安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#sf1">如何下载SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id6">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id7">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id8">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../functions/Functions.html">功能介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/search/Search.html">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/index/Index.html">索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/word_segment/word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/sort/sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/recommend/Recommend.html">推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/data-mining/QueryCorrection.html">查询纠错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/data-mining/Matcher.html">自动比价</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../functions/data-mining/AutoFill.html">自动补全</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../search/API.html">搜索API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../search/API.html#id1">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search/API.html#id2">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../document/API.html">文档操作API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id1">创建文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id2">删除文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id3">更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id4">原地更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id5">获取文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id6">获取文档数量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id7">记录分组点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#label">设置查询分组Label映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id8">获取频繁点击分组Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id9">获取重复文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id10">获取文档摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id11">获取相似文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../document/API.html#id12">访问文档</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../auto-fill/API.html">查询自动填充</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query-correction/API.html">查询自动纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collection/API.html">collection日常维护与管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id1">检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id2">创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id3">删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id4">载入许可证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id5">重新构建索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#scdcollection">从SCD重建collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id6">停止collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collection/API.html#id7">更新配置信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commands/API.html">命令API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id1">建立索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id2">重新构建查询功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id3">重新构建挖掘功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/API.html#id4">优化索引</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">推荐引擎API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fbt-frequently-bought-together">FBT(Frequently Bought Together)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bab-bought-also-bought">BAB(Bought Also Bought)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vav-viewed-also-view">VAV(Viewed Also View)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boe-based-on-event">BOE(Based on Event)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bob-based-on-browse-history">BOB(Based on Browse History)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bos-based-on-shopping-cart">BOS(Based on Shopping Cart)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bor-based-on-random">BOR(Based on Random)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#baq-bought-after-query">BAQ(Bought after Query)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tib-top-item-bundle">TIB(Top Item Bundle)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../log-analysis/API.html">日志分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id2">从系统事件日志删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id4">从用户请求日志中删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id6">获取频繁用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id10">添加用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id11">添加用户请求到日志服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id12">查询系统事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log-analysis/API.html#id16">显示用户请求</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Schema.html">B5M站点配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Schema.html#collection">collection集合</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../operation/Product.html">商品collection配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operation/Product.html#id1">字段约定</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">sf1-doc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>推荐引擎API</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../../_sources/API/recommend/API.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="api">
+<h1>推荐引擎API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fbt-frequently-bought-together">
+<h2>FBT(Frequently Bought Together)<a class="headerlink" href="#fbt-frequently-bought-together" title="Permalink to this headline">¶</a></h2>
+<p>根据购买的商品推荐其他经常和这商品一起购买的商品。该API是对订单数据进行挖掘分析。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>collection(string)：collection名字。</p>
+<p>resource(object)：请求。</p>
+<p>&#8211;rec_type(string)：推荐类型-FBT。</p>
+<p>&#8211;max_count(uint)：返回的最大个数，默认为10。</p>
+<p>&#8211;input_items(array)：输入的商品信息。</p>
+<blockquote>
+<div><p>&#8211;ITEMID(string)：商品id，等同商品信息SCD中的DOCID</p>
+</div></blockquote>
+</li>
+<li><p class="first">输出参数：</p>
+<p>resources(array)：返回的一起购买的商品。</p>
+</li>
+<li><p class="first">JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;rec_type&quot;</span><span class="p">:</span><span class="s">&quot;FBT&quot;</span><span class="p">,</span>
+    <span class="s">&quot;max_count&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span>
+    <span class="s">&quot;input_items&quot;</span><span class="p">:</span>
+    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;408&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;header&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span>
+  <span class="p">},</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.9</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_001&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;5000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;306&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;ipad&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_002&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;6000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bab-bought-also-bought">
+<h2>BAB(Bought Also Bought)<a class="headerlink" href="#bab-bought-also-bought" title="Permalink to this headline">¶</a></h2>
+<p>买了某些商品的人还买了其他的商品。该API是对订单数据进行挖掘分析。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>collection(string)：collection名字。</p>
+<p>resource(object)：请求。</p>
+<p>&#8211;rec_type(string)：推荐类型-BAB。</p>
+<p>&#8211;max_count(uint)：返回的最大个数，默认为10。</p>
+<p>&#8211;input_items(array)：输入的商品信息。</p>
+<blockquote>
+<div><p>&#8211;ITEMID(string)：商品id，等同商品信息SCD中的DOCID</p>
+</div></blockquote>
+</li>
+<li><p class="first">输出参数：</p>
+<p>resources(array)：返回的一起购买的商品。</p>
+</li>
+<li><p class="first">JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;rec_type&quot;</span><span class="p">:</span><span class="s">&quot;BAB&quot;</span><span class="p">,</span>
+    <span class="s">&quot;max_count&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span>
+    <span class="s">&quot;input_items&quot;</span><span class="p">:</span>
+    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;408&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;header&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span>
+  <span class="p">},</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.9</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_001&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;5000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;306&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;ipad&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_002&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;6000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="vav-viewed-also-view">
+<h2>VAV(Viewed Also View)<a class="headerlink" href="#vav-viewed-also-view" title="Permalink to this headline">¶</a></h2>
+<p>看过某些商品的人还看过其他的商品。该API是对浏览数据进行挖掘分析，依赖于visit_item(浏览商品) API。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>collection(string)：collection名字。</p>
+<p>resource(object)：请求。</p>
+<p>&#8211;rec_type(string)：推荐类型-VAV。</p>
+<p>&#8211;max_count(uint)：返回的最大个数，默认为10。</p>
+<p>&#8211;input_items(array)：输入的商品信息。</p>
+<blockquote>
+<div><p>&#8211;ITEMID(string)：商品id，等同商品信息SCD中的DOCID</p>
+</div></blockquote>
+</li>
+<li><p class="first">输出参数：</p>
+<p>resources(array)：返回的一起看过的商品。</p>
+</li>
+<li><p class="first">JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;rec_type&quot;</span><span class="p">:</span><span class="s">&quot;VAV&quot;</span><span class="p">,</span>
+    <span class="s">&quot;max_count&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span>
+    <span class="s">&quot;input_items&quot;</span><span class="p">:</span>
+    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;408&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;header&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span>
+  <span class="p">},</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.9</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_001&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;5000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;306&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;ipad&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_002&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;6000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="boe-based-on-event">
+<h2>BOE(Based on Event)<a class="headerlink" href="#boe-based-on-event" title="Permalink to this headline">¶</a></h2>
+<p>此推荐必须在用户已登录的情况下使用。此推荐API需要依赖于以下API：
+1）purchase_item(购买商品)
+2）update_shopping_cart(更新购物车)
+3）track_event（用户行为跟踪）
+4）rate_item（评星级）</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>collection(string)：collection名字。</p>
+<p>resource(object)：请求。</p>
+<p>&#8211;rec_type(string)：推荐类型-BOE。</p>
+<p>&#8211;max_count(uint)：返回的最大个数，默认为10。</p>
+<p>&#8211;USERID(string)：用户ID。</p>
+</li>
+<li><p class="first">输出参数：</p>
+<p>resources(array)：返回基于用户行为推荐的商品。</p>
+</li>
+<li><p class="first">JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;rec_type&quot;</span><span class="p">:</span><span class="s">&quot;BOE&quot;</span><span class="p">,</span>
+    <span class="s">&quot;max_count&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span>
+    <span class="s">&quot;USERID&quot;</span><span class="p">:</span><span class="s">&quot;5fa9c3e643e3e993bab4eb8f9b465c42&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;header&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span>
+  <span class="p">},</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.9</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_001&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;5000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;306&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;ipad&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_002&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;6000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bob-based-on-browse-history">
+<h2>BOB(Based on Browse History)<a class="headerlink" href="#bob-based-on-browse-history" title="Permalink to this headline">¶</a></h2>
+<p>基于用户浏览历史的推荐。</p>
+<p>此推荐分两种模式，分别是用户已登录和用户未登录：</p>
+<p>1.未登录用户：需要提供input_items参数，不需要提供USERID和session_id参数。
+2.登录用户：需要提供USERID和session_id参数，不需要提供input_items参数。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>collection(string)：collection名字。</p>
+<p>resource(object)：请求。</p>
+<p>&#8211;rec_type(string)：推荐类型-BOB。</p>
+<p>&#8211;max_count(uint)：返回的最大个数，默认为10。</p>
+<p>&#8211;USERID(string)：用户id，只在用户已登录的情况下使用此字段。</p>
+<p>&#8211;session_id(string)：session id，从用户登录到登出的唯一标识，且在此期间不能改变。</p>
+<p>&#8211;input_items(array)：浏览的商品信息，用户未登录的情况下使用此字段作为该匿名用户的浏览历史。</p>
+<blockquote>
+<div><p>&#8211;ITEMID(string)：商品id，等同商品信息SCD中的DOCID</p>
+</div></blockquote>
+</li>
+<li><p class="first">输出参数：</p>
+<p>resources(array)：返回基于浏览历史推荐的商品。</p>
+</li>
+<li><p class="first">用户已登录的JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;rec_type&quot;</span><span class="p">:</span><span class="s">&quot;BOB&quot;</span><span class="p">,</span>
+    <span class="s">&quot;max_count&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span>
+    <span class="s">&quot;USERID&quot;</span><span class="p">:</span><span class="s">&quot;5fa9c3e643e3e993bab4eb8f9b465c42&quot;</span><span class="p">,</span>
+    <span class="s">&quot;session_id&quot;</span><span class="p">:</span><span class="s">&quot;5fa9c3e643e3e993bab4eb8f9b465c42&quot;</span><span class="p">,</span>
+    <span class="s">&quot;input_items&quot;</span><span class="p">:</span>
+    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;408&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;header&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span>
+  <span class="p">},</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.9</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_001&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;5000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;306&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;ipad&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_002&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;6000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bos-based-on-shopping-cart">
+<h2>BOS(Based on Shopping Cart)<a class="headerlink" href="#bos-based-on-shopping-cart" title="Permalink to this headline">¶</a></h2>
+<p>基于购物车的推荐。</p>
+<p>此推荐分两种模式，分别是用户已登录和用户未登录：</p>
+<p>1.未登录用户：需要提供input_items参数，不需要提供USERID参数。
+2.登录用户：需要提供USERID参数，不需要提供input_items参数。依赖于update_shopping_cart(更新购物车)API。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>collection(string)：collection名字。</p>
+<p>resource(object)：请求。</p>
+<p>&#8211;rec_type(string)：推荐类型-BOS。</p>
+<p>&#8211;max_count(uint)：返回的最大个数，默认为10。</p>
+<p>&#8211;USERID(string)：用户id，只在用户已登录的情况下使用此字段。</p>
+<p>&#8211;input_items(array)：商品信息，用户未登录的情况下需提供购物车中的商品信息。</p>
+<blockquote>
+<div><p>&#8211;ITEMID(string)：商品id，等同商品信息SCD中的DOCID</p>
+</div></blockquote>
+</li>
+<li><p class="first">输出参数：</p>
+<p>resources(array)：返回基于购物车推荐的商品。</p>
+</li>
+<li><p class="first">用户已登录的JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;rec_type&quot;</span><span class="p">:</span><span class="s">&quot;BOS&quot;</span><span class="p">,</span>
+    <span class="s">&quot;max_count&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span>
+    <span class="s">&quot;USERID&quot;</span><span class="p">:</span><span class="s">&quot;5fa9c3e643e3e993bab4eb8f9b465c42&quot;</span><span class="p">,</span>
+    <span class="s">&quot;input_items&quot;</span><span class="p">:</span>
+    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;408&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;header&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span>
+  <span class="p">},</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.9</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_001&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;5000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;306&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;ipad&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_002&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;6000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bor-based-on-random">
+<h2>BOR(Based on Random)<a class="headerlink" href="#bor-based-on-random" title="Permalink to this headline">¶</a></h2>
+<p>随机的推荐。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>collection(string)：collection名字。</p>
+<p>resource(object)：请求。</p>
+<p>&#8211;rec_type(string)：推荐类型-BOR。</p>
+<p>&#8211;max_count(uint)：返回的最大个数，默认为10。</p>
+<p>&#8211;USERID(string)：用户id，使用此参数后返回结果集中不包括该用户purchase，visit，shopping_cart，track事件请求过的商品信息。</p>
+<p>&#8211;input_items(array)：商品信息，使用此参数后返回结果集中不包括该参数中的ITEMID商品信息。</p>
+<blockquote>
+<div><p>&#8211;ITEMID(string)：商品id，等同商品信息SCD中的DOCID</p>
+</div></blockquote>
+</li>
+<li><p class="first">输出参数：</p>
+<p>resources(array)：返回随机的商品。</p>
+</li>
+<li><p class="first">用户已登录的JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;rec_type&quot;</span><span class="p">:</span><span class="s">&quot;BOR&quot;</span><span class="p">,</span>
+    <span class="s">&quot;max_count&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span>
+    <span class="s">&quot;USERID&quot;</span><span class="p">:</span><span class="s">&quot;5fa9c3e643e3e993bab4eb8f9b465c42&quot;</span><span class="p">,</span>
+    <span class="s">&quot;input_items&quot;</span><span class="p">:</span>
+    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;408&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;header&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span>
+  <span class="p">},</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.9</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_001&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;5000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;306&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;ipad&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_002&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;6000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="baq-bought-after-query">
+<h2>BAQ(Bought after Query)<a class="headerlink" href="#baq-bought-after-query" title="Permalink to this headline">¶</a></h2>
+<p>该API对用户搜索关键词后最终购买商品进行统计。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>collection(string)：collection名字。</p>
+<p>resource(object)：请求。</p>
+<p>&#8211;rec_type(string)：推荐类型-BAQ。</p>
+<p>&#8211;max_count(uint)：返回的最大个数，默认为10。</p>
+<p>&#8211;keywords(string)：搜索关键词。</p>
+</li>
+<li><p class="first">输出参数：</p>
+<p>resources(array)：返回用户搜索关键词后最终购买的商品。</p>
+</li>
+<li><p class="first">JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;rec_type&quot;</span><span class="p">:</span><span class="s">&quot;BAQ&quot;</span><span class="p">,</span>
+    <span class="s">&quot;max_count&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span>
+    <span class="s">&quot;keywords&quot;</span><span class="p">:</span><span class="s">&quot;江浙菜&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;header&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span>
+  <span class="p">},</span>
+  <span class="s">&quot;total_freq&quot;</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;iphone&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_001&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;5000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot;ITEMID&quot;</span><span class="p">:</span><span class="s">&quot;306&quot;</span><span class="p">,</span>
+      <span class="s">&quot;weight&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;ipad&quot;</span><span class="p">,</span>
+      <span class="s">&quot;link&quot;</span><span class="p">:</span><span class="s">&quot;www.shop.com/product/item_002&quot;</span><span class="p">,</span>
+      <span class="s">&quot;price&quot;</span><span class="p">:</span><span class="s">&quot;6000&quot;</span><span class="p">,</span>
+      <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;digital&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tib-top-item-bundle">
+<h2>TIB(Top Item Bundle)<a class="headerlink" href="#tib-top-item-bundle" title="Permalink to this headline">¶</a></h2>
+<p>该API对高于一定频率的商品进行统计。</p>
+<ul>
+<li><p class="first">输入参数：</p>
+<p>collection(string)：collection名字。</p>
+<p>resource(object)：请求。</p>
+<p>&#8211;max_count(uint)：返回的最大个数，默认为10。</p>
+<p>&#8211;min_freq(uint):返回频率的最小值。</p>
+<p>&#8211;select(array)：返回结果的属性字段选择。</p>
+</li>
+<li><p class="first">输出参数：</p>
+<p>resources(array)：返回高于一定频率的商品集合。</p>
+</li>
+<li><p class="first">JSON请求的例子：</p>
+</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;collection&quot;</span><span class="p">:</span><span class="s">&quot;example&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;max_count&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span>
+    <span class="s">&quot;min_freq&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
+    <span class="s">&quot;select&quot;</span><span class="p">:</span>
+    <span class="p">[</span>
+      <span class="s">&quot;Title&quot;</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>JSON返回的结果：</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;header&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="s">&quot;success&quot;</span><span class="p">:</span><span class="n">true</span>
+  <span class="p">},</span>
+  <span class="s">&quot;resource&quot;</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">&quot;freq&quot;</span><span class="p">:</span><span class="mi">90</span><span class="p">,</span>
+      <span class="s">&quot;items&quot;</span><span class="p">:</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s">&quot;Title&quot;</span><span class="p">:</span><span class="s">&quot;iphone&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s">&quot;Title&quot;</span><span class="p">:</span><span class="s">&quot;ipad&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s">&quot;freq&quot;</span><span class="p">:</span><span class="mi">85</span><span class="p">,</span>
+      <span class="s">&quot;items&quot;</span><span class="p">:</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s">&quot;Title&quot;</span><span class="p">:</span><span class="s">&quot;ipad&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s">&quot;Title&quot;</span><span class="p">:</span><span class="s">&quot;imac&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../log-analysis/API.html" class="btn btn-neutral float-right" title="日志分析"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../commands/API.html" class="btn btn-neutral" title="命令API"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Kevin Lin.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

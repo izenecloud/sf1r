@@ -1,0 +1,1097 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>B5M站点配置说明 &mdash; sf1-doc 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sf1-doc 0.1 documentation" href="../index.html"/>
+        <link rel="next" title="商品collection配置说明" href="Product.html"/>
+        <link rel="prev" title="日志分析" href="../API/log-analysis/API.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> sf1-doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic-concepts/BasicConcepts.html">基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basic-concepts/BasicConcepts.html#collection">collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-concepts/BasicConcepts.html#id4">数据文件目录</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../config/HowTo.html">配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#sf1">SF1配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../build/HowTo.html">如何编译安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id2">依赖包安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id4">第三方库安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#sf1">如何下载SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id6">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id7">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id8">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id9">如何运行二进制文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/Functions.html">功能介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../functions/search/Search.html">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/index/Index.html">索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/word_segment/word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/sort/sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/recommend/Recommend.html">推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/QueryCorrection.html">查询纠错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/Matcher.html">自动比价</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/AutoFill.html">自动补全</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../API/search/API.html">搜索API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/search/API.html#id1">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/search/API.html#id2">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/document/API.html">文档操作API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id1">创建文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id2">删除文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id3">更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id4">原地更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id5">获取文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id6">获取文档数量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id7">记录分组点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#label">设置查询分组Label映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id8">获取频繁点击分组Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id9">获取重复文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id10">获取文档摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id11">获取相似文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id12">访问文档</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/auto-fill/API.html">查询自动填充</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API/query-correction/API.html">查询自动纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API/collection/API.html">collection日常维护与管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id1">检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id2">创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id3">删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id4">载入许可证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id5">重新构建索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#scdcollection">从SCD重建collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id6">停止collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id7">更新配置信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/commands/API.html">命令API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id1">建立索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id2">重新构建查询功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id3">重新构建挖掘功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id4">优化索引</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/recommend/API.html">推荐引擎API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#fbt-frequently-bought-together">FBT(Frequently Bought Together)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bab-bought-also-bought">BAB(Bought Also Bought)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#vav-viewed-also-view">VAV(Viewed Also View)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#boe-based-on-event">BOE(Based on Event)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bob-based-on-browse-history">BOB(Based on Browse History)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bos-based-on-shopping-cart">BOS(Based on Shopping Cart)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bor-based-on-random">BOR(Based on Random)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#baq-bought-after-query">BAQ(Bought after Query)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#tib-top-item-bundle">TIB(Top Item Bundle)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/log-analysis/API.html">日志分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id2">从系统事件日志删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id4">从用户请求日志中删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id6">获取频繁用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id10">添加用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id11">添加用户请求到日志服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id12">查询系统事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id16">显示用户请求</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">B5M站点配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#collection">collection集合</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Product.html">商品collection配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Product.html#id1">字段约定</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">sf1-doc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>B5M站点配置说明</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/operation/Schema.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="b5m">
+<h1>B5M站点配置说明<a class="headerlink" href="#b5m" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="collection">
+<h2>collection集合<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h2>
+<p>B5M站点根据需求配置collection，分别定义如下：</p>
+<ul class="simple">
+<li>商品相关</li>
+</ul>
+<p>B5M对商品提供自动比价，比价之前来自每商家的商品被定义为Offer，比价之后聚合的商品被定义为Product，
+Offer和Product均放入不同的collection，分别为b5mo和b5mp，类似的，商品的评论放入b5mc集合中。
+爬虫抓来的商品数据，首先会放入一个离线的计算工具来计算比价信息，然后分别输出结果到b5mo和b5mp中，此外，
+如果有评论信息，也会同时聚合。</p>
+<p>b5mo的主要配置字段如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DocumentSchema&gt;
+  &lt;Property name=&quot;DOCID&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Url&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;Title&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Picture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;OriginalPicture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Price&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;Brand&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Source&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Category&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;TargetCategory&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;OriginalCategory&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Attribute&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Content&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;uuid&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;olduuid&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;mobile&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;PicPrpt&quot; type=&quot;string&quot; /&gt;
+&lt;/DocumentSchema&gt;
+
+
+&lt;IndexBundle&gt;
+  &lt;Schema&gt;
+    &lt;Property name=&quot;Title&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;uuid&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;Category&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.6&quot; /&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;Price&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;Source&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;mobile&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+  &lt;/Schema&gt;
+&lt;/IndexBundle&gt;
+
+&lt;MiningBundle&gt;
+  &lt;Schema&gt;
+    &lt;QueryRecommend&gt;
+      &lt;QueryLog /&gt;
+    &lt;/QueryRecommend&gt;
+    &lt;Group&gt;
+      &lt;Property name=&quot;TargetCategory&quot; /&gt;
+      &lt;Property name=&quot;Source&quot; /&gt;
+    &lt;/Group&gt;
+    &lt;Attr&gt;
+      &lt;Property name=&quot;Attribute&quot; /&gt;
+      &lt;Exclude name=&quot;ISBN&quot; /&gt;
+    &lt;/Attr&gt;
+    &lt;ProductRanking&gt;
+      &lt;Score type=&quot;diversity&quot; property=&quot;Source&quot; /&gt;
+      &lt;Score type=&quot;merchant&quot; property=&quot;Source&quot; /&gt;
+      &lt;Score type=&quot;category&quot; property=&quot;TargetCategory&quot; weight=&quot;1&quot; /&gt;
+      &lt;Score type=&quot;relevance&quot; weight=&quot;0.01&quot; /&gt;
+    &lt;/ProductRanking&gt;
+    &lt;SuffixMatch&gt;
+      &lt;Property name=&quot;Title&quot; /&gt;
+      &lt;TokenizeDictionary path=&quot;fmindex_dic&quot; /&gt;
+      &lt;Incremental enable=&quot;no&quot; /&gt;
+      &lt;FilterProperty name=&quot;TargetCategory&quot; filtertype=&quot;group&quot; /&gt;
+      &lt;FilterProperty name=&quot;Source&quot; filtertype=&quot;group&quot; /&gt;
+      &lt;FilterProperty name=&quot;Price&quot; filtertype=&quot;numeric&quot; /&gt;
+    &lt;/SuffixMatch&gt;
+  &lt;/Schema&gt;
+&lt;/MiningBundle&gt;
+</pre></div>
+</div>
+<p>b5mp的主要配置字段如下:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DocumentSchema&gt;
+
+  &lt;Property name=&quot;DOCID&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;OldOfferIds&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Url&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;Title&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Picture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;OriginalPicture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Price&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;Brand&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Source&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Category&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;TargetCategory&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;OriginalCategory&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Attribute&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Content&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Xihuan&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;Fenxiang&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;Guanzhu&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;BuyCount&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;itemcount&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;Score&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;CommentCount&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;mobile&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;PicPrpt&quot; type=&quot;string&quot; /&gt;
+&lt;/DocumentSchema&gt;
+
+
+&lt;IndexBundle&gt;
+  &lt;Schema&gt;
+    &lt;Property name=&quot;Title&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.8&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Price&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; range=&quot;yes&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Brand&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;yes&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Source&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;yes&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;TargetCategory&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.6&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Category&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.6&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Attribute&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.2&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Xihuan&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Fenxiang&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Guanzhu&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;BuyCount&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;itemcount&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;CommentCount&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Score&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;mobile&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;VirtualProperty name=&quot;Combined&quot;&gt;
+      &lt;SubProperty name=&quot;Title&quot; /&gt;
+      &lt;SubProperty name=&quot;Source&quot; /&gt;
+      &lt;SubProperty name=&quot;Category&quot; /&gt;
+    &lt;/VirtualProperty&gt;
+  &lt;/Schema&gt;
+&lt;/IndexBundle&gt;
+
+&lt;MiningBundle&gt;
+  &lt;Schema&gt;
+    &lt;QueryRecommend&gt;
+      &lt;QueryLog /&gt;
+    &lt;/QueryRecommend&gt;
+    &lt;Group&gt;
+      &lt;Property name=&quot;TargetCategory&quot; /&gt;
+      &lt;Property name=&quot;Brand&quot; /&gt;
+      &lt;Property name=&quot;Source&quot; /&gt;
+    &lt;/Group&gt;
+    &lt;Attr&gt;
+      &lt;Property name=&quot;Attribute&quot; /&gt;
+      &lt;Exclude name=&quot;ISBN&quot; /&gt;
+    &lt;/Attr&gt;
+    &lt;ProductRanking&gt;
+      &lt;Score type=&quot;custom&quot; weight=&quot;100&quot; /&gt;
+      &lt;Score type=&quot;category&quot; property=&quot;TargetCategory&quot; weight=&quot;10&quot; /&gt;
+      &lt;Score type=&quot;relevance&quot; weight=&quot;0.001&quot; /&gt;
+      &lt;Score type=&quot;diversity&quot; property=&quot;Source&quot; /&gt;
+      &lt;Score type=&quot;fuzzy&quot; weight=&quot;0.1&quot; /&gt;
+      &lt;Score type=&quot;popularity&quot; weight=&quot;1&quot;&gt;
+        &lt;Score property=&quot;itemcount&quot; weight=&quot;1&quot; /&gt;
+        &lt;Score property=&quot;Score&quot; weight=&quot;0.8&quot; /&gt;
+        &lt;Score property=&quot;Fenxiang&quot; weight=&quot;0.5&quot; /&gt;
+        &lt;Score property=&quot;Guanzhu&quot; weight=&quot;0.5&quot; /&gt;
+        &lt;Score property=&quot;Xihuan&quot; weight=&quot;0.5&quot; /&gt;
+        &lt;Score property=&quot;BuyCount&quot; weight=&quot;0.5&quot; /&gt;
+        &lt;Score property=&quot;_ctr&quot; weight=&quot;0.5&quot; /&gt;
+        &lt;Score property=&quot;DATE&quot; weight=&quot;0.2&quot; /&gt;
+      &lt;/Score&gt;
+    &lt;/ProductRanking&gt;
+    &lt;SuffixMatch&gt;
+      &lt;Property name=&quot;Title&quot; /&gt;
+      &lt;TokenizeDictionary path=&quot;product&quot; /&gt;
+      &lt;Incremental enable=&quot;no&quot; /&gt;
+      &lt;FilterProperty name=&quot;TargetCategory&quot; filtertype=&quot;group&quot; /&gt;
+      &lt;FilterProperty name=&quot;Source&quot; filtertype=&quot;group&quot; /&gt;
+      &lt;FilterProperty name=&quot;Brand&quot; filtertype=&quot;group&quot; /&gt;
+      &lt;FilterProperty name=&quot;Price&quot; filtertype=&quot;numeric&quot; /&gt;
+    &lt;/SuffixMatch&gt;
+  &lt;/Schema&gt;
+&lt;/MiningBundle&gt;
+
+&lt;RecommendBundle&gt;
+  &lt;Schema&gt;
+    &lt;User&gt;
+      &lt;Property name=&quot;gender&quot; /&gt;
+      &lt;Property name=&quot;age&quot; /&gt;
+      &lt;Property name=&quot;area&quot; /&gt;
+    &lt;/User&gt;
+    &lt;Track&gt;
+      &lt;Event name=&quot;wish_list&quot; /&gt;
+      &lt;Event name=&quot;own&quot; /&gt;
+      &lt;Event name=&quot;like&quot; /&gt;
+      &lt;Event name=&quot;favorite&quot; /&gt;
+    &lt;/Track&gt;
+  &lt;/Schema&gt;
+&lt;/RecommendBundle&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">b5mo和b5mp之间通过uuid字段进行关联</p>
+</div>
+<p>b5mc的配置字段如下:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DocumentSchema&gt;
+
+  &lt;Property name=&quot;DOCID&quot; type=&quot;string&quot;/&gt;
+
+  &lt;Property name=&quot;uuid&quot; type=&quot;string&quot;/&gt;
+
+  &lt;Property name=&quot;DATE&quot; type=&quot;datetime&quot;/&gt;
+
+  &lt;Property name=&quot;ComUrl&quot; type=&quot;string&quot;/&gt;
+
+  &lt;Property name=&quot;ProdDocid&quot; type=&quot;string&quot;/&gt;
+
+  &lt;Property name=&quot;ProdName&quot; type=&quot;string&quot;/&gt;
+
+  &lt;Property name=&quot;Source&quot; type=&quot;string&quot;/&gt;
+
+  &lt;Property name=&quot;UserName&quot; type=&quot;string&quot;/&gt;
+
+  &lt;Property name=&quot;UsefulVoteTotal&quot; type=&quot;int32&quot;/&gt;
+
+  &lt;Property name=&quot;UsefulVote&quot; type=&quot;int32&quot;/&gt;
+
+  &lt;Property name=&quot;Content&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;Advantage&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;Disadvantage&quot; type=&quot;string&quot;/&gt;
+
+  &lt;Property name=&quot;Title&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;City&quot; type=&quot;string&quot;/&gt;
+
+  &lt;Property name=&quot;Score&quot; type=&quot;int32&quot;/&gt;
+&lt;/DocumentSchema&gt;
+
+&lt;IndexBundle&gt;
+  &lt;Schema&gt;
+    &lt;Property name=&quot;Title&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.8&quot;/&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;Content&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.2&quot;/&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;Advantage&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.2&quot;/&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;Disadvantage&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.2&quot;/&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;Source&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot;/&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;City&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot;/&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;ProdDocid&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot;/&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;uuid&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot;/&gt;
+    &lt;/Property&gt;
+
+    &lt;Property name=&quot;Score&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot;/&gt;
+    &lt;/Property&gt;
+
+  &lt;/Schema&gt;
+
+&lt;/IndexBundle&gt;
+
+&lt;MiningBundle&gt;
+  &lt;Schema&gt;
+    &lt;Group&gt;
+      &lt;Property name=&quot;Score&quot; /&gt;
+      &lt;Property name=&quot;Source&quot; /&gt;
+    &lt;/Group&gt;
+    &lt;ProductRanking&gt;
+      &lt;Score type=&quot;diversity&quot; property=&quot;Source&quot; /&gt;
+    &lt;/ProductRanking&gt;
+    &lt;Summarization&gt;
+      &lt;DocidProperty name=&quot;DOCID&quot;/&gt;
+      &lt;UuidProperty name=&quot;uuid&quot;/&gt;
+      &lt;ContentProperty name=&quot;Content&quot;/&gt;
+      &lt;AdvantageProperty name=&quot;Advantage&quot;/&gt;
+      &lt;DisadvantageProperty name=&quot;Disadvantage&quot;/&gt;
+      &lt;TitleProperty name=&quot;Title&quot;/&gt;
+      &lt;ScoreProperty name=&quot;Score&quot;/&gt;
+      &lt;CommentCountProperty name=&quot;CommentCount&quot;/&gt;
+      &lt;OpinionProperty name=&quot;Opinion&quot; /&gt;
+      &lt;OpinionWorkingPath path=&quot;./collection/b5mc/opinion_working/&quot; /&gt;
+      &lt;OpinionSyncId name=&quot;b5m&quot; /&gt;
+    &lt;/Summarization&gt;
+  &lt;/Schema&gt;
+&lt;/MiningBundle&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">b5mc和b5mp之间通过uuid字段进行关联，b5mc和b5mo之间通过ProdDocid字段进行关联</p>
+</div>
+<ul class="simple">
+<li>团购相关</li>
+</ul>
+<p>团购也提供比价，但出于历史原因，并没有采用类似商品的Offer-Product映射关联，而是直接采用online
+计算提供，与Offer对应的集合叫tuanm，与Product对应的集合叫tuana。</p>
+<p>tuanm对应的配置:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DocumentSchema&gt;
+
+  &lt;Property name=&quot;DOCID&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;SourceUrl&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;City&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Url&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;Title&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Discount&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;Source&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;MerchantAddr&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Content&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Sales&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;TimeBegin&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;TimeEnd&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PriceOrign&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;MerchantName&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;MerchantTel&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;MerchantArea&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Price&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;Category&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;OriginalCategory&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;SubCategory&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Picture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;OriginalPicture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;uuid&quot; type=&quot;string&quot; /&gt;
+
+
+&lt;/DocumentSchema&gt;
+
+
+&lt;IndexBundle&gt;
+  &lt;Schema&gt;
+    &lt;Property name=&quot;Title&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;uuid&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Price&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+  &lt;/Schema&gt;
+&lt;/IndexBundle&gt;
+</pre></div>
+</div>
+<p>tuana对应的配置:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DocumentSchema&gt;
+
+  &lt;Property name=&quot;DOCID&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;SourceUrl&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;City&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Url&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;Title&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Discount&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;Source&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;MerchantAddr&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Content&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Sales&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;TimeBegin&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;TimeEnd&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PriceOrign&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;MerchantName&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;MerchantArea&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;MerchantTel&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Price&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;Category&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;OriginalCategory&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;SubCategory&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Picture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;OriginalPicture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;itemcount&quot; type=&quot;int32&quot; /&gt;
+
+&lt;/DocumentSchema&gt;
+
+
+&lt;IndexBundle&gt;
+  &lt;Schema&gt;
+    &lt;Property name=&quot;Title&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.8&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Price&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; range=&quot;yes&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;PriceOrign&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Discount&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Sales&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Source&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;yes&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Category&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.6&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;SubCategory&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.6&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;City&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.2&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;MerchantArea&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.2&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;MerchantAddr&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;tok_divide, tok_unite&quot; rankweight=&quot;0.2&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;MerchantName&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;tok_divide, tok_unite&quot; rankweight=&quot;0.2&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;TimeBegin&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;TimeEnd&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;itemcount&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+  &lt;/Schema&gt;
+&lt;/IndexBundle&gt;
+
+
+&lt;MiningBundle&gt;
+  &lt;Schema&gt;
+    &lt;QueryRecommend&gt;
+      &lt;QueryLog /&gt;
+    &lt;/QueryRecommend&gt;
+    &lt;Group&gt;
+      &lt;Property name=&quot;Category&quot; /&gt;
+      &lt;Property name=&quot;SubCategory&quot; /&gt;
+      &lt;Property name=&quot;Source&quot; /&gt;
+      &lt;Property name=&quot;City&quot; /&gt;
+      &lt;Property name=&quot;MerchantArea&quot; /&gt;
+      &lt;Property name=&quot;Price&quot; /&gt;
+    &lt;/Group&gt;
+    &lt;ProductRanking&gt;
+      &lt;Score type=&quot;custom&quot; weight=&quot;10&quot; /&gt;
+      &lt;Score type=&quot;category&quot; property=&quot;Category&quot; weight=&quot;1&quot; /&gt;
+      &lt;Score type=&quot;relevance&quot; weight=&quot;0.01&quot; /&gt;
+    &lt;/ProductRanking&gt;
+    &lt;SuffixMatch&gt;
+      &lt;Property name=&quot;Title&quot; /&gt;
+      &lt;TokenizeDictionary path=&quot;product&quot; /&gt;
+      &lt;Incremental enable=&quot;no&quot; /&gt;
+    &lt;/SuffixMatch&gt;
+  &lt;/Schema&gt;
+&lt;/MiningBundle&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">tuana和tuanm之间通过uuid字段进行关联</p>
+</div>
+<ul class="simple">
+<li>票务相关</li>
+</ul>
+<p>票务采用和商品一致的映射关系，对应的collection分别叫ticketo和ticketp。</p>
+<p>ticketo对应的配置：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DocumentSchema&gt;
+
+  &lt;Property name=&quot;DOCID&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Url&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;PlayProfile&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PlayPicture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;SeatPicture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PlayAddress&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;TicketPrice&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;LowestTicketPrice&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;Source&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Category&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PlayCity&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PlayName&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PlayTime&quot; type=&quot;datetime&quot; /&gt;
+  &lt;Property name=&quot;uuid&quot; type=&quot;string&quot; /&gt;
+
+&lt;/DocumentSchema&gt;
+
+
+&lt;IndexBundle&gt;
+  &lt;Schema&gt;
+    &lt;Property name=&quot;PlayName&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;uuid&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;TicketPrice&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;yes&quot; doclen=&quot;no&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;LowestTicketPrice&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;PlayTime&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;yes&quot; doclen=&quot;no&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Source&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+
+  &lt;/Schema&gt;
+&lt;/IndexBundle&gt;
+</pre></div>
+</div>
+<p>ticketp对应的配置：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DocumentSchema&gt;
+
+  &lt;Property name=&quot;DOCID&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Url&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;PlayProfile&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PlayPicture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;SeatPicture&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PlayAddress&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;TicketPrice&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;LowestTicketPrice&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;Source&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Category&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PlayCity&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PlayName&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PlayTime&quot; type=&quot;datetime&quot; /&gt;
+  &lt;Property name=&quot;itemcount&quot; type=&quot;int32&quot; /&gt;
+&lt;/DocumentSchema&gt;
+
+
+&lt;IndexBundle&gt;
+  &lt;Schema&gt;
+    &lt;Property name=&quot;PlayProfile&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;tok_divide, tok_unite&quot; rankweight=&quot;0.2&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;PlayAddress&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;TicketPrice&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;yes&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;LowestTicketPrice&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Source&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;yes&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Category&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.6&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;PlayCity&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.6&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;PlayTime&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;yes&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;PlayName&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;tok_divide, tok_unite&quot; rankweight=&quot;0.8&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;itemcount&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
+    &lt;/Property&gt;
+  &lt;/Schema&gt;
+&lt;/IndexBundle&gt;
+
+
+&lt;MiningBundle&gt;
+  &lt;Schema&gt;
+    &lt;QueryRecommend&gt;
+      &lt;QueryLog /&gt;
+    &lt;/QueryRecommend&gt;
+    &lt;Group&gt;
+      &lt;Property name=&quot;Category&quot; /&gt;
+      &lt;Property name=&quot;Source&quot; /&gt;
+      &lt;Property name=&quot;PlayTime&quot; /&gt;
+      &lt;Property name=&quot;PlayCity&quot; /&gt;
+      &lt;Property name=&quot;PlayAddress&quot; /&gt;
+    &lt;/Group&gt;
+    &lt;SuffixMatch&gt;
+      &lt;Property name=&quot;PlayName&quot; /&gt;
+      &lt;TokenizeDictionary path=&quot;fmindex_dic&quot; /&gt;
+      &lt;Incremental enable=&quot;no&quot; /&gt;
+    &lt;/SuffixMatch&gt;
+  &lt;/Schema&gt;
+&lt;/MiningBundle&gt;
+
+&lt;RecommendBundle&gt;
+  &lt;Schema&gt;
+    &lt;User&gt;
+      &lt;Property name=&quot;gender&quot; /&gt;
+      &lt;Property name=&quot;age&quot; /&gt;
+      &lt;Property name=&quot;area&quot; /&gt;
+    &lt;/User&gt;
+    &lt;Track&gt;
+      &lt;Event name=&quot;wish_list&quot; /&gt;
+      &lt;Event name=&quot;own&quot; /&gt;
+      &lt;Event name=&quot;like&quot; /&gt;
+      &lt;Event name=&quot;favorite&quot; /&gt;
+    &lt;/Track&gt;
+  &lt;/Schema&gt;
+&lt;/RecommendBundle&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">ticketo和ticketp之间通过uuid字段进行关联</p>
+</div>
+<ul class="simple">
+<li>色界相关</li>
+</ul>
+<p>色界和逛街共享同一个collection，因此collection名字为guang。色界的数据在送去索引前，会先送到一个
+离线服务里去重，去重后的结果才进行索引；与此同时，去重之前的结果系统并不删除，而是直接归档放入guango collection。</p>
+<p>guang的主要字段配置:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DocumentSchema&gt;
+
+  &lt;Property name=&quot;DOCID&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;UserType&quot; type=&quot;string&quot;/&gt;
+  &lt;Property name=&quot;UserId&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;UserName&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Name&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Content&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Text&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Img&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;Url&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;LabelIds&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;LabelNames&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;ShareType&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;ShareSourceType&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;ShareSourceName&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;ShareSourceUrl&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;PriceStart&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;PriceEnd&quot; type=&quot;float&quot; /&gt;
+  &lt;Property name=&quot;CategoryId&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;CategoryName&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;SplId&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;SplName&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;BrandId&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;BrandName&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;LikeCount&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;CommentCount&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;IsEssence&quot; type=&quot;int8&quot; /&gt;
+  &lt;Property name=&quot;IsHide&quot; type=&quot;int8&quot; /&gt;
+  &lt;Property name=&quot;CommentPreview&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;ShareDocid&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;ShareUuid&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;UserPreview&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;SpuName&quot; type=&quot;string&quot; /&gt;
+  &lt;Property name=&quot;IsTop&quot; type=&quot;int8&quot; /&gt;
+  &lt;Property name=&quot;IsRecommand&quot; type=&quot;int8&quot; /&gt;
+  &lt;Property name=&quot;OrderSeq&quot; type=&quot;int8&quot; /&gt;
+  &lt;Property name=&quot;VisitCount&quot; type=&quot;int32&quot; /&gt;
+  &lt;Property name=&quot;CreateTime&quot; type=&quot;datetime&quot; /&gt;
+  &lt;Property name=&quot;EssenceTime&quot; type=&quot;datetime&quot; /&gt;
+  &lt;Property name=&quot;RecommendTime&quot; type=&quot;datetime&quot; /&gt;
+  &lt;Property name=&quot;TopTime&quot; type=&quot;datetime&quot; /&gt;
+  &lt;Property name=&quot;GMemCount&quot; type=&quot;int32&quot; /&gt;
+&lt;/DocumentSchema&gt;
+
+
+&lt;IndexBundle&gt;
+  &lt;Schema&gt;
+    &lt;Property name=&quot;Name&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.8&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;Content&quot;&gt;
+      &lt;Indexing filter=&quot;no&quot; multivalue=&quot;no&quot; doclen=&quot;yes&quot; analyzer=&quot;la_sia&quot; tokenizer=&quot;&quot; rankweight=&quot;0.2&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;UserId&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;UserName&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;BrandName&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;ShareType&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;LikeCount&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;VisitCount&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;IsEssence&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;IsHide&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;IsTop&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;OrderSeq&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;IsRecommand&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;LabelNames&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;yes&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;PriceStart&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;PriceEnd&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;CreateTime&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;EssenceTime&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;RecommendTime&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;TopTime&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+    &lt;Property name=&quot;GMemCount&quot;&gt;
+      &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
+    &lt;/Property&gt;
+  &lt;/Schema&gt;
+  &lt;Parameter&gt;
+      &lt;Sia refreshsearchcache=&quot;n&quot; refreshcacheinterval=&quot;600&quot; topknum=&quot;1000&quot; /&gt;
+  &lt;/Parameter&gt;
+&lt;/IndexBundle&gt;
+
+
+&lt;MiningBundle&gt;
+  &lt;Schema&gt;
+    &lt;Group&gt;
+      &lt;Property name=&quot;ShareSourceName&quot; /&gt;
+      &lt;Property name=&quot;ShareType&quot; /&gt;
+      &lt;Property name=&quot;LabelNames&quot; /&gt;
+    &lt;/Group&gt;
+    &lt;ProductRanking debug=&quot;n&quot;&gt;
+      &lt;Score type=&quot;relevance&quot; weight=&quot;0.001&quot; /&gt;
+      &lt;Score type=&quot;random&quot; weight=&quot;1&quot; /&gt;
+      &lt;Score type=&quot;diversity&quot; property=&quot;ShareSourceName&quot; /&gt;
+      &lt;Score type=&quot;popularity&quot; weight=&quot;2&quot;&gt;
+        &lt;Score property=&quot;IsTop&quot; weight=&quot;1&quot; /&gt;
+        &lt;Score property=&quot;TopTime&quot; weight=&quot;0.8&quot; /&gt;
+        &lt;Score property=&quot;IsRecommand&quot; weight=&quot;0.7&quot; /&gt;
+        &lt;Score property=&quot;RecommendTime&quot; weight=&quot;0.6&quot; /&gt;
+        &lt;Score property=&quot;LikeCount&quot; weight=&quot;0.5&quot; /&gt;
+        &lt;Score property=&quot;VisitCount&quot; weight=&quot;0.2&quot; /&gt;
+        &lt;Score property=&quot;OrderSeq&quot; weight=&quot;0.2&quot; /&gt;
+      &lt;/Score&gt;
+    &lt;/ProductRanking&gt;
+    &lt;TDT enabletdt=&quot;no&quot; enablesemantic=&quot;yes&quot; &gt;
+      &lt;TokenizeDictionary path=&quot;guang&quot; /&gt;
+    &lt;/TDT&gt;
+    &lt;SuffixMatch&gt;
+      &lt;Property name=&quot;Content&quot; /&gt;
+      &lt;TokenizeDictionary path=&quot;sejie_dic&quot; /&gt;
+      &lt;Incremental enable=&quot;no&quot; /&gt;
+      &lt;FilterProperty name=&quot;IsHide&quot; filtertype=&quot;numeric&quot; /&gt;
+      &lt;FilterProperty name=&quot;ShareType&quot; filtertype=&quot;group&quot; /&gt;
+    &lt;/SuffixMatch&gt;
+  &lt;/Schema&gt;
+  &lt;Parameter&gt;
+    &lt;DocumentMiningPara cron=&quot;0 24 * * *&quot;/&gt;
+    &lt;ProductRankingPara cron=&quot;0 * * * *&quot;/&gt;
+  &lt;/Parameter&gt;
+&lt;/MiningBundle&gt;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Product.html" class="btn btn-neutral float-right" title="商品collection配置说明"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../API/log-analysis/API.html" class="btn btn-neutral" title="日志分析"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Kevin Lin.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

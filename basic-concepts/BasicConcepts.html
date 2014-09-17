@@ -1,0 +1,505 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>基本概念 &mdash; sf1-doc 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sf1-doc 0.1 documentation" href="../index.html"/>
+        <link rel="next" title="配置说明" href="../config/HowTo.html"/>
+        <link rel="prev" title="SF1R技术文档" href="../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> sf1-doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">基本概念</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#collection">collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scd">什么是SCD，格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">数据文件目录</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../config/HowTo.html">配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#sf1">SF1配置文件说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#system">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#collection">Collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#deployment">Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../build/HowTo.html">如何编译安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id2">依赖包安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id4">第三方库安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#sf1">如何下载SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id6">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id7">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id8">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id9">如何运行二进制文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/Functions.html">功能介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../functions/search/Search.html">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/index/Index.html">索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/word_segment/word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/sort/sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/recommend/Recommend.html">推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/QueryCorrection.html">查询纠错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/Matcher.html">自动比价</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/AutoFill.html">自动补全</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../API/search/API.html">搜索API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/search/API.html#id1">参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/search/API.html#id2">示例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/document/API.html">文档操作API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id1">创建文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id2">删除文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id3">更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id4">原地更新文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id5">获取文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id6">获取文档数量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id7">记录分组点击</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#label">设置查询分组Label映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id8">获取频繁点击分组Label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id9">获取重复文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id10">获取文档摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id11">获取相似文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id12">访问文档</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/auto-fill/API.html">查询自动填充</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API/query-correction/API.html">查询自动纠错</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API/collection/API.html">collection日常维护与管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id1">检查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id2">创建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id3">删除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id4">载入许可证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id5">重新构建索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#scdcollection">从SCD重建collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id6">停止collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/collection/API.html#id7">更新配置信息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/commands/API.html">命令API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id1">建立索引</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id2">重新构建查询功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id3">重新构建挖掘功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/commands/API.html#id4">优化索引</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/recommend/API.html">推荐引擎API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#fbt-frequently-bought-together">FBT(Frequently Bought Together)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bab-bought-also-bought">BAB(Bought Also Bought)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#vav-viewed-also-view">VAV(Viewed Also View)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#boe-based-on-event">BOE(Based on Event)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bob-based-on-browse-history">BOB(Based on Browse History)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bos-based-on-shopping-cart">BOS(Based on Shopping Cart)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#bor-based-on-random">BOR(Based on Random)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#baq-bought-after-query">BAQ(Bought after Query)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/recommend/API.html#tib-top-item-bundle">TIB(Top Item Bundle)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API/log-analysis/API.html">日志分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id2">从系统事件日志删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id4">从用户请求日志中删除记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id6">获取频繁用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id10">添加用户请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id11">添加用户请求到日志服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id12">查询系统事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../API/log-analysis/API.html#id16">显示用户请求</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+</ul>
+<ul class="simple">
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../operation/Schema.html">B5M站点配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operation/Schema.html#collection">collection集合</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../operation/Product.html">商品collection配置说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operation/Product.html#id1">字段约定</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">sf1-doc</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>基本概念</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/basic-concepts/BasicConcepts.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="id1">
+<h1>基本概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>这一部分将对SF1R基本概念和数据组织进行介绍。</p>
+<div class="section" id="collection">
+<h2>collection<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h2>
+<p>SF1推荐引擎是基于open API的服务器，它将各个功能封装成一系列的API并开放给用户使用，
+用户可以使用JSON串组装请求。下面给出发送JSON请求的例子：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot; collection &quot;</span><span class="p">:</span> <span class="s">&quot; example &quot;</span> <span class="p">,</span>
+    <span class="s">&quot; resource &quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot; rec_type &quot;</span><span class="p">:</span> <span class="s">&quot; BOE &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; max_count &quot;</span><span class="p">:</span> <span class="mi">20</span> <span class="p">,</span>
+        <span class="s">&quot; USERID &quot;</span><span class="p">:</span> <span class="s">&quot; user_001 &quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>对于上面的JSON请求，SF1会返回如下的结果：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot; header &quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s">&quot; success &quot;</span> <span class="p">:</span> <span class="n">true</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="s">&quot; resources &quot;</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">&quot; ITEMID &quot;</span> <span class="p">:</span> <span class="s">&quot; item_001 &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; weight &quot;</span> <span class="p">:</span> <span class="mf">0.9</span> <span class="p">,</span>
+        <span class="s">&quot; reasons &quot;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s">&quot; event &quot;</span> <span class="p">:</span> <span class="s">&quot; purchase &quot;</span> <span class="p">}</span> <span class="p">,</span>
+            <span class="p">{</span> <span class="s">&quot; ITEMID &quot;</span> <span class="p">:</span> <span class="s">&quot; item_011 &quot;</span> <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s">&quot; name &quot;</span> <span class="p">:</span> <span class="s">&quot; iphone &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; link &quot;</span> <span class="p">:</span> <span class="s">&quot; www . shop . com / product / item_001 &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; price &quot;</span> <span class="p">:</span> <span class="s">&quot; 5000 &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; category &quot;</span> <span class="p">:</span> <span class="s">&quot; digital &quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s">&quot; ITEMID &quot;</span> <span class="p">:</span> <span class="s">&quot; item_002 &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; weight &quot;</span> <span class="p">:</span> <span class="mf">0.8</span> <span class="p">,</span>
+        <span class="s">&quot; reasons &quot;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s">&quot; event &quot;</span> <span class="p">:</span> <span class="s">&quot; shopping_cart &quot;</span> <span class="p">}</span> <span class="p">,</span>
+            <span class="p">{</span> <span class="s">&quot; ITEMID &quot;</span> <span class="p">:</span> <span class="s">&quot; item_012 &quot;</span> <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s">&quot; name &quot;</span> <span class="p">:</span> <span class="s">&quot; ipad &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; link &quot;</span> <span class="p">:</span> <span class="s">&quot; www . shop . com / product / item_002 &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; price &quot;</span> <span class="p">:</span> <span class="s">&quot; 6000 &quot;</span> <span class="p">,</span>
+        <span class="s">&quot; category &quot;</span> <span class="p">:</span> <span class="s">&quot; digital &quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在上面给出的例子中，可以看到SF1的每个请求都必须指定Collection字段。该字段是
+SF1的一个非常重要的概念，类似与RDBMS表。
+在SF1中, collection是中具有同种结构的文档集合，由一批SCD文件组成, SF1使用
+collection作为基本构件，管理系统中各类文档集合。同时，SF1对每个collection的
+操作都有相应的config文件指定。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">config文件是文件名与collection名称相同的XML文件。</p>
+</div>
+</div>
+<div class="section" id="scd">
+<h2>什么是SCD，格式<a class="headerlink" href="#scd" title="Permalink to this headline">¶</a></h2>
+<p>文档集合是构建搜索服务的第一步工作。 为了能够对文档进行检索，首先应该生成文档的索引数据。
+SF1的索引数据是通过索引SCD格式的文档生成的。
+SCD是structured crawled document的缩写，SCD文档是一个文本文件，必须符合一定的规则才能被索引。</p>
+<div class="section" id="id2">
+<h3>命名规则<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>SF1R通过文件名验证SCD文件的有效性，其命名规则如下:</p>
+<div class="highlight-python"><div class="highlight"><pre>B-&lt;document collector ID(2Bytes)&gt;-&lt;YYYYMMDDHHmm(12Bytes)&gt;-&lt;SSsss(second,millisecond,5Bytes&gt;-&lt;I/U/D/R(1Bytes)&gt;-&lt;C/F(1Byte)&gt;.SCD
+</pre></div>
+</div>
+<p>任何不符合上述命名规则的文件都将被视为非法文件而丢弃。</p>
+<dl class="docutils">
+<dt>I/U/D/R给出了SCD文档类型，各个类型意义如下所示：</dt>
+<dd><table border="1" class="first last docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">I(nsert)</th>
+<th class="head">U(pdate)</th>
+<th class="head">D(elete)</th>
+<th class="head">R(Type)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>索引新文档</td>
+<td>更新文档</td>
+<td>删除文档</td>
+<td>RType</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">当I，U，D类型的文档同时存在时，将按照顺序：I，U，D依次进行索引。</p>
+</div>
+<p>下面给出SCD文件名示例:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">B</span><span class="o">-</span><span class="mo">00</span><span class="o">-</span><span class="mi">201302271306</span><span class="o">-</span><span class="mi">31564</span><span class="o">-</span><span class="n">U</span><span class="o">-</span><span class="n">C</span><span class="o">.</span><span class="n">SCD</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>文件结构<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>SCD文档是一个文本文件，由一系列的K-V对组成，K-V值均由string标示，下表给出了一个SCD结构的示例：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="23%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">域名</th>
+<th class="head">类型</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ID</td>
+<td>string</td>
+<td>唯一的文档ID</td>
+</tr>
+<tr class="row-odd"><td>date</td>
+<td>string</td>
+<td>文档的创建日期</td>
+</tr>
+<tr class="row-even"><td>title</td>
+<td>string</td>
+<td>文档标题</td>
+</tr>
+<tr class="row-odd"><td>subtitle</td>
+<td>string</td>
+<td>文档的副标题</td>
+</tr>
+<tr class="row-even"><td>writer</td>
+<td>string</td>
+<td>作者的名字</td>
+</tr>
+<tr class="row-odd"><td>writeremail</td>
+<td>string</td>
+<td>作者的邮箱地址</td>
+</tr>
+<tr class="row-even"><td>content</td>
+<td>string</td>
+<td>文档内容</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">SCD中每一个K-V对，遵循格式“&lt;FiledName&gt;Field Content”。</p>
+</div>
+<p>下面给出一个SCD文档的实例：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DOCID&gt;#1#1166452314021
+&lt;title&gt;SomeTitle 1
+&lt;writer&gt;SomeAuthor 1
+&lt;writeremail&gt;SomeAuthor@gmail.com
+&lt;content&gt;.......
+&lt;DOCID&gt;#1#1166452314023
+............
+</pre></div>
+</div>
+<p>Insert 和 Update类型的SCD文档实例如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DOCID&gt;#1#1166452314021
+&lt;Date&gt; 20030922203324
+&lt;title&gt; WISEnut changes the search engine landscape yet again
+&lt;subtitle&gt; WISEnut scores another deal with a major corporation
+&lt;writer&gt;Some Author
+&lt;writeremail&gt;SomeAuthor@gmail.com
+&lt;content&gt;WISEnut has agreed to provide search solution service to a leading credit card company in Korea. The service is expected to start at the beginning of the next month.
+</pre></div>
+</div>
+<p>Delete类型的文档实例如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;DOCID&gt;#1#1166452116647
+&lt;DOCID&gt;#1#1166452314021
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Delete 类型的SCD文档, 只需列出要删除的文档id。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>数据文件目录<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>这部分对SF1的数据文件进行介绍</p>
+<p>数据文件目录结构如下：</p>
+<div class="highlight-python"><div class="highlight"><pre>./
+|---collection
+    |---example
+        |---collection-data
+        |---query-data
+        |---scd
+            |---index
+            |---recommend
+                |---item
+                |---order
+                |---user
+|---config
+    |---example.xml
+    |---sf1config.xml
+|---log
+|---query-support
+</pre></div>
+</div>
+<p>sf1目录结构介绍：</p>
+<ul>
+<li><p class="first">collection 目录下包含每个collection的目录，每个目录的名称为collection的名称。以example为例，该目录下存放有3  个子目录：collection-data, query-data, scd。</p>
+<blockquote>
+<div><ul class="simple">
+<li>collection-data: 下面有两个子目录-default-collection-dir, default-recommend-dir, default-collection-dir      下面存放索引数据和挖掘数据，default-recommend-dir下面存放推荐数据。</li>
+<li>query-data: 存放 query-recommend, autofill 等特性的数据。</li>
+<li>scd: index子目录下存放预索引的scd文件。recommend子目录下有三个子目录： item, user,order. 分别存放item,       user, order相关的scd文件。</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">config: 存放所有配置文件和结构定义文件。结构定义文件存放在schema子目录下。 配置文件包括两部分，一是系统配置  文件：sf1config.xml, 和collection相关的配置文件，如example.xml, 所有和collection相关的配置文件都放在该目录下。</p>
+</li>
+<li><p class="first">log: 存放sf1的日志文件。</p>
+</li>
+<li><p class="first">query-support: 存放和querycorrection，autofill等特性相关的数据。</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../config/HowTo.html" class="btn btn-neutral float-right" title="配置说明"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="SF1R技术文档"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Kevin Lin.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
