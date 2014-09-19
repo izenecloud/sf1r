@@ -24,8 +24,6 @@ SF1R技术文档
   
    API/search/API.rst
    API/document/API.rst
-   API/auto-fill/API.rst
-   API/query-correction/API.rst
    API/collection/API.rst
    API/commands/API.rst
 
