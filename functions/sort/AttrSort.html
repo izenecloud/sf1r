@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -58,7 +59,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul class="current">
+            <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
@@ -83,11 +84,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Functions.html">功能介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../search/Search.html">搜索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../word_segment/word_segment.html">分词</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">排序</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../recommend/Recommend.html">推荐</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data-mining/QueryCorrection.html">查询纠错</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data-mining/Matcher.html">自动比价</a></li>
@@ -217,26 +218,22 @@
 <p>按属性排序是指对检索结果按照某个属性实现升序或者降序排列。一般可以对以下类型属性进行排序：</p>
 <p><strong>数字类型</strong></p>
 <p>如：价格Price, 销量Sale，评论数，等;该属性必须是filter，配置如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;Property name=&quot;Score&quot;&gt;
-  &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; tokenizer=&quot;&quot; rankweight=&quot;0.1&quot; /&gt;
-</pre></div>
+<div class="highlight-python"><pre>&lt;Property name="Score"&gt;
+  &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;</pre>
 </div>
 <p><strong>时间类型</strong></p>
 <p>如：上架时间，结束时间，等； 其配置如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;Property name=&quot;CreateTime&quot;&gt;
-  &lt;Indexing filter=&quot;yes&quot; multivalue=&quot;no&quot; doclen=&quot;no&quot; /&gt;
-</pre></div>
+<div class="highlight-python"><pre>&lt;Property name="CreateTime"&gt;
+  &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;</pre>
 </div>
 <p><strong>字符串类型</strong></p>
 <p>如：按商品型号排序，等；其配置如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;Property name=&quot;Link&quot;&gt;
-  &lt;Indexing filtering = &quot;yes&quot; multivalue = &quot;no&quot; rtype = &quot;yes&quot;&gt;
-</pre></div>
+<div class="highlight-python"><pre>&lt;Property name="Link"&gt;
+  &lt;Indexing filtering = "yes" multivalue = "no" rtype = "yes"&gt;</pre>
 </div>
 <p><strong>排序方式</strong></p>
 <p>有两种排序方式：升序(ASC)，降序(DESC), 在检索request中添加：</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot;sort&quot;:[ { &quot;order&quot;:&quot;DESC&quot;, &quot;property&quot;:&quot;COUNT&quot; }]
-</pre></div>
+<div class="highlight-python"><pre>"sort":[ { "order":"DESC", "property":"COUNT" }]</pre>
 </div>
 </div>
 

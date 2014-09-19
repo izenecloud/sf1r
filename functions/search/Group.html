@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -58,7 +59,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul class="current">
+            <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
@@ -83,8 +84,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="Search.html">搜索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Functions.html">功能介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Search.html">搜索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../word_segment/word_segment.html">分词</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sort/sort.html">排序</a></li>
@@ -223,17 +224,17 @@ int，float或datetime），必须在配置文件的MiningBundle/Schema/Group
 <p>此外，如果该属性是int或者float，还需要将该属性配置为filter（在配置
 文件的IndexBundle部分）。</p>
 <p>例如：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt; DocumentSchema &gt;
+<div class="highlight-python"><pre>&lt; DocumentSchema &gt;
 ...
-&lt; Property name = &quot; Category &quot; type = &quot; string &quot; / &gt;
-&lt; Property name = &quot; Price &quot; type = &quot; float &quot; / &gt;
-&lt; Property name = &quot; PlayTime &quot; type = &quot; datetime &quot; / &gt;
+&lt; Property name = " Category " type = " string " / &gt;
+&lt; Property name = " Price " type = " float " / &gt;
+&lt; Property name = " PlayTime " type = " datetime " / &gt;
 &lt;/ DocumentSchema &gt;
 &lt; IndexBundle &gt;
     &lt; Schema &gt;
-    &lt; Property name = &quot; Price &quot; &gt;
-        &lt; Indexing filter = &quot; yes &quot; multivalue = &quot; no &quot; doclen = &quot; yes &quot; tokenizer = &quot; &quot;
-rankweight = &quot; 0.1 &quot; / &gt;
+    &lt; Property name = " Price " &gt;
+        &lt; Indexing filter = " yes " multivalue = " no " doclen = " yes " tokenizer = " "
+rankweight = " 0.1 " / &gt;
     &lt;/ Property &gt;
     ...
     &lt;/ Schema &gt;
@@ -242,21 +243,19 @@ rankweight = &quot; 0.1 &quot; / &gt;
     &lt; Schema &gt;
     ...
     &lt; Group &gt;
-        &lt; Property name = &quot; Category &quot; / &gt;
-        &lt; Property name = &quot; Price &quot; / &gt;
-        &lt; Property name = &quot; PlayTime &quot; / &gt;
+        &lt; Property name = " Category " / &gt;
+        &lt; Property name = " Price " / &gt;
+        &lt; Property name = " PlayTime " / &gt;
     &lt;/ Group &gt;
     &lt;/ Schema &gt;
-&lt;/ MiningBundle &gt;
-</pre></div>
+&lt;/ MiningBundle &gt;</pre>
 </div>
 </div>
 <div class="section" id="scd">
 <h2>SCD格式<a class="headerlink" href="#scd" title="Permalink to this headline">¶</a></h2>
 <p>如果groupby属性字段的数据类型是string，那么该字段可以分为多层属性。
 下面是该属性的SCD格式：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;PropertyName&gt;A&gt;B&gt;C,D&gt;E&gt;F...
-</pre></div>
+<div class="highlight-python"><pre>&lt;PropertyName&gt;A&gt;B&gt;C,D&gt;E&gt;F...</pre>
 </div>
 <ul class="simple">
 <li>PropertyName表示需要对搜索结果进行groupby的属性名称</li>
@@ -283,14 +282,12 @@ rankweight = &quot; 0.1 &quot; / &gt;
 </li>
 </ul>
 <p>该属性值的格式为：</p>
-<div class="highlight-python"><div class="highlight"><pre>“John,Mark”&gt;“1+1&gt;2”&gt;“ “ “Mary” ” ”
-</pre></div>
+<div class="highlight-python"><pre>“John,Mark”&gt;“1+1&gt;2”&gt;“ “ “Mary” ” ”</pre>
 </div>
 <p>Categroy字段实例：</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre>&lt;Categroy&gt;创意生活，办公电脑&gt;网络设备，手机数码&gt;手机
-“John,Mark”&gt;“1+1&gt;2”&gt;“ “ “Mary” ” ”
-</pre></div>
+<div><div class="highlight-python"><pre>&lt;Categroy&gt;创意生活，办公电脑&gt;网络设备，手机数码&gt;手机
+“John,Mark”&gt;“1+1&gt;2”&gt;“ “ “Mary” ” ”</pre>
 </div>
 </div></blockquote>
 <p>在该例子中，Categroy的属性值层次结构为：</p>
@@ -331,44 +328,42 @@ rankweight = &quot; 0.1 &quot; / &gt;
 <p>API的使用参见
 <a class="reference internal" href="../../API/search/API.html"><em>搜索API</em></a></p>
 <p>下面给出按某些属性对搜索结果分组的Request：</p>
-<div class="highlight-python"><div class="highlight"><pre>{
-    &quot; collection &quot; : &quot; example &quot; ,
-    &quot; search &quot; : {
-        &quot; keywords &quot; : &quot; test &quot;
-        &quot; in &quot; : [ &quot; Title &quot; , &quot; Content &quot; ]
+<div class="highlight-python"><pre>{
+    " collection " : " example " ,
+    " search " : {
+        " keywords " : " test "
+        " in " : [ " Title " , " Content " ]
     },
-    &quot; select &quot; : [ &quot; Title &quot; , &quot; Content &quot; ] ,
-    &quot; group &quot; : [
-        { &quot; property &quot; : &quot; Category &quot; } ,
-        { &quot; property &quot; : &quot; Price &quot; }
+    " select " : [ " Title " , " Content " ] ,
+    " group " : [
+        { " property " : " Category " } ,
+        { " property " : " Price " }
     ]
-}
-</pre></div>
+}</pre>
 </div>
 <p>分组结果在Response的group数组中，其中每个label为一个属性的分组结果：</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot; group &quot; : [
-    { &quot; docume nt_cou nt &quot; : 100 ,
-      &quot; property &quot; : &quot; Category &quot; ,
-      &quot; labels &quot; : [
-        { &quot; label &quot; 厨房电器&quot; ,
-          &quot; do cument _count &quot; : 7 ,
-          &quot; sub_labels &quot; : [
-            { &quot; label &quot; : &quot;豆浆机&quot; ,&quot; docu ment_c ount &quot; : 5 }
+<div class="highlight-python"><pre>" group " : [
+    { " docume nt_cou nt " : 100 ,
+      " property " : " Category " ,
+      " labels " : [
+        { " label " 厨房电器" ,
+          " do cument _count " : 7 ,
+          " sub_labels " : [
+            { " label " : "豆浆机" ," docu ment_c ount " : 5 }
           ]
         }
        ...
       ]
     },
-    { &quot; docume nt_cou nt &quot; : 100 ,
-        &quot; property &quot; : &quot; Price &quot; ,
-        &quot; labels &quot; : [
-            { &quot; label &quot; : &quot; 100.0 &quot; ,&quot; docu ment_c ount &quot; : 4} ,
-            { &quot; label &quot; : &quot; 200.0 &quot; ,&quot; docu ment_c ount &quot; : 6} ,
+    { " docume nt_cou nt " : 100 ,
+        " property " : " Price " ,
+        " labels " : [
+            { " label " : " 100.0 " ," docu ment_c ount " : 4} ,
+            { " label " : " 200.0 " ," docu ment_c ount " : 6} ,
             ...
         ]
     }
-]
-</pre></div>
+]</pre>
 </div>
 </div>
 <div class="section" id="select-label-api">
@@ -436,19 +431,18 @@ rankweight = &quot; 0.1 &quot; / &gt;
 <p>下面是该Requset的返回结果，其中label字段中是每个
 分组区间的值，值的格式是“start-end”。而document_count
 字段则给出了相应的文档数目。</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot; group &quot; : [
- { &quot; docu ment_c ount &quot; : 100 ,
-   &quot; property &quot; : &quot; Price &quot; ,
-   &quot; labels &quot; : [
-        { &quot; label &quot; : &quot; 0 -99 &quot; ,
-          &quot; do cument _count &quot; : 4} ,
-        { &quot; label &quot; : &quot; 100 -199 &quot; ,
-          &quot; do cument _count &quot; : 6} ,
+<div class="highlight-python"><pre>" group " : [
+ { " docu ment_c ount " : 100 ,
+   " property " : " Price " ,
+   " labels " : [
+        { " label " : " 0 -99 " ,
+          " do cument _count " : 4} ,
+        { " label " : " 100 -199 " ,
+          " do cument _count " : 6} ,
         ...
   ]
  }
-]
-</pre></div>
+]</pre>
 </div>
 </div>
 <div class="section" id="select-range-label">
@@ -486,49 +480,47 @@ rankweight = &quot; 0.1 &quot; / &gt;
 该属性的子属性分组。</p>
 <p>例如，可以在Groupby属性中指定“Source”，并进一步指定子属性“Score”，
 相应的Request如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>{
-    &quot;collection&quot;: &quot;ChnWiki&quot;,
-    &quot;search&quot;: {
-        &quot;keywords&quot;: &quot;test&quot;，
-        &quot;in&quot;: [&quot;Title&quot;, &quot;Content&quot;]
+<div class="highlight-python"><pre>{
+    "collection": "ChnWiki",
+    "search": {
+        "keywords": "test"，
+        "in": ["Title", "Content"]
     },
-    &quot;select&quot;: [&quot;Title&quot;, &quot;Content&quot;],
-    &quot;group&quot;: [
-        { &quot;property&quot;: &quot;Source&quot;,
-           &quot;sub_property&quot;: &quot;Score&quot;
+    "select": ["Title", "Content"],
+    "group": [
+        { "property": "Source",
+           "sub_property": "Score"
         }
     ]
- }
-</pre></div>
+ }</pre>
 </div>
 <p>Response如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot;group&quot;: [
-{ &quot;document_count&quot;: 100,
-  &quot;property&quot;: &quot;Source&quot;,
-  &quot;labels&quot;: [
-  { &quot;label&quot;: &quot;京东&quot;,
-    &quot;document_count&quot;: 7,
-    &quot;sub_labels&quot;: [
-      { &quot;label&quot;: &quot;3&quot;,
-        &quot;document_count&quot;: 5 },
-      { &quot;label&quot;: &quot;4&quot;,
-        &quot;document_count&quot;: 2 }
+<div class="highlight-python"><pre>"group": [
+{ "document_count": 100,
+  "property": "Source",
+  "labels": [
+  { "label": "京东",
+    "document_count": 7,
+    "sub_labels": [
+      { "label": "3",
+        "document_count": 5 },
+      { "label": "4",
+        "document_count": 2 }
     ]
   },
-  { &quot;label&quot;: &quot;当当&quot;,
-    &quot;document_count&quot;: 10,
-    &quot;sub_labels&quot;: [
-      { &quot;label&quot;: &quot;4&quot;,
-        &quot;document_count&quot;: 6 },
-      { &quot;label&quot;: &quot;5&quot;,
-        &quot;document_count&quot;: 4 }
+  { "label": "当当",
+    "document_count": 10,
+    "sub_labels": [
+      { "label": "4",
+        "document_count": 6 },
+      { "label": "5",
+        "document_count": 4 }
     ]
   },
   ...
   ]
  }
-]
-</pre></div>
+]</pre>
 </div>
 </div>
 <div class="section" id="group-by-date">
@@ -536,8 +528,7 @@ rankweight = &quot; 0.1 &quot; / &gt;
 <p>SF1支持对查询结果按时间分组，只需在group中指定
 datetime属性即可。</p>
 <p>按时间分组需要SCD文档包含Playtime属性，例如</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;PlayTime&gt;20120717193000;20120718193000;20120719193000
-</pre></div>
+<div class="highlight-python"><pre>&lt;PlayTime&gt;20120717193000;20120718193000;20120719193000</pre>
 </div>
 <p>从该例子可以看出Playtime的几点特性：</p>
 <ul>
@@ -586,19 +577,18 @@ datetime属性即可。</p>
 </dl>
 <p>下面给出Request和Response的例子：</p>
 <p>Request:</p>
-<div class="highlight-python"><div class="highlight"><pre>{
-    &quot;collection&quot;: &quot;ChnWiki&quot;,
-    &quot;search&quot;: {
-        &quot;keywords&quot;: &quot;test&quot;，
-        &quot;in&quot;: [&quot;Title&quot;, &quot;Content&quot;]
+<div class="highlight-python"><pre>{
+    "collection": "ChnWiki",
+    "search": {
+        "keywords": "test"，
+        "in": ["Title", "Content"]
     },
-    &quot;select&quot;: [&quot;Title&quot;, &quot;Content&quot;],
-    &quot;group&quot;: [
-        { &quot;property&quot;: &quot;PlayTime&quot;,
-          &quot;unit&quot;: &quot;M&quot; }
+    "select": ["Title", "Content"],
+    "group": [
+        { "property": "PlayTime",
+          "unit": "M" }
     ]
-}
-</pre></div>
+}</pre>
 </div>
 <dl class="docutils">
 <dt>上例中unit属性指定了Response返回结果的格式，意义如下：</dt>
@@ -632,19 +622,18 @@ datetime属性即可。</p>
 </dd>
 </dl>
 <p>Response:</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot;group&quot;: [
-{ &quot;document_count&quot;: 100,
-  &quot;property&quot;: &quot;PlayTime&quot;,
-  &quot;labels&quot;: [
-    { &quot;label&quot;: &quot;2012-07&quot;,
-      &quot;document_count&quot;: 4 },
-    { &quot;label&quot;: &quot;2012-08&quot;,
-      &quot;document_count&quot;: 6 },
+<div class="highlight-python"><pre>"group": [
+{ "document_count": 100,
+  "property": "PlayTime",
+  "labels": [
+    { "label": "2012-07",
+      "document_count": 4 },
+    { "label": "2012-08",
+      "document_count": 6 },
     ...
   ]
 }
-]
-</pre></div>
+]</pre>
 </div>
 <p>Select Data Label</p>
 <ul class="simple">
@@ -729,16 +718,15 @@ datetime属性即可。</p>
 </pre></div>
 </div>
 <p>如果顶级标签存在，Response则返回相应的结果：</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot;top_group_label&quot;: [
-  { &quot;group_property&quot;: &quot;Category&quot;,
-    &quot;group_label&quot;: [
-      [&quot;数码&quot;, &quot;手机通讯&quot;, &quot;手机&quot;],
-      [&quot;苹果商城&quot;, &quot;iPhone&quot;],
-      [&quot;手机&quot;, &quot;苹果&quot;]
+<div class="highlight-python"><pre>"top_group_label": [
+  { "group_property": "Category",
+    "group_label": [
+      ["数码", "手机通讯", "手机"],
+      ["苹果商城", "iPhone"],
+      ["手机", "苹果"]
     ]
    }
- ]
-</pre></div>
+ ]</pre>
 </div>
 <p>当该顶级标签不存在是，则不返回top_group_label属性。</p>
 <div class="admonition note">
@@ -756,8 +744,7 @@ datetime属性即可。</p>
 <div class="section" id="attribute">
 <h2>商品属性（Attribute）信息<a class="headerlink" href="#attribute" title="Permalink to this headline">¶</a></h2>
 <p>SCD中商品属性字段的内容格式如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;PropertyName&gt;name:value,name:value...
-</pre></div>
+<div class="highlight-python"><pre>&lt;PropertyName&gt;name:value,name:value...</pre>
 </div>
 <p>解释如下：</p>
 <ul class="simple">
@@ -766,15 +753,14 @@ datetime属性即可。</p>
 <li>属性名称和值之间用“：”分割</li>
 <li>如果某个属性名称包含多个属性值，例如某个属性包含3个属性值A，B，C，
 每个属性之间要用“|”隔开。</li>
-<li>如果属性名称或者属性值中包含“：<a href="#id2"><span class="problematic" id="id3">|</span></a>”或者双引号字符，那么属性名称
+<li>如果属性名称或者属性值中包含“：|”或者双引号字符，那么属性名称
 或者属性值必须用双引号引起来。</li>
 </ul>
 <p>下面给出一个SCD的例子：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt; DOCID &gt;134454555
+<div class="highlight-python"><pre>&lt; DOCID &gt;134454555
 &lt; Title &gt;女士风衣
 &lt; Content &gt;时尚女士风衣，大减价
-&lt; Attribute &gt;品牌：Two in one/欧艾尼，领子：圆领，季节：春季|夏季|秋季，年份：2011，尺码:S|M|L|XL
-</pre></div>
+&lt; Attribute &gt;品牌：Two in one/欧艾尼，领子：圆领，季节：春季|夏季|秋季，年份：2011，尺码:S|M|L|XL</pre>
 </div>
 <p>下标给出该scd中的k-v对照：</p>
 <table border="1" class="docutils">
@@ -806,8 +792,8 @@ datetime属性即可。</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="id4">
-<h2>配置文件设置<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>配置文件设置<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>在配置文件中，需要将商品属性字段加入到MiningBundle/Schema/Attr节点中。
 如果希望某写属性名称不包含在搜索结果的属性集合中，可以将属性名称加在
 Exclude配置中。</p>
@@ -816,7 +802,7 @@ Exclude配置中。</p>
 <p class="last">Attr字段中最多允许配置一个属性</p>
 </div>
 <p>下面给出一个配置的例子：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt; DocumentSchema &gt;
+<div class="highlight-python"><pre>&lt; DocumentSchema &gt;
     ...
     &lt; Property name/=0Attribute type/=0string / &gt;
 &lt;/ DocumentSchema &gt;
@@ -829,8 +815,7 @@ Exclude配置中。</p>
             &lt; Exclude name/=0ISBN / &gt;
             &lt;/ Attr &gt;
     &lt;/ Schema &gt;
-&lt;/ MiningBundle &gt;
-</pre></div>
+&lt;/ MiningBundle &gt;</pre>
 </div>
 </div>
 <div class="section" id="attributeapi">

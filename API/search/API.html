@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -411,31 +412,31 @@
 <h2>示例<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>下面给出search的请求与响应示例：</p>
 <p>请求：</p>
-<div class="highlight-python"><div class="highlight"><pre>{
-    &quot;collection&quot;: &quot;ChnWiki&quot;,
+<div class="highlight-python"><pre>{
+    "collection": "ChnWiki",
 
-    &quot;search&quot;: {
-        &quot;keywords&quot;: &quot;test&quot;,
-        &quot;log_keywords&quot;: true,
-        &quot;ranking_model&quot;: &quot;plm&quot;,
-        &quot;analyzer&quot;: {
-            &quot;use_synonym_extension&quot;: true,
-            &quot;apply_la&quot;: true,
-            &quot;use_original_keyword&quot;: true
+    "search": {
+        "keywords": "test",
+        "log_keywords": true,
+        "ranking_model": "plm",
+        "analyzer": {
+            "use_synonym_extension": true,
+            "apply_la": true,
+            "use_original_keyword": true
          },
-        &quot;in&quot;: [
-            {&quot;property&quot;: &quot;title&quot;},
-            {&quot;property&quot;: &quot;content&quot;}
+        "in": [
+            {"property": "title"},
+            {"property": "content"}
         ]
     },
 
-    &quot;group&quot;: [
-        {&quot;property&quot;: &quot;area&quot;},
-        {&quot;property&quot;: &quot;price&quot;}
+    "group": [
+        {"property": "area"},
+        {"property": "price"}
     ],
 
-    &quot;attr&quot;: {
-        &quot;attr_result&quot;: true
+    "attr": {
+        "attr_result": true
     }
 
     // operator list
@@ -450,119 +451,117 @@
     // - starts_with
     // - ends_with
     // - contains
-    &quot;conditions&quot;: [
-        {&quot;property&quot;: &quot;id&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;value&quot;: 10},
-        {&quot;property&quot;: &quot;id&quot;, &quot;operator&quot;: &quot;in&quot;, &quot;value&quot;: [10, 20, 30]}
-        {&quot;property&quot;: &quot;price&quot;, &quot;operator&quot;: &quot;between&quot;, &quot;value&quot;: [10.0, 20.0]}
+    "conditions": [
+        {"property": "id", "operator": "equal", "value": 10},
+        {"property": "id", "operator": "in", "value": [10, 20, 30]}
+        {"property": "price", "operator": "between", "value": [10.0, 20.0]}
     ],
 
-    &quot;select&quot;: [
-        { &quot;property&quot;: &quot;title&quot; }
-        { &quot;property&quot;: &quot;content&quot;,
-        &quot;highlight&quot;: false,
-        &quot;snippet&quot;: true,
-        &quot;summary&quot;: false,
-        &quot;summary_sentence_count&quot;: 3,
-        &quot;summary_property_alias&quot;: &quot;content.summary&quot; }
+    "select": [
+        { "property": "title" }
+        { "property": "content",
+        "highlight": false,
+        "snippet": true,
+        "summary": false,
+        "summary_sentence_count": 3,
+        "summary_property_alias": "content.summary" }
     ],
 
-    &quot;sort&quot;: [
-        { &quot;property&quot;: &quot;title&quot; },
-        { &quot;property&quot;: &quot;content&quot;, &quot;order&quot;: &quot;ASC&quot;},
-        { &quot;property&quot;: &quot;_rank&quot;, &quot;order&quot;: &quot;DESC&quot;}
+    "sort": [
+        { "property": "title" },
+        { "property": "content", "order": "ASC"},
+        { "property": "_rank", "order": "DESC"}
     ],
 
-    &quot;limit&quot;: &quot;20&quot;,
-    &quot;offset&quot;: &quot;0&quot;,
-    &quot;remove_duplicated_result&quot;: true,
-}
-</pre></div>
+    "limit": "20",
+    "offset": "0",
+    "remove_duplicated_result": true,
+}</pre>
 </div>
 <p>响应：</p>
-<div class="highlight-python"><div class="highlight"><pre>{
-    &quot;header&quot;: { &quot;success&quot;: true },
-    &quot;errors&quot;: [
-        &quot;Error message 1&quot;,
-        &quot;Error message 2&quot;
+<div class="highlight-python"><pre>{
+    "header": { "success": true },
+    "errors": [
+        "Error message 1",
+        "Error message 2"
     ],
 
-    &quot;resources&quot;: [
-        { &quot;title&quot;: &quot;xxx&quot;,
-        &quot;content&quot;: &quot;xxx&quot;},
-        { &quot;title&quot;: &quot;yyy&quot;,
-        &quot;content&quot;: &quot;yyy&quot;}
+    "resources": [
+        { "title": "xxx",
+        "content": "xxx"},
+        { "title": "yyy",
+        "content": "yyy"}
     ],
 
-    &quot;related_queries&quot;: [&quot;a&quot;, &quot;b&quot;],
+    "related_queries": ["a", "b"],
 
-    &quot;taxonomy&quot;: {
-        &quot;labels&quot;: [
-        { &quot;label&quot;: &quot;animal&quot;,
-            &quot;document_count&quot;: 10,
-            &quot;sub_labels&quot;: [
-            { &quot;label&quot;: &quot;dog&quot;,
-                &quot;document_count&quot;: 6 },
-            { &quot;label&quot;: &quot;cat&quot;,
-                &quot;document_count&quot;: 4 }
+    "taxonomy": {
+        "labels": [
+        { "label": "animal",
+            "document_count": 10,
+            "sub_labels": [
+            { "label": "dog",
+                "document_count": 6 },
+            { "label": "cat",
+                "document_count": 4 }
             ]
         },
-        { &quot;label&quot;: &quot;music&quot;,
-            &quot;document_count&quot;: 5 }
+        { "label": "music",
+            "document_count": 5 }
         ]
     },
 
-    &quot;group&quot;: [
-        { &quot;document_count&quot;: 10,
-        &quot;property&quot;: &quot;area&quot;,
-        &quot;labels&quot;: [
-            { &quot;label&quot;: &quot;China&quot;,
-            &quot;document_count&quot;: 7,
-            &quot;sub_labels&quot;: [
-                { &quot;label&quot;: &quot;Shanghai&quot;,
-                &quot;document_count&quot;: 5 },
-                { &quot;label&quot;: &quot;Beijing&quot;,
-                &quot;document_count&quot;: 2 }
+    "group": [
+        { "document_count": 10,
+        "property": "area",
+        "labels": [
+            { "label": "China",
+            "document_count": 7,
+            "sub_labels": [
+                { "label": "Shanghai",
+                "document_count": 5 },
+                { "label": "Beijing",
+                "document_count": 2 }
             ]
             },
-            { &quot;label&quot;: &quot;America&quot;,
-            &quot;document_count&quot;: 3 }
+            { "label": "America",
+            "document_count": 3 }
         ]
         },
-        { &quot;document_count&quot;: 10,
-        &quot;property&quot;: &quot;price&quot;,
-        &quot;labels&quot;: [
-            { &quot;label&quot;: &quot;100&quot;,
-            &quot;document_count&quot;: 4 },
-            {&quot;label&quot;: &quot;200&quot;,
-            &quot;document_count&quot;: 6 }
+        { "document_count": 10,
+        "property": "price",
+        "labels": [
+            { "label": "100",
+            "document_count": 4 },
+            {"label": "200",
+            "document_count": 6 }
         ]
         }
     ]
 
-    &quot;attr&quot;: [
-        { &quot;document_count&quot;: 10,
-        &quot;attr_name&quot;: &quot;品牌&quot;,
-        &quot;labels&quot;: [
-            { &quot;label&quot;: &quot;阿依莲&quot;,
-            &quot;document_count&quot;: 7},
-            { &quot;label&quot;: &quot;淑女屋&quot;,
-            &quot;document_count&quot;: 3}
+    "attr": [
+        { "document_count": 10,
+        "attr_name": "品牌",
+        "labels": [
+            { "label": "阿依莲",
+            "document_count": 7},
+            { "label": "淑女屋",
+            "document_count": 3}
         ]
         },
-        { &quot;document_count&quot;: 8,
-        &quot;attr_name&quot;: &quot;尺码&quot;,
-        &quot;labels&quot;: [
-            { &quot;label&quot;: &quot;L&quot;,
-            &quot;document_count&quot;: 5},
-            { &quot;label&quot;: &quot;M&quot;,
-            &quot;document_count&quot;: 4},
-            { &quot;label&quot;: &quot;XL&quot;,
-            &quot;document_count&quot;: 3}
+        { "document_count": 8,
+        "attr_name": "尺码",
+        "labels": [
+            { "label": "L",
+            "document_count": 5},
+            { "label": "M",
+            "document_count": 4},
+            { "label": "XL",
+            "document_count": 3}
         ]
         }
     ]
-}
-</pre></div>
+}</pre>
 </div>
 </div>
 </div>

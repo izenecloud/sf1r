@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -213,18 +214,15 @@
 <div class="section" id="id2">
 <h2>依赖包安装<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>需要在打包和编译之前安装的依赖包如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>cmake build-essential ruby rubygems ruby1.8-dev rake
+<div class="highlight-python"><pre>cmake build-essential ruby rubygems ruby1.8-dev rake
 libxml2-dev libcurl3 libcurl4-openssl-dev libbz2-dev
-doxygen bzip2 libsqlite3-dev pkg-config libmysqlclient15-dev libnuma-dev
-</pre></div>
+doxygen bzip2 libsqlite3-dev pkg-config libmysqlclient15-dev libnuma-dev</pre>
 </div>
 <p>对于Debian/Ubuntu系统，使用命令：</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install xxx xxx xxx
-</pre></div>
+<div class="highlight-python"><pre>sudo apt-get install xxx xxx xxx</pre>
 </div>
 <p>对于CentOS/Fedora/Redhat系统，使用命令：</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo yum install libjpeg-devel libpng-devel libxml2-devel sqlite-devel bzip2-devel libcurl-devel libuuid-devel pcre-devel readline-devel mysql-devel
-</pre></div>
+<div class="highlight-python"><pre>sudo yum install libjpeg-devel libpng-devel libxml2-devel sqlite-devel bzip2-devel libcurl-devel libuuid-devel pcre-devel readline-devel mysql-devel</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -233,10 +231,9 @@ doxygen bzip2 libsqlite3-dev pkg-config libmysqlclient15-dev libnuma-dev
 SF1在连接MySQL时会出现段错误，需要手动升级到新版本，
 例如libmysqlclient.so.18，下载地址在 <a class="reference external" href="http://www6.atomicorp.com/channels/atomic/centos/6/x86_64/RPMS/">这里</a>, 并且需要手动安装：</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>sudo rpm -Uvh mysqlclient18-5.5.28-6.el6.art.x86_64.rpm
+<div class="highlight-python"><pre>sudo rpm -Uvh mysqlclient18-5.5.28-6.el6.art.x86_64.rpm
 cd /usr/lib64/mysql
-sudo ln -s libmysqlclient.so.18.0.0 libmysqlclient.so
-</pre></div>
+sudo ln -s libmysqlclient.so.18.0.0 libmysqlclient.so</pre>
 </div>
 </div>
 <div class="section" id="id4">
@@ -249,20 +246,18 @@ sudo ln -s libmysqlclient.so.18.0.0 libmysqlclient.so
 <p><a class="reference external" href="https://ssl.izenesoft.cn/projects/3rdparty-repository">图像依赖库</a></p>
 <p>以上依赖库除了boost外均在3rdparty-repository下有备份，可以直接从该仓库下找到对应的文件编译安装。</p>
 <p>另外，不建议采用系统默认的方式安装boost，而应当采用编译安装：</p>
-<div class="highlight-python"><div class="highlight"><pre>./booststrap.sh
+<div class="highlight-python"><pre>./booststrap.sh
 ./b2
-./b2 install
-</pre></div>
+./b2 install</pre>
 </div>
 <p>因为默认复制的方式安装boost，会导致符号链接被覆盖，从而影响CMake在打包过程中的依赖判断.</p>
 </div>
 <div class="section" id="sf1ruby-driver">
 <h2>安装SF1的Ruby Driver<a class="headerlink" href="#sf1ruby-driver" title="Permalink to this headline">¶</a></h2>
 <p>F1的Ruby driver有2个用途：通过socket向SF1发送API；同步资源文件。安装方法如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone git@izenesoft.cn:driver-ruby.git
+<div class="highlight-python"><pre>git clone git@izenesoft.cn:driver-ruby.git
 cd driver-ruby
-rake install
-</pre></div>
+rake install</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -273,75 +268,70 @@ rake install
 <h2>如何下载SF1代码<a class="headerlink" href="#sf1" title="Permalink to this headline">¶</a></h2>
 <p>例如，在本地新建目录codebase，在该目录下，新建一个脚本clone.sh，内容如下。
 运行该脚本后，所有SF1相关的代码库都会被下载。</p>
-<div class="highlight-python"><div class="highlight"><pre>#!/usr/bin/env bash
+<div class="highlight-python"><pre>#!/usr/bin/env bash
 
 projects=(driver-ruby cmake izenelib icma ijma wisekma ilplib imllib idmlib sf1r-engine sf1r-logserver)
 
 element_count=${#projects[@]}
 index=0
-while [ &quot;$index&quot; -lt &quot;$element_count&quot; ]
+while [ "$index" -lt "$element_count" ]
 do
     name=${projects[$index]}
     if [ ! -d $name ];then
-        echo &quot;clone $name ...&quot;
+        echo "clone $name ..."
         git clone git@izenesoft.cn:$name.git
     fi
 
-    let &quot;index = $index + 1&quot;
+    let "index = $index + 1"
 done
 
 #同步SF1资源文件，需要确保ruby driver安装成功
 cd sf1r-engine
-sf1r-resource pull --force
-</pre></div>
+sf1r-resource pull --force</pre>
 </div>
 </div>
 <div class="section" id="id6">
 <h2>如何编译SF1代码<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>在sf1r-engine目录下，运行如下命令，会编译SF1相关的代码库。</p>
-<div class="highlight-python"><div class="highlight"><pre>./compile_all.sh 4
-</pre></div>
+<div class="highlight-python"><pre>./compile_all.sh 4</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">参数4代表启动4个线程同时编译，加快编译速度，可以根据自己机器的配置，选择合适的参数值。</p>
 </div>
 <p>也可以自行用cmake分别编译每个代码仓库，例如：</p>
-<div class="highlight-python"><div class="highlight"><pre>cd izenelib
+<div class="highlight-python"><pre>cd izenelib
 mkdir build
 cd build
 cmake ..
-make
-</pre></div>
+make</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">需要说明的是，安装开发环境，所有代码仓库都会依赖相应的环境变量设置，在相应的.bashrc或者.bash_profile里需要有如下设置：</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>export IZENELIB=&quot;/home/yourname/codebase/izenelib&quot;
-export ILPLIB=&quot;/home/yourname/codebase/ilplib&quot;
-export IDMLIB=&quot;/home/yourname/codebase/idmlib&quot;
-export IMLLIB=&quot;/home/yourname/codebase/imllib&quot;
-export IISE_ROOT=&quot;/home/yourname/codebase/iise&quot;
-export IZENECMA=&quot;/home/yourname/codebase/icma&quot;
-export IZENEJMA=&quot;/home/yourname/codebase/ijma&quot;
-export WISEKMA=&quot;/home/yourname/codebase/wisekma&quot;
-export EXTRA_CMAKE_MODULES_DIRS=&quot;/home/yourname/codebase/cmake&quot;
-export LIBXML2=&quot;/usr/include/libxml2&quot;
-export WKO_BUILD=&quot;ia64-glibc27-gcc41&quot;
-export LD_LIBRARY_PATH=/usr/local/lib:$IZENELIB/lib:$IDMLIB/lib:$IMLLIB/lib:$IISE_ROOT/lib:$WISEKMA:$IZENECMA/lib:$IZENEJMA/lib:$LD_LIBRARY_PATH
-</pre></div>
+<div class="highlight-python"><pre>export IZENELIB="/home/yourname/codebase/izenelib"
+export ILPLIB="/home/yourname/codebase/ilplib"
+export IDMLIB="/home/yourname/codebase/idmlib"
+export IMLLIB="/home/yourname/codebase/imllib"
+export IISE_ROOT="/home/yourname/codebase/iise"
+export IZENECMA="/home/yourname/codebase/icma"
+export IZENEJMA="/home/yourname/codebase/ijma"
+export WISEKMA="/home/yourname/codebase/wisekma"
+export EXTRA_CMAKE_MODULES_DIRS="/home/yourname/codebase/cmake"
+export LIBXML2="/usr/include/libxml2"
+export WKO_BUILD="ia64-glibc27-gcc41"
+export LD_LIBRARY_PATH=/usr/local/lib:$IZENELIB/lib:$IDMLIB/lib:$IMLLIB/lib:$IISE_ROOT/lib:$WISEKMA:$IZENECMA/lib:$IZENEJMA/lib:$LD_LIBRARY_PATH</pre>
 </div>
 </div>
 <div class="section" id="id7">
 <h2>如何打包<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>打包好的SF1是针对线上环境，区分于上边描述的开发环境。</p>
-<div class="highlight-python"><div class="highlight"><pre>cd $SF1_ROOT
+<div class="highlight-python"><pre>cd $SF1_ROOT
 ./sf1r-resource pull --force
 cd build
 make
-make package
-</pre></div>
+make package</pre>
 </div>
 <p>运行上面的命令后，会在目录$SF1_ROOT/build下生成压缩包sf1r-engine.tar.gz。</p>
 </div>
@@ -351,11 +341,10 @@ make package
 </div>
 <div class="section" id="id9">
 <h2>如何运行二进制文件<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>tar xf sf1r.tar.gz
+<div class="highlight-python"><pre>tar xf sf1r.tar.gz
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PACKAGE_DIR/lib:$PACKAGE_DIR/lib-thirdparty
 cd $PACKAGE_DIR
-./CobraProcess -F config
-</pre></div>
+./CobraProcess -F config</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>

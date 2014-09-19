@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -58,7 +59,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul class="current">
+            <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
@@ -83,11 +84,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Functions.html">功能介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../search/Search.html">搜索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../word_segment/word_segment.html">分词</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">排序</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../recommend/Recommend.html">推荐</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data-mining/QueryCorrection.html">查询纠错</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data-mining/Matcher.html">自动比价</a></li>
@@ -239,20 +240,19 @@
 </pre></div>
 </div>
 <p>该API返回结果的JSON例子如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>{
-   &quot;resource&quot;: {
-     &quot;top_docs&quot;: [
-       { &quot;DOCID&quot;: &quot;111&quot;, &quot;Title&quot;: &quot;iphone4S 手机&quot;},
-       { &quot;DOCID&quot;: &quot;222&quot;, &quot;Title&quot;: &quot;iphone4 手机&quot;},
-       { &quot;DOCID&quot;: &quot;333&quot;, &quot;Title&quot;: &quot;iphone3 手机&quot;}
+<div class="highlight-python"><pre>{
+   "resource": {
+     "top_docs": [
+       { "DOCID": "111", "Title": "iphone4S 手机"},
+       { "DOCID": "222", "Title": "iphone4 手机"},
+       { "DOCID": "333", "Title": "iphone3 手机"}
      ],
-     &quot;exclude_docs&quot;: [
-       { &quot;DOCID&quot;: &quot;444&quot;, &quot;Title&quot;: &quot;iphone4S 配件&quot;},
-       { &quot;DOCID&quot;: &quot;555&quot;, &quot;Title&quot;: &quot;iphone4 配件&quot;},
-       { &quot;DOCID&quot;: &quot;666&quot;, &quot;Title&quot;: &quot;iphone3 配件&quot;}
+     "exclude_docs": [
+       { "DOCID": "444", "Title": "iphone4S 配件"},
+       { "DOCID": "555", "Title": "iphone4 配件"},
+       { "DOCID": "666", "Title": "iphone3 配件"}
      ]
-}
-</pre></div>
+}</pre>
 </div>
 <p>最后，我们还提供了API get_custom_query，用于得到所有被定制排名的query。该API请求的JSON例子如下：</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
@@ -320,37 +320,36 @@
 <div class="section" id="sf1">
 <h2>SF1 配置<a class="headerlink" href="#sf1" title="Permalink to this headline">¶</a></h2>
 <p>下面是b5mp.xml里配置ProductRanking的例子：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;MiningBundle&gt;
+<div class="highlight-python"><pre>&lt;MiningBundle&gt;
   &lt;Schema&gt;
     &lt;Group&gt;
-      &lt;Property name=&quot;TargetCategory&quot; /&gt;
-      &lt;Property name=&quot;Source&quot; /&gt;
+      &lt;Property name="TargetCategory" /&gt;
+      &lt;Property name="Source" /&gt;
     &lt;/Group&gt;
 
     &lt;ProductRanking&gt;
-      &lt;Score type=&quot;custom&quot; weight=&quot;100&quot; /&gt;
-      &lt;Score type=&quot;category&quot; property=&quot;TargetCategory&quot; weight=&quot;10&quot; /&gt;
-      &lt;Score type=&quot;offer_item_count&quot; property=&quot;itemcount&quot; /&gt;
-      &lt;Score type=&quot;diversity&quot; property=&quot;Source&quot; /&gt;
-      &lt;Score type=&quot;merchant&quot; property=&quot;Source&quot; /&gt;
-      &lt;Score type=&quot;popularity&quot; weight=&quot;1&quot;&gt;
-        &lt;Score property=&quot;itemcount&quot; weight=&quot;1&quot; /&gt;
-        &lt;Score property=&quot;Score&quot; weight=&quot;0.8&quot; /&gt;
-        &lt;Score property=&quot;Fenxiang&quot; weight=&quot;0.5&quot; /&gt;
-        &lt;Score property=&quot;Guanzhu&quot; weight=&quot;0.5&quot; /&gt;
-        &lt;Score property=&quot;Xihuan&quot; weight=&quot;0.5&quot; /&gt;
-        &lt;Score property=&quot;BuyCount&quot; weight=&quot;0.5&quot; /&gt;
-        &lt;Score property=&quot;_ctr&quot; weight=&quot;0.5&quot; /&gt;
-        &lt;Score property=&quot;DATE&quot; weight=&quot;0.2&quot; /&gt;
+      &lt;Score type="custom" weight="100" /&gt;
+      &lt;Score type="category" property="TargetCategory" weight="10" /&gt;
+      &lt;Score type="offer_item_count" property="itemcount" /&gt;
+      &lt;Score type="diversity" property="Source" /&gt;
+      &lt;Score type="merchant" property="Source" /&gt;
+      &lt;Score type="popularity" weight="1"&gt;
+        &lt;Score property="itemcount" weight="1" /&gt;
+        &lt;Score property="Score" weight="0.8" /&gt;
+        &lt;Score property="Fenxiang" weight="0.5" /&gt;
+        &lt;Score property="Guanzhu" weight="0.5" /&gt;
+        &lt;Score property="Xihuan" weight="0.5" /&gt;
+        &lt;Score property="BuyCount" weight="0.5" /&gt;
+        &lt;Score property="_ctr" weight="0.5" /&gt;
+        &lt;Score property="DATE" weight="0.2" /&gt;
       &lt;/Score&gt;
-      &lt;Score type=&quot;random&quot; weight=&quot;1&quot; /&gt;
-      &lt;Score type=&quot;relevance&quot; weight=&quot;0.001&quot; /&gt;
-      &lt;Score type=&quot;fuzzy&quot; weight=&quot;0.1&quot; /&gt;
+      &lt;Score type="random" weight="1" /&gt;
+      &lt;Score type="relevance" weight="0.001" /&gt;
+      &lt;Score type="fuzzy" weight="0.1" /&gt;
     &lt;/ProductRanking&gt;
 
   &lt;/Schema&gt;
-&lt;/MiningBundle&gt;
-</pre></div>
+&lt;/MiningBundle&gt;</pre>
 </div>
 <p>ProductRanking的每个配置项都是可选的，可以根据实际需要进行配置，各配置项含义如下：</p>
 <ul class="simple">

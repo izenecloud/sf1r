@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -58,7 +59,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul class="current">
+            <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
@@ -83,11 +84,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Functions.html">功能介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../search/Search.html">搜索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../word_segment/word_segment.html">分词</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="sort.html">排序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">排序</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../recommend/Recommend.html">推荐</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data-mining/QueryCorrection.html">查询纠错</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data-mining/Matcher.html">自动比价</a></li>
@@ -229,8 +230,7 @@
 <h2>BM25算法<a class="headerlink" href="#bm25" title="Permalink to this headline">¶</a></h2>
 <p>BM25算法，通常用来作搜索相关性平分。其主要思想：对查询Query进行语素解析，生成语素qi；然后，对于每个搜索结果D，计算每个语素qi与D的相关性得分，最后，将qi相对于D的相关性得分进行加权求和，从而得到Query与D的相关性得分。</p>
 <p>在BM25中，通过对于系数的调试，BM25能够给出比tf/idf更好的相关性结果；其使用方法是在search请求中添加：</p>
-<div class="highlight-python"><div class="highlight"><pre>&quot;ranking_model&quot;:&quot;bm25&quot;
-</pre></div>
+<div class="highlight-python"><pre>"ranking_model":"bm25"</pre>
 </div>
 </div>
 <div class="section" id="plm">
@@ -239,8 +239,7 @@
 <ul class="simple">
 <li>该方法可以获得较好的排序精度，但是其排序效率较Bm25较低。其使用方法是在search请求中添加：</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre>&quot;ranking_model&quot;:&quot;plm&quot;
-</pre></div>
+<div class="highlight-python"><pre>"ranking_model":"plm"</pre>
 </div>
 </div>
 </div>

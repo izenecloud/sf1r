@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -223,7 +224,7 @@
 如果查询是全英文的，如：“iPhone4S”。
 下面是分割的实例：</p>
 <p>它将会被分割成：</p>
-<div class="highlight-python"><div class="highlight"><pre>iphone 4s
+<div class="highlight-python"><pre>iphone 4s
 iphone 4
 iphone
 iphone
@@ -231,13 +232,12 @@ iphon
 ipho
 iph
 ip
-i
-</pre></div>
+i</pre>
 </div>
 <p>一共 9 个前缀;
 如果查询是全中文的，入:&#8221;三星&#8221;.
 它将会被分割成：</p>
-<div class="highlight-python"><div class="highlight"><pre>sanxing
+<div class="highlight-python"><pre>sanxing
 sanxin
 sanxi
 sanx
@@ -250,13 +250,12 @@ san星
 三xi
 三x
 三
-三星
-</pre></div>
+三星</pre>
 </div>
 <p>一共 14个前缀;
 Here, &#8220;iphone 4s&#8221; is a value,</p>
 <p>三星galaxy ,&#8221; 是混合型的, 它将会被分割成：:</p>
-<div class="highlight-python"><div class="highlight"><pre>三星 galaxy,
+<div class="highlight-python"><pre>三星 galaxy,
 sanxing galaxy,
 sanxing galax
 sanxing gal,
@@ -288,16 +287,14 @@ san星 ,
 三xin
 三xi ,
 三x
-三
-</pre></div>
+三</pre>
 </div>
 <p>一共 36个前缀;
 所有的前缀和查询将会被用来建立key-value索引,一个key（前缀）后面是以其为前缀的查询  eg:</p>
-<div class="highlight-python"><div class="highlight"><pre>Key:s &gt; Value:三星galaxy, 三星
+<div class="highlight-python"><pre>Key:s &gt; Value:三星galaxy, 三星
 Key:sa &gt; Value:三星galaxy, 三星
 Key:san 3&gt; Value:三星galaxy, 三星
-......
-</pre></div>
+......</pre>
 </div>
 <p>如果一个前缀关键字有很多值, 所有值将会按照查询搜索频率进行排序, 以保证最流行的关键字出现在靠前的结果中.</p>
 </div>
@@ -321,7 +318,7 @@ Key:san 3&gt; Value:三星galaxy, 三星
 <h3>leveldb<a class="headerlink" href="#leveldb" title="Permalink to this headline">¶</a></h3>
 <p>LevelDB是一个轻量集的K-V数据库，提供了关键字字符串键到值字符串的映射。在这里，我们使用leveldb
 在磁盘上的存储（只在建立和更新中使用）。
-了解更多：<a class="reference external" href="http://code.google.com/p/leveldb/">http://code.google.com/p/leveldb/</a></p>
+了解更多：http://code.google.com/p/leveldb/</p>
 </div>
 <div class="section" id="id10">
 <h3>小波树<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>

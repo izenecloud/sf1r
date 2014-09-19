@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -58,7 +59,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul class="current">
+            <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
@@ -83,10 +84,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Functions.html">功能介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../search/Search.html">搜索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="word_segment.html">分词</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sort/sort.html">排序</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../recommend/Recommend.html">推荐</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data-mining/QueryCorrection.html">查询纠错</a></li>
@@ -231,11 +232,10 @@ SF1中出于性能的考虑，主要使用基于词表的方法，另一方面�
 <div class="section" id="id4">
 <h3>2.1 基本分词方法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>基本分词方法的配置如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;Method id=&quot;inner_la_cnall_sia&quot; analysis=&quot;chinese&quot; casesensitive=&quot;no&quot; &gt;
-        &lt;settings mode=&quot;label&quot; option=&quot;R+S-V-T3&quot; specialchar=&quot;#&quot; dictionarypath=&quot;/home/zhongxia/codebase/icma/db/icwb/utf8&quot;/&gt;
+<div class="highlight-python"><pre>&lt;Method id="inner_la_cnall_sia" analysis="chinese" casesensitive="no" &gt;
+        &lt;settings mode="label" option="R+S-V-T3" specialchar="#" dictionarypath="/home/zhongxia/codebase/icma/db/icwb/utf8"/&gt;
 &lt;/Method&gt;
-&lt;Method id=&quot;la_sia&quot; analysis=&quot;multilang&quot; advoption=&quot;default,inner_la_korall_sia;en,inner_la_cnall_sa;cn,inner_la_cnall_sia&quot;/&gt;
-</pre></div>
+&lt;Method id="la_sia" analysis="multilang" advoption="default,inner_la_korall_sia;en,inner_la_cnall_sa;cn,inner_la_cnall_sia"/&gt;</pre>
 </div>
 <p>id 是唯一标识分词方法的名称, 上面的配置定义了一个多语言的分词方法 &#8220;la_sia&#8221;, 它内部使用的中文分词方法为&#8221;inner_la_cnall_sia&#8221;。</p>
 <p>其中，需要注意的属性是“Method/settings/option”：</p>
@@ -244,8 +244,7 @@ SF1中出于性能的考虑，主要使用基于词表的方法，另一方面�
 <li>option=&#8221;R+S-V-T4&#8221;, 代表分词设置为正向最小匹配，且包含unigram分词结果，即，不管有没有overlap, unigram结果都会输出。这种分词输出的词比较多，对性能有一定影响，而且需要确保索引中含有unigram作为索引词，目前少用。</li>
 <li>option=&#8221;R+S-V-T5&#8221;，代表分词设置为正向最小匹配，不包含unigram分词结果，也不含overlap情形。在用户词典中的词已经比较丰富全面的情况下，可使用此配置作为搜索（查询）的分词方法。</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre>&lt;Method id=&quot;la_unigram&quot; analysis=&quot;char&quot; advoption=&quot;part&quot; casesensitive=&quot;no&quot; /&gt;
-</pre></div>
+<div class="highlight-python"><pre>&lt;Method id="la_unigram" analysis="char" advoption="part" casesensitive="no" /&gt;</pre>
 </div>
 <p>在unigram分词方法中，advoption=&#8221;part&#8221;，代表数字和字母将作为整体，而不按字符进行切分；如果设置为advoption=&#8221;all&#8221;，则代表数字和字母也会按字符进行切分。</p>
 <p><strong>索引的分词配置</strong></p>
@@ -258,41 +257,40 @@ SF1中出于性能的考虑，主要使用基于词表的方法，另一方面�
 <h3>2.2 详细配置策略<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>SF-1 R 中有多种语言分析方法，其中一些是基于字符的分析方法，还有一些是基于语言的分析方法。标记解析器的解析结果作为分析器的输入，分析器对这些字符进行分析，得到一系列的字符。最终我们对这些字符再进行索引，搜索和挖掘。</p>
 <p>下面是关于语言分析器的一些配置信息：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;LanguageAnalyzer dictionarypath=&quot;path_of_knowledge&quot; &gt;
-  &lt;Method id=&quot;la_token&quot; analysis=&quot;token&quot;  /&gt;
-  &lt;Method id=&quot;la_char&quot; analysis=&quot;char&quot;  /&gt;
-  &lt;Method id=&quot;la_unigram&quot; analysis=&quot;char&quot;  /&gt;
-  &lt;Method id=&quot;la_ngram&quot; analysis=&quot;ngram&quot;  apart=&quot;n&quot; schflag=&quot;second&quot;
-          max=&quot;3&quot; min=&quot;2&quot; idxflag=&quot;second&quot; maxno=&quot;256&quot; /&gt;
-  &lt;Method id=&quot;la_bigram&quot; analysis=&quot;ngram&quot;  apart=&quot;n&quot;
-          max=&quot;2&quot; min=&quot;2&quot; idxflag=&quot;second&quot; maxno=&quot;2194967296&quot; /&gt;
-  &lt;Method id=&quot;inner_la_unigram&quot; analysis=&quot;ngram&quot; apart=&quot;n&quot;
-          max=&quot;1&quot; min=&quot;1&quot; idxflag=&quot;second&quot; maxno=&quot;2194967296&quot; /&gt;
-  &lt;Method id=&quot;la_matrix&quot; analysis=&quot;matrix&quot;  prefix=&quot;yes&quot; suffix=&quot;yes&quot; /&gt;
-  &lt;Method id=&quot;la_korall&quot; analysis=&quot;korean&quot; &gt;
-    &lt;settings mode=&quot;all&quot; dictionarypath=&quot;&quot; specialchar=&quot;#&quot; option=&quot;R+S+&quot; /&gt;
+<div class="highlight-python"><pre>&lt;LanguageAnalyzer dictionarypath="path_of_knowledge" &gt;
+  &lt;Method id="la_token" analysis="token"  /&gt;
+  &lt;Method id="la_char" analysis="char"  /&gt;
+  &lt;Method id="la_unigram" analysis="char"  /&gt;
+  &lt;Method id="la_ngram" analysis="ngram"  apart="n" schflag="second"
+          max="3" min="2" idxflag="second" maxno="256" /&gt;
+  &lt;Method id="la_bigram" analysis="ngram"  apart="n"
+          max="2" min="2" idxflag="second" maxno="2194967296" /&gt;
+  &lt;Method id="inner_la_unigram" analysis="ngram" apart="n"
+          max="1" min="1" idxflag="second" maxno="2194967296" /&gt;
+  &lt;Method id="la_matrix" analysis="matrix"  prefix="yes" suffix="yes" /&gt;
+  &lt;Method id="la_korall" analysis="korean" &gt;
+    &lt;settings mode="all" dictionarypath="" specialchar="#" option="R+S+" /&gt;
   &lt;/Method&gt;
-  &lt;Method id=&quot;la_eng&quot; analysis=&quot;english&quot; &gt;
-    &lt;settings mode=&quot;all&quot; dictionarypath=&quot;&quot; option=&quot;S+&quot; /&gt;
+  &lt;Method id="la_eng" analysis="english" &gt;
+    &lt;settings mode="all" dictionarypath="" option="S+" /&gt;
   &lt;/Method&gt;
-  &lt;Method id=&quot;la_eng_case_sensitive&quot; analysis=&quot;english&quot;  casesensitive=&quot;yes&quot;&gt;
-    &lt;settings mode=&quot;all&quot; dictionarypath=&quot;&quot; option=&quot;S+&quot; /&gt;
+  &lt;Method id="la_eng_case_sensitive" analysis="english"  casesensitive="yes"&gt;
+    &lt;settings mode="all" dictionarypath="" option="S+" /&gt;
   &lt;/Method&gt;
-  &lt;Method id=&quot;inner_la_korall_mia&quot; analysis=&quot;korean&quot;  casesensitive=&quot;yes&quot;&gt;
-    &lt;settings mode=&quot;label&quot; dictionarypath=&quot;&quot; specialchar=&quot;#&quot; option=&quot;R1S-&quot; /&gt;
+  &lt;Method id="inner_la_korall_mia" analysis="korean"  casesensitive="yes"&gt;
+    &lt;settings mode="label" dictionarypath="" specialchar="#" option="R1S-" /&gt;
   &lt;/Method&gt;
-  &lt;Method id=&quot;la_mia&quot; analysis=&quot;multilang&quot;  lower=&quot;no&quot;
-          casesensitive=&quot;yes&quot; advoption=&quot;default,inner_la_korall_mia;cn,la_char&quot; /&gt;
-  &lt;Method id=&quot;inner_la_korall_sia&quot; analysis=&quot;korean&quot;  casesensitive=&quot;yes&quot;&gt;
-    &lt;settings mode=&quot;label&quot; dictionarypath=&quot;&quot; specialchar=&quot;#&quot; option=&quot;R+S+&quot; /&gt;
+  &lt;Method id="la_mia" analysis="multilang"  lower="no"
+          casesensitive="yes" advoption="default,inner_la_korall_mia;cn,la_char" /&gt;
+  &lt;Method id="inner_la_korall_sia" analysis="korean"  casesensitive="yes"&gt;
+    &lt;settings mode="label" dictionarypath="" specialchar="#" option="R+S+" /&gt;
   &lt;/Method&gt;
-  &lt;Method id=&quot;inner_la_cnall_sia&quot; analysis=&quot;chinese&quot;  casesensitive=&quot;yes&quot;&gt;
-    &lt;settings mode=&quot;label&quot; dictionarypath=&quot;&quot; specialchar=&quot;#&quot; option=&quot;R+S+T3&quot; /&gt;
+  &lt;Method id="inner_la_cnall_sia" analysis="chinese"  casesensitive="yes"&gt;
+    &lt;settings mode="label" dictionarypath="" specialchar="#" option="R+S+T3" /&gt;
   &lt;/Method&gt;
-  &lt;Method id=&quot;la_sia&quot; analysis=&quot;multilang&quot;
-          advoption=&quot;default,inner_la_korall_sia;en,la_eng;cn,inner_la_cnall_sia&quot; /&gt;
-&lt;/LanguageAnalyzer&gt;
-</pre></div>
+  &lt;Method id="la_sia" analysis="multilang"
+          advoption="default,inner_la_korall_sia;en,la_eng;cn,inner_la_cnall_sia" /&gt;
+&lt;/LanguageAnalyzer&gt;</pre>
 </div>
 <p>下面对配置中每个节点的核心属性进行简单的描述（&#8221;optional&#8221; 属性除外）：</p>
 <table border="1" class="docutils">

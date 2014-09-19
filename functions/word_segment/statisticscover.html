@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -58,7 +59,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul class="current">
+            <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
@@ -83,10 +84,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Functions.html">功能介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../search/Search.html">搜索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="word_segment.html">分词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="word_segment.html">分词</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sort/sort.html">排序</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../recommend/Recommend.html">推荐</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data-mining/QueryCorrection.html">查询纠错</a></li>
@@ -218,8 +219,7 @@
 <p>基于统计的分词就是通过大规模文本计算文档中字和字之间关联的概率，从而在中文分词时利用字和字之间的关联概率判定是否组成为一个词。</p>
 <p>如果S表示一连串特定顺序排列的词w1，w2，…，wn，换句话说，S可以表示某一个由一连串特定顺序排练的词而组成的一个有意义的句子。利用条件概率的公式，S这个序列出现的概率等于每一个词出现的概率相乘，</p>
 <p>于是P(S)可展开为：</p>
-<div class="highlight-python"><div class="highlight"><pre>P(S)=P(w1)P(w2|w1)P(w3|w1w2)…P(wn|w1w2…wn-1)
-</pre></div>
+<div class="highlight-python"><pre>P(S)=P(w1)P(w2|w1)P(w3|w1w2)…P(wn|w1w2…wn-1)</pre>
 </div>
 <p>其中P(w1)表示第一个词w1出现的概率；P(w2|w1)是在已知第一个词的前提下，第二个词出现的概率；以次类推.</p>
 </div>

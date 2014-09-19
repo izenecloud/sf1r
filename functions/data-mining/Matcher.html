@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -257,11 +258,10 @@
 <div class="section" id="id8">
 <h3>索引模式<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>模式可以为0,1,2,3</p>
-<div class="highlight-python"><div class="highlight"><pre>0, incremental task.
+<div class="highlight-python"><pre>0, incremental task.
 1, re-generate scds.
 2, re-matching.
-3, re-training.
-</pre></div>
+3, re-training.</pre>
 </div>
 <p>脚本手动执行.</p>
 <blockquote>
@@ -276,7 +276,7 @@
 <h2>比价原理<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>从各处(比如淘宝)抓取 SPU(标准商品单元). 一个 SPU 如下(SCD格式):</div></blockquote>
-<div class="highlight-python"><div class="highlight"><pre>&lt;DOCID&gt;26c8fe41b02567916923168437a10667
+<div class="highlight-python"><pre>&lt;DOCID&gt;26c8fe41b02567916923168437a10667
 &lt;Pid&gt;119316307
 &lt;Url&gt;http://www.taobao.com/spuid/119316307
 &lt;Cid&gt;1512
@@ -284,10 +284,9 @@
 &lt;Title&gt;Apple/苹果 iPhone 4
 &lt;OriginalPicture&gt;http://img08.taobaocdn.com/bao/uploaded/i8/T1wVGYXiptXXbLmaEW_022451.jpg
 &lt;Attribute&gt;品牌:Apple/苹果,型号:iPhone 4
-&lt;Price&gt;3800.0
-</pre></div>
+&lt;Price&gt;3800.0</pre>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>它主要包括类别，标题，属性和标准产品的价格信息。
+<div class="highlight-python"><pre>它主要包括类别，标题，属性和标准产品的价格信息。
 
 SPU的是商品匹配的目标 - 我们将每个购物网站各个商品匹配到一个特定的SPU，同时也从中提取类别关键字。
 
@@ -319,63 +318,54 @@ SPU的是商品匹配的目标 - 我们将每个购物网站各个商品匹配�
 
 依次从上到下进行搜索，一旦发现一个SPU匹配的，退出，返回发现的结果。
 
-如果没有SPU匹配，返回得分最高的SPU的类目作为分类结果。
-</pre></div>
+如果没有SPU匹配，返回得分最高的SPU的类目作为分类结果。</pre>
 </div>
 </div>
 <div class="section" id="by-curl">
 <h2>产品（增删查改）示例 (By curl)<a class="headerlink" href="#by-curl" title="Permalink to this headline">¶</a></h2>
 <p>创建</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST -H &quot;Content-Type:application/json&quot; -d @&quot;/tmp/ddc.json&quot; http://localhost:3000/products/product_create
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST -H "Content-Type:application/json" -d @"/tmp/ddc.json" http://localhost:3000/products/product_create</pre>
 </div>
 <p>/tmp/ddc.json内容如下</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;product&quot;</span><span class="p">:{</span><span class="s">&quot;Title&quot;</span><span class="p">:</span><span class="s">&quot;CCC&quot;</span><span class="p">,</span><span class="s">&quot;DOCID&quot;</span><span class="p">:</span><span class="s">&quot;2b0a3ee8bfdd5d9de927dd544a84b48e&quot;</span><span class="p">,</span><span class="s">&quot;Attribute&quot;</span><span class="p">:</span><span class="s">&quot;A:B&quot;</span><span class="p">,</span><span class="s">&quot;Category&quot;</span><span class="p">:</span><span class="s">&quot;X&gt;Y&quot;</span><span class="p">}}</span>
 </pre></div>
 </div>
 <p>获取</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X GET http://localhost:3000/products/product_get?DOCID=2b0a3ee8bfdd5d9de927dd544a84b48e
-</pre></div>
+<div class="highlight-python"><pre>curl -X GET http://localhost:3000/products/product_get?DOCID=2b0a3ee8bfdd5d9de927dd544a84b48e</pre>
 </div>
 <p>更新</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST -H &quot;Content-Type:application/json&quot; -d @&quot;/tmp/ddu.json&quot; http://localhost:3000/products/product_update?DOCID=2b0a3ee8bfdd5d9de927dd544a84b48e
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST -H "Content-Type:application/json" -d @"/tmp/ddu.json" http://localhost:3000/products/product_update?DOCID=2b0a3ee8bfdd5d9de927dd544a84b48e</pre>
 </div>
 <p>/tmp/dd.json内容如下</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;product&quot;</span><span class="p">:{</span><span class="s">&quot;Title&quot;</span><span class="p">:</span><span class="s">&quot;ZZZ&quot;</span><span class="p">}}</span>
 </pre></div>
 </div>
 <p>删除</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X GET http://localhost:3000/products/product_delete?DOCID=2b0a3ee8bfdd5d9de927dd544a84b48e
-</pre></div>
+<div class="highlight-python"><pre>curl -X GET http://localhost:3000/products/product_delete?DOCID=2b0a3ee8bfdd5d9de927dd544a84b48e</pre>
 </div>
 </div>
 <div class="section" id="id10">
 <h2>匹配（增删查改）示例 (By curl)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>创建</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST -H &quot;Content-Type:application/json&quot; -d @&quot;/tmp/ddc.json&quot; http://localhost:3000/matches/match_create
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST -H "Content-Type:application/json" -d @"/tmp/ddc.json" http://localhost:3000/matches/match_create</pre>
 </div>
 <p>/tmp/ddc.json内容如下</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;match&quot;</span><span class="p">:{</span><span class="s">&quot;oid&quot;</span><span class="p">:</span><span class="s">&quot;ffffffffbfdd5d9de927dd544a84b48e&quot;</span><span class="p">,</span><span class="s">&quot;pid&quot;</span><span class="p">:</span><span class="s">&quot;2b0a3ee8bfdd5d9de927dd544a84b48e&quot;</span><span class="p">,</span><span class="s">&quot;comment&quot;</span><span class="p">:</span><span class="s">&quot;aaaassssddd&quot;</span><span class="p">}}</span>
 </pre></div>
 </div>
 <p>获取</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X GET http://localhost:3000/matches/match_get?oid=ffffffffbfdd5d9de927dd544a84b48e
-curl -X GET http://localhost:3000/matches/match_get?pid=2b0a3ee8bfdd5d9de927dd544a84b48e
-</pre></div>
+<div class="highlight-python"><pre>curl -X GET http://localhost:3000/matches/match_get?oid=ffffffffbfdd5d9de927dd544a84b48e
+curl -X GET http://localhost:3000/matches/match_get?pid=2b0a3ee8bfdd5d9de927dd544a84b48e</pre>
 </div>
 <p>更新</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X POST -H &quot;Content-Type:application/json&quot; -d @&quot;/tmp/ddu.json&quot; http://localhost:3000/matches/match_update?oid=ffffffffbfdd5d9de927dd544a84b48e
-</pre></div>
+<div class="highlight-python"><pre>curl -X POST -H "Content-Type:application/json" -d @"/tmp/ddu.json" http://localhost:3000/matches/match_update?oid=ffffffffbfdd5d9de927dd544a84b48e</pre>
 </div>
 <p>/tmp/dd.json内容如下</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;match&quot;</span><span class="p">:{</span><span class="s">&quot;pid&quot;</span><span class="p">:</span><span class="s">&quot;ccccccccbfdd5d9de927dd544a84b48e&quot;</span><span class="p">}}</span>
 </pre></div>
 </div>
 <p>删除</p>
-<div class="highlight-python"><div class="highlight"><pre>curl -X GET http://localhost:3000/matches/match_delete?oid=ffffffffbfdd5d9de927dd544a84b48e
-</pre></div>
+<div class="highlight-python"><pre>curl -X GET http://localhost:3000/matches/match_delete?oid=ffffffffbfdd5d9de927dd544a84b48e</pre>
 </div>
 </div>
 </div>

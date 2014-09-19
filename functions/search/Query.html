@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -58,7 +59,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul class="current">
+            <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
@@ -83,8 +84,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="Search.html">搜索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Functions.html">功能介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Search.html">搜索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../word_segment/word_segment.html">分词</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sort/sort.html">排序</a></li>
@@ -258,19 +259,18 @@ WAND是Weak（Weighted） AND的缩写，是一种新型的布尔查询方式，
 使WAND查询返回合适的结果，而AND与OR查询则是WAND查询的上界与下界。其查询效率和查询质量
 介于AND 与 OR之间。</p>
 <p>下面给出使用WAND模式查询的实例：</p>
-<div class="highlight-python"><div class="highlight"><pre>{
-    &quot;collection&quot;:&quot;b5mp&quot;,
-    &quot;search&quot;:
+<div class="highlight-python"><pre>{
+    "collection":"b5mp",
+    "search":
     {
-        &quot;keywords&quot;:&quot;she star&quot;,
-        &quot;searching_mode&quot;:
+        "keywords":"she star",
+        "searching_mode":
         {
-            &quot;mode&quot;:&quot;wand&quot;
-            &quot;threshold&quot;:&quot;0.35&quot;
+            "mode":"wand"
+            "threshold":"0.35"
         }
     }
- }
-</pre></div>
+ }</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -308,122 +308,120 @@ WAND是Weak（Weighted） AND的缩写，是一种新型的布尔查询方式，
 </pre></div>
 </div>
 <p>相应Response请求如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>{
-    &quot;header&quot;:
+<div class="highlight-python"><pre>{
+    "header":
     {
-        &quot;success&quot;:true
+        "success":true
     },
-    &quot;resources&quot;:
+    "resources":
     [
         {
-        &quot;Attribute&quot;:&quot;&quot;,
-        &quot;Brand&quot;:&quot;&quot;,
-        &quot;BuyCount&quot;:&quot;&quot;,
-        &quot;Category&quot;:&quot;音乐/影视/明星/音像&gt;音乐CD/DVD&quot;
-        &quot;Combined&quot;:&quot;&quot;,
-        &quot;CommentCount&quot;:&quot;&quot;,
-        &quot;Content&quot;:&quot;&quot;,
-        &quot;DATE&quot;:&quot;20130121T004157&quot;,
-        &quot;DOCID&quot;:&quot;d7dadb40f63c2ecde6e2959db753c54e&quot;,
-        &quot;Fenxiang&quot;:&quot;&quot;,
-        &quot;Guanzhu&quot;:&quot;&quot;,
-        &quot;OldOfferIds&quot;:&quot;&quot;,
-        &quot;OriginalCategory&quot;:&quot;歌曲&gt;其他流行音乐&quot;,
-        &quot;OriginalPicture&quot;:&quot;&quot;,
-        &quot;PicPrpt&quot;:&quot;&quot;,
-        &quot;Picture&quot;:&quot;http://img.b5m.com/image/T1WOhTBQEg1RCvBVdK/&quot;,
-        &quot;Price&quot;:&quot;16.00&quot;,
-        &quot;Score&quot;:&quot;&quot;,
-        &quot;Source&quot;:&quot;230&quot;,
-        &quot;SubSource&quot;:&quot;&quot;,
-        &quot;TargetCategory&quot;:&quot;图书音像&gt;音像&gt;音乐&quot;,
-        &quot;Title&quot;:&quot;SHE奇幻旅程&quot;,
-        &quot;Url&quot;:&quot;http://detail.bookuu.com/0607145.html&quot;,
-        &quot;Xihuan&quot;:&quot;&quot;,
-        &quot;_id&quot;:4631779,
-        &quot;_rank&quot;:10.45418739318848,
-        &quot;itemcount&quot;:&quot;1&quot;,
-        &quot;mobile&quot;:&quot;&quot;
+        "Attribute":"",
+        "Brand":"",
+        "BuyCount":"",
+        "Category":"音乐/影视/明星/音像&gt;音乐CD/DVD"
+        "Combined":"",
+        "CommentCount":"",
+        "Content":"",
+        "DATE":"20130121T004157",
+        "DOCID":"d7dadb40f63c2ecde6e2959db753c54e",
+        "Fenxiang":"",
+        "Guanzhu":"",
+        "OldOfferIds":"",
+        "OriginalCategory":"歌曲&gt;其他流行音乐",
+        "OriginalPicture":"",
+        "PicPrpt":"",
+        "Picture":"http://img.b5m.com/image/T1WOhTBQEg1RCvBVdK/",
+        "Price":"16.00",
+        "Score":"",
+        "Source":"230",
+        "SubSource":"",
+        "TargetCategory":"图书音像&gt;音像&gt;音乐",
+        "Title":"SHE奇幻旅程",
+        "Url":"http://detail.bookuu.com/0607145.html",
+        "Xihuan":"",
+        "_id":4631779,
+        "_rank":10.45418739318848,
+        "itemcount":"1",
+        "mobile":""
     },
     ...
     {
-        &quot;Attribute&quot;:&quot;&quot;,
-        &quot;Brand&quot;:&quot;&quot;,
-        &quot;BuyCount&quot;:&quot;&quot;,
-        &quot;Category&quot;:&quot;钟表首饰&gt;发饰&quot;,
-        &quot;Combined&quot;:&quot;&quot;,
-        &quot;CommentCount&quot;:&quot;&quot;,
-        &quot;Content&quot;:&quot;&quot;,
-        &quot;DATE&quot;:&quot;20130202T074337&quot;,
-        &quot;DOCID&quot;:&quot;7081fba55cf6b50a507044d0322f08fc&quot;,
-        &quot;Fenxiang&quot;:&quot;&quot;,
-        &quot;Guanzhu&quot;:&quot;&quot;,
-        &quot;OldOfferIds&quot;:&quot;&quot;,
-        &quot;OriginalCategory&quot;:&quot;饰品/流行首饰/时尚饰品新&gt;发饰&quot;,
-        &quot;OriginalPicture&quot;:&quot;&quot;,
-        &quot;PicPrpt&quot;:&quot;&quot;,
-        &quot;Picture&quot;:&quot;http://img.b5m.com/image/T1rMVTBm_T1RCvBVdK/&quot;,
-        &quot;Price&quot;:&quot;136.00&quot;,
-        &quot;Score&quot;:&quot;&quot;,
-        &quot;Source&quot;:&quot;403&quot;,
-        &quot;SubSource&quot;:&quot;shes饰品旗舰店@天猫商城&quot;,
-        &quot;TargetCategory&quot;:&quot;珠宝饰品&gt;时尚饰品&gt;头饰&quot;,
-        &quot;Title&quot;:&quot;she&#39;s茜子正品 茜子头箍 浪漫田园印花手工布艺包边带齿发箍发卡&quot;,
-        &quot;Url&quot;:&quot;http://detail.tmall.com/item.htm?id=19695804534&quot;,
-        &quot;Xihuan&quot;:&quot;&quot;,
-        &quot;_id&quot;:6836768,
-        &quot;_rank&quot;:0.4242057502269745,
-        &quot;itemcount&quot;:&quot;1&quot;,
-        &quot;mobile&quot;:&quot;&quot;
+        "Attribute":"",
+        "Brand":"",
+        "BuyCount":"",
+        "Category":"钟表首饰&gt;发饰",
+        "Combined":"",
+        "CommentCount":"",
+        "Content":"",
+        "DATE":"20130202T074337",
+        "DOCID":"7081fba55cf6b50a507044d0322f08fc",
+        "Fenxiang":"",
+        "Guanzhu":"",
+        "OldOfferIds":"",
+        "OriginalCategory":"饰品/流行首饰/时尚饰品新&gt;发饰",
+        "OriginalPicture":"",
+        "PicPrpt":"",
+        "Picture":"http://img.b5m.com/image/T1rMVTBm_T1RCvBVdK/",
+        "Price":"136.00",
+        "Score":"",
+        "Source":"403",
+        "SubSource":"shes饰品旗舰店@天猫商城",
+        "TargetCategory":"珠宝饰品&gt;时尚饰品&gt;头饰",
+        "Title":"she's茜子正品 茜子头箍 浪漫田园印花手工布艺包边带齿发箍发卡",
+        "Url":"http://detail.tmall.com/item.htm?id=19695804534",
+        "Xihuan":"",
+        "_id":6836768,
+        "_rank":0.4242057502269745,
+        "itemcount":"1",
+        "mobile":""
     }
    ],
-&quot;top_k_count&quot;:100,
-&quot;total_count&quot;:18154
-}
-</pre></div>
+"top_k_count":100,
+"total_count":18154
+}</pre>
 </div>
 <p>为了说明use_fuzzy字段的作用，下面给出省略use_fuzzy字段的插叙的response：</p>
-<div class="highlight-python"><div class="highlight"><pre>{
-    &quot;header&quot;:
+<div class="highlight-python"><pre>{
+    "header":
     {
-        &quot;success&quot;:true
+        "success":true
     },
-    &quot;resources&quot;:
+    "resources":
     [
         {
-        &quot;Attribute&quot;:&quot;&quot;,
-        &quot;Brand&quot;:&quot;&quot;,
-        &quot;BuyCount&quot;:&quot;&quot;,
-        &quot;Category&quot;:&quot;音乐/影视/明星/音像&gt;音乐CD/DVD&quot;
-        &quot;Combined&quot;:&quot;&quot;,
-        &quot;CommentCount&quot;:&quot;&quot;,
-        &quot;Content&quot;:&quot;&quot;,
-        &quot;DATE&quot;:&quot;20130121T004157&quot;,
-        &quot;DOCID&quot;:&quot;d7dadb40f63c2ecde6e2959db753c54e&quot;,
-        &quot;Fenxiang&quot;:&quot;&quot;,
-        &quot;Guanzhu&quot;:&quot;&quot;,
-        &quot;OldOfferIds&quot;:&quot;&quot;,
-        &quot;OriginalCategory&quot;:&quot;歌曲&gt;其他流行音乐&quot;,
-        &quot;OriginalPicture&quot;:&quot;&quot;,
-        &quot;PicPrpt&quot;:&quot;&quot;,
-        &quot;Picture&quot;:&quot;http://img.b5m.com/image/T1WOhTBQEg1RCvBVdK/&quot;,
-        &quot;Price&quot;:&quot;16.00&quot;,
-        &quot;Score&quot;:&quot;&quot;,
-        &quot;Source&quot;:&quot;230&quot;,
-        &quot;SubSource&quot;:&quot;&quot;,
-        &quot;TargetCategory&quot;:&quot;图书音像&gt;音像&gt;音乐&quot;,
-        &quot;Title&quot;:&quot;SHE奇幻旅程&quot;,
-        &quot;Url&quot;:&quot;http://detail.bookuu.com/0607145.html&quot;,
-        &quot;Xihuan&quot;:&quot;&quot;,
-        &quot;_id&quot;:4631779,
-        &quot;_rank&quot;:10.45418739318848,
-        &quot;itemcount&quot;:&quot;1&quot;,
-        &quot;mobile&quot;:&quot;&quot;
+        "Attribute":"",
+        "Brand":"",
+        "BuyCount":"",
+        "Category":"音乐/影视/明星/音像&gt;音乐CD/DVD"
+        "Combined":"",
+        "CommentCount":"",
+        "Content":"",
+        "DATE":"20130121T004157",
+        "DOCID":"d7dadb40f63c2ecde6e2959db753c54e",
+        "Fenxiang":"",
+        "Guanzhu":"",
+        "OldOfferIds":"",
+        "OriginalCategory":"歌曲&gt;其他流行音乐",
+        "OriginalPicture":"",
+        "PicPrpt":"",
+        "Picture":"http://img.b5m.com/image/T1WOhTBQEg1RCvBVdK/",
+        "Price":"16.00",
+        "Score":"",
+        "Source":"230",
+        "SubSource":"",
+        "TargetCategory":"图书音像&gt;音像&gt;音乐",
+        "Title":"SHE奇幻旅程",
+        "Url":"http://detail.bookuu.com/0607145.html",
+        "Xihuan":"",
+        "_id":4631779,
+        "_rank":10.45418739318848,
+        "itemcount":"1",
+        "mobile":""
     },
-  &quot;top_k_count&quot;:1,
-  &quot;total_count&quot;:2
-}
-</pre></div>
+  "top_k_count":1,
+  "total_count":2
+}</pre>
 </div>
 <p>该Response与默认搜索模式的Response一致。</p>
 <div class="admonition note">

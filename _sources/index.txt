@@ -11,7 +11,7 @@ SF1R技术文档
 
 .. toctree::
 
-
+    faq/Faq.rst
     basic-concepts/BasicConcepts.rst
     config/HowTo.rst
     build/HowTo.rst
@@ -28,8 +28,6 @@ SF1R技术文档
    API/query-correction/API.rst
    API/collection/API.rst
    API/commands/API.rst
-   API/recommend/API.rst
-   API/log-analysis/API.rst
 
 3. 最佳实践
 ---------------

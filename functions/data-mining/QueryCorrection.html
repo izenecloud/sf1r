@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -230,13 +231,12 @@
 </div></blockquote>
 </div></blockquote>
 <p>对于中文，我们总是用拼音来进行输入。所以我们仅需要做基于汉语拼音的修正。查询字符串可能是纯拼音，纯中文的，或者是拼音和中文的混合。基于拼音汉字字典，他们将会被转换成拼音流。然后，我们将分割成基于拼音块的汉字拼音流。例如</p>
-<div class="highlight-python"><div class="highlight"><pre>zaixinruanjian(载信软件) = &gt; zai    xin     ruan   jian
+<div class="highlight-python"><pre>zaixinruanjian(载信软件) = &gt; zai    xin     ruan   jian
                             在　　  新　    软      件
                             载　    信　    阮　    见
                             再　　  心　    朊　    简
                             灾　　  辛　　　        建
-　　　                              欣　　　        间
-</pre></div>
+　　　                              欣　　　        间</pre>
 </div>
 <p>从所有配对的候选词组中, 找到最佳项 &#8220;载信软件&#8221;.</p>
 <p>如何找到最佳词组？
@@ -244,8 +244,7 @@
 </div>
 <div class="section" id="trigram">
 <h2>Trigram语言模型<a class="headerlink" href="#trigram" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>P(h1h2h3h4)=p(h1).p(h2)p(h2|h1).p(h3)p(h3|h2)p(h3|h1h2).p(h4)p(h4|h3)p(h4|h3h2)
-</pre></div>
+<div class="highlight-python"><pre>P(h1h2h3h4)=p(h1).p(h2)p(h2|h1).p(h3)p(h3|h2)p(h3|h1h2).p(h4)p(h4|h3)p(h4|h3h2)</pre>
 </div>
 <p>这里只考虑三元模型，我们从搜狗语料库中计算出单元二元三元词的频率，并且把频率存储进SDB. 为了减少存储空间, 我们不考虑频率太低的项.</p>
 </div>
@@ -257,8 +256,7 @@
 <p>要构建拼音输入法词库，baidu.com查询更正使用一种新的方法的建议。</p>
 <p>例如，对于中国的那句“银行”，我们可以得到其的拼音候选项“yinhang”和“yinxing”，通过拼音汉字字典。</p>
 <p>通过GET请求baidu.com，</p>
-<div class="highlight-python"><div class="highlight"><pre>“http://www.baidu.com/s?bs=zhongguo&amp;f=8&amp;wd=yinhang”
-</pre></div>
+<div class="highlight-python"><pre>“http://www.baidu.com/s?bs=zhongguo&amp;f=8&amp;wd=yinhang”</pre>
 </div>
 <p>从搜索结果中，我们可以发现，</p>
 <p>您要找的是不是：银行，百度一下，找到相关网页约170,000篇，用时0.070秒</p>

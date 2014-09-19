@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -325,16 +326,15 @@
 <ul class="simple">
 <li>JSON请求的例子：</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre>{
-  &quot;resource&quot;:{
-    &quot;DOCID&quot;:&quot;post.1&quot;,
-    &quot;update&quot;:[
-    {&quot;op&quot;:&quot;add&quot;,&quot;property&quot;:&quot;price&quot;,&quot;opvalue&quot;:&quot;10},
-    {&quot;op&quot;:&quot;add&quot;,&quot;property&quot;:&quot;count&quot;,&quot;opvalue&quot;:&quot;2&quot;}
+<div class="highlight-python"><pre>{
+  "resource":{
+    "DOCID":"post.1",
+    "update":[
+    {"op":"add","property":"price","opvalue":"10},
+    {"op":"add","property":"count","opvalue":"2"}
     ]
   }
-}
-</pre></div>
+}</pre>
 </div>
 </div>
 <div class="section" id="id5">
@@ -363,17 +363,16 @@
 <ul class="simple">
 <li>JSON请求的例子：</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre>{
-  &quot;collection&quot;: &quot;example&quot;,
-  &quot;conditions&quot;: [
-    {&quot;property&quot;: &quot;DOCID&quot;, &quot;operator&quot;: &quot;=&quot;, &quot;value&quot;: &quot;post.1&quot;,id_type=&quot;isbn&quot;}
+<div class="highlight-python"><pre>{
+  "collection": "example",
+  "conditions": [
+    {"property": "DOCID", "operator": "=", "value": "post.1",id_type="isbn"}
   ],
-  &quot;select&quot;: [
-    { &quot;property&quot;: &quot;Title&quot; },
-    { &quot;property&quot;: &quot;Content&quot;}
+  "select": [
+    { "property": "Title" },
+    { "property": "Content"}
   ]
-}
-</pre></div>
+}</pre>
 </div>
 <ul class="simple">
 <li>JSON返回的结果：</li>
@@ -707,16 +706,15 @@
 <ul class="simple">
 <li>JSON请求的例子：</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre>{
-  &quot;collection&quot;: &quot;example&quot;,
-  &quot;duplicate_with&quot;: &quot;1&quot;,
-  &quot;select&quot;: [
-    { &quot;property&quot;: &quot;title&quot; },
-    { &quot;property&quot;: &quot;content&quot;}
+<div class="highlight-python"><pre>{
+  "collection": "example",
+  "duplicate_with": "1",
+  "select": [
+    { "property": "title" },
+    { "property": "content"}
   ]
-  &quot;limit&quot;:10
-}
-</pre></div>
+  "limit":10
+}</pre>
 </div>
 <ul class="simple">
 <li>JSON返回的结果：</li>
@@ -741,15 +739,14 @@
 <ul class="simple">
 <li>JSON请求的例子</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre>{
-  &quot;collection&quot;:&quot;example&quot;,
-  &quot;resource&quot;:
+<div class="highlight-python"><pre>{
+  "collection":"example",
+  "resource":
   {
-    &quot;DOCID&quot;:&quot;12345&quot;,
-    &quot;USERID&quot;:&quot;111&quot;,
-    &quot;session_id&quot;:&quot;session_123&quot;,
-}
-</pre></div>
+    "DOCID":"12345",
+    "USERID":"111",
+    "session_id":"session_123",
+}</pre>
 </div>
 </div>
 </div>

@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -273,8 +274,7 @@ SCD是structured crawled document的缩写，SCD文档是一个文本文件，�
 <div class="section" id="id2">
 <h3>命名规则<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>SF1R通过文件名验证SCD文件的有效性，其命名规则如下:</p>
-<div class="highlight-python"><div class="highlight"><pre>B-&lt;document collector ID(2Bytes)&gt;-&lt;YYYYMMDDHHmm(12Bytes)&gt;-&lt;SSsss(second,millisecond,5Bytes&gt;-&lt;I/U/D/R(1Bytes)&gt;-&lt;C/F(1Byte)&gt;.SCD
-</pre></div>
+<div class="highlight-python"><pre>B-&lt;document collector ID(2Bytes)&gt;-&lt;YYYYMMDDHHmm(12Bytes)&gt;-&lt;SSsss(second,millisecond,5Bytes&gt;-&lt;I/U/D/R(1Bytes)&gt;-&lt;C/F(1Byte)&gt;.SCD</pre>
 </div>
 <p>任何不符合上述命名规则的文件都将被视为非法文件而丢弃。</p>
 <dl class="docutils">
@@ -363,29 +363,26 @@ SCD是structured crawled document的缩写，SCD文档是一个文本文件，�
 <p class="last">SCD中每一个K-V对，遵循格式“&lt;FiledName&gt;Field Content”。</p>
 </div>
 <p>下面给出一个SCD文档的实例：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;DOCID&gt;#1#1166452314021
+<div class="highlight-python"><pre>&lt;DOCID&gt;#1#1166452314021
 &lt;title&gt;SomeTitle 1
 &lt;writer&gt;SomeAuthor 1
 &lt;writeremail&gt;SomeAuthor@gmail.com
 &lt;content&gt;.......
 &lt;DOCID&gt;#1#1166452314023
-............
-</pre></div>
+............</pre>
 </div>
 <p>Insert 和 Update类型的SCD文档实例如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;DOCID&gt;#1#1166452314021
+<div class="highlight-python"><pre>&lt;DOCID&gt;#1#1166452314021
 &lt;Date&gt; 20030922203324
 &lt;title&gt; WISEnut changes the search engine landscape yet again
 &lt;subtitle&gt; WISEnut scores another deal with a major corporation
 &lt;writer&gt;Some Author
 &lt;writeremail&gt;SomeAuthor@gmail.com
-&lt;content&gt;WISEnut has agreed to provide search solution service to a leading credit card company in Korea. The service is expected to start at the beginning of the next month.
-</pre></div>
+&lt;content&gt;WISEnut has agreed to provide search solution service to a leading credit card company in Korea. The service is expected to start at the beginning of the next month.</pre>
 </div>
 <p>Delete类型的文档实例如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;DOCID&gt;#1#1166452116647
-&lt;DOCID&gt;#1#1166452314021
-</pre></div>
+<div class="highlight-python"><pre>&lt;DOCID&gt;#1#1166452116647
+&lt;DOCID&gt;#1#1166452314021</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -397,7 +394,7 @@ SCD是structured crawled document的缩写，SCD文档是一个文本文件，�
 <h2>数据文件目录<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>这部分对SF1的数据文件进行介绍</p>
 <p>数据文件目录结构如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>./
+<div class="highlight-python"><pre>./
 |---collection
     |---example
         |---collection-data
@@ -412,8 +409,7 @@ SCD是structured crawled document的缩写，SCD文档是一个文本文件，�
     |---example.xml
     |---sf1config.xml
 |---log
-|---query-support
-</pre></div>
+|---query-support</pre>
 </div>
 <p>sf1目录结构介绍：</p>
 <ul>

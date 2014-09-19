@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -58,7 +59,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul class="current">
+            <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html">基本概念</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#collection">collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../basic-concepts/BasicConcepts.html#scd">什么是SCD，格式</a></li>
@@ -83,8 +84,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../build/HowTo.html#id9">如何运行二进制文件</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Functions.html">功能介绍</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="Search.html">搜索</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Functions.html">功能介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Search.html">搜索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index/Index.html">索引</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../word_segment/word_segment.html">分词</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sort/sort.html">排序</a></li>
@@ -218,16 +219,15 @@
 <h2>配置文件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>如果需要sf1针对某个属性对用户输入的关键词进行意图预测，则需要在MiningBundle的QueryIntent
 部分配置该属性，示例如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;MiningBundle&gt;
+<div class="highlight-python"><pre>&lt;MiningBundle&gt;
    &lt;Schema&gt;
      ...
      &lt;QueryIntent&gt;
-       &lt;Property name=&quot;TargetCategory&quot; type=&quot;trie&quot; operator=&quot;starts_with&quot; operands=&quot;1&quot;/&gt;
-       &lt;Property name=&quot;Source&quot; type=&quot;lexicon&quot; operator=&quot;in&quot; operands=&quot;-1&quot;/&gt;
+       &lt;Property name="TargetCategory" type="trie" operator="starts_with" operands="1"/&gt;
+       &lt;Property name="Source" type="lexicon" operator="in" operands="-1"/&gt;
      &lt;/QueryIntent&gt;
    &lt;/Schema&gt;
- &lt;/MiningBundle&gt;
-</pre></div>
+ &lt;/MiningBundle&gt;</pre>
 </div>
 <p>配置文件中各参数解释如下：</p>
 <table border="1" class="docutils">
@@ -266,7 +266,7 @@
 <h2>资源文件格式<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>预测器trie与lexicon都是基于词典的精确匹配，结构如下：</p>
 <p>trie词典格式:</p>
-<div class="highlight-python"><div class="highlight"><pre>个护化妆
+<div class="highlight-python"><pre>个护化妆
 [
     口腔护理
     [
@@ -274,21 +274,18 @@
         牙膏/牙粉
         牙齿美白仪
     ]
-]
-</pre></div>
+]</pre>
 </div>
 <p>同时，可以为trie词典指定同义词，文件格式如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>保护套 保护壳:手机保护套 笔记本保护套
-充电器:手机充电器
-</pre></div>
+<div class="highlight-python"><pre>保护套 保护壳:手机保护套 笔记本保护套
+充电器:手机充电器</pre>
 </div>
 <p>其中，&#8221;保护套 保护壳:手机保护套&#8221;表示“保护套”与“保护壳”的同义词为“手机保护壳”。这样，如果
 用户关键词中出现“保护套”或“保护壳”，则映射到“手机保护套”或者“笔记本保护套”</p>
 <p>lexicon词典格式:</p>
-<div class="highlight-python"><div class="highlight"><pre>卓越亚马逊:卓越;亚马逊;amazon
+<div class="highlight-python"><pre>卓越亚马逊:卓越;亚马逊;amazon
 天猫:天猫商城
-文轩网官网:文轩;文轩网
-</pre></div>
+文轩网官网:文轩;文轩网</pre>
 </div>
 <p>其中，“：”之前为sf1内部使用的标准名称，之后即为该名称对应的同义词。</p>
 </div>
@@ -301,7 +298,7 @@
 <div class="section" id="id5">
 <h2>资源文件更新<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>配置文件示例如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>nginx:
+<div class="highlight-python"><pre>nginx:
     ip: localhost
     port: 8888
 
@@ -315,8 +312,7 @@ directory: ../../../package/resource/query-intent
 lexicon:
     - Source
 trie:
-    - TargetCategory
-</pre></div>
+    - TargetCategory</pre>
 </div>
 <p>其中，需要说明的参数如下：</p>
 <table border="1" class="docutils">
@@ -351,25 +347,23 @@ cron模式：每天凌晨两点自动更新;
 <p class="last">对于lexicon类型的资源文件，可以手动修改</p>
 </div>
 <p>用法：</p>
-<div class="highlight-python"><div class="highlight"><pre>./cron.rb
-</pre></div>
+<div class="highlight-python"><pre>./cron.rb</pre>
 </div>
 </div>
 <div class="section" id="api">
 <h2>查询意图API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
 <p>默认情况下，该组件将对所有配置文件中的属性做意图预测操作，
 用户也可以通过API指定某一个或几个属性，示例如下：</p>
-<div class="highlight-python"><div class="highlight"><pre>{
-  &quot;collection&quot; : &quot;b5mp&quot;,
-  &quot;search&quot; : {
-    &quot;keywords&quot; : &quot;京东&quot;
+<div class="highlight-python"><pre>{
+  "collection" : "b5mp",
+  "search" : {
+    "keywords" : "京东"
   },
-  &quot;query_intent&quot;: [
-    {&quot;property&quot; : &quot;Source&quot;}
+  "query_intent": [
+    {"property" : "Source"}
   ],
   .....
-}
-</pre></div>
+}</pre>
 </div>
 <p>该示例指定查询意图组件只对“Source”属性做意图预测。</p>
 </div>
