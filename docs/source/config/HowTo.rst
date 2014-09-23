@@ -77,17 +77,6 @@ LogServerConnection
 
   <LogServerConnection host="10.10.99.121" rpcport="18811" rpc_thread_num="30" driverport="18812"/>
 
-CassandraConnection
-~~~~~~~~~~~~~~~~~~~~~~~
-
-该参数表示连接Cassandra命令。
-
-::
-
-  <CassandraConnection str="cassandra://10.10.99.107"/>
-
-.. note::
-    可指定用户名和密码，str="cassandra://[username:passpord@]host:port"。不支持IPv6，若参数不符合格式则认为是禁用Cassandra。
 
 IndexBundle
 ~~~~~~~~~~~~~~~~~

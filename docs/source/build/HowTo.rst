@@ -1,7 +1,7 @@
 如何编译安装
 ============
 
-SF1安装包包括二进制文件和所有依赖的动态链接库，还有一些资源文件，
+SF1R安装包包括二进制文件和所有依赖的动态链接库，还有一些资源文件，
 这些文件主要是用于查询纠错，TG，命名实体识别，文本分类等特征。
 
 依赖包安装
@@ -41,35 +41,37 @@ SF1安装包包括二进制文件和所有依赖的动态链接库，还有一�
     cd /usr/lib64/mysql
     sudo ln -s libmysqlclient.so.18.0.0 libmysqlclient.so
 
+
+.. note::
+    最近，我们已经把全部项目升级到C++ 11，因此编译SF1R需要GCC 4.8版本，
+    同时，我们不推荐采用Ubuntu系统，因为链接器对于系统循环依赖要求较高。
+    推荐使用CentOS/Redhat系统进行编译。
+
+
+
 第三方库安装
 ------------
 
 需要手动安装的第三方库包括：
 
-`boost 1.53`_
+`boost 1.56`_
 
 `Tokyo Cabinet`_ 
 
 `google-glog`_ 
 
-`thrift`_ 
+.. _boost 1.56: http://www.boost.org
+.. _Tokyo Cabinet: https://github.com/izenecloud/thirdparty/tree/master/tokyocabinet
+.. _google-glog: https://github.com/izenecloud/thirdparty/tree/master/glog 
 
-`图像依赖库`_
 
-.. _boost 1.53: https://sourceforge.net/projects/boost/files/boost/1.53.0/boost_1_53_0.tar.bz2/download
-.. _Tokyo Cabinet: http://fallabs.com/tokyocabinet/ 
-.. _google-glog: http://code.google.com/p/google-glog/downloads/list 
-.. _thrift: http://www.apache.org/dyn/closer.cgi?path=/thrift/0.7.0/thrift-0.7.0.tar.gz 
-.. _图像依赖库: https://ssl.izenesoft.cn/projects/3rdparty-repository
-
-以上依赖库除了boost外均在3rdparty-repository下有备份，可以直接从该仓库下找到对应的文件编译安装。
 
 另外，不建议采用系统默认的方式安装boost，而应当采用编译安装：
 
 ::
     
     ./booststrap.sh
-    ./b2
+    ./b2 cxxflags="-std=c++11"
     ./b2 install
 
 因为默认复制的方式安装boost，会导致符号链接被覆盖，从而影响CMake在打包过程中的依赖判断.
@@ -98,7 +100,7 @@ F1的Ruby driver有2个用途：通过socket向SF1发送API；同步资源文件
 
     #!/usr/bin/env bash
 
-    projects=(driver-ruby cmake izenelib icma ijma wisekma ilplib imllib idmlib sf1r-engine sf1r-logserver)
+    projects=(driver-ruby cmake izenelib icma ijma ilplib idmlib sf1r-engine)
 
     element_count=${#projects[@]}
     index=0
@@ -113,9 +115,6 @@ F1的Ruby driver有2个用途：通过socket向SF1发送API；同步资源文件
         let "index = $index + 1"
     done
 
-    #同步SF1资源文件，需要确保ruby driver安装成功
-    cd sf1r-engine
-    sf1r-resource pull --force
 
 如何编译SF1代码
 ----------------
@@ -147,15 +146,12 @@ F1的Ruby driver有2个用途：通过socket向SF1发送API；同步资源文件
     export IZENELIB="/home/yourname/codebase/izenelib"
     export ILPLIB="/home/yourname/codebase/ilplib"
     export IDMLIB="/home/yourname/codebase/idmlib"
-    export IMLLIB="/home/yourname/codebase/imllib"
-    export IISE_ROOT="/home/yourname/codebase/iise"
     export IZENECMA="/home/yourname/codebase/icma"
     export IZENEJMA="/home/yourname/codebase/ijma"
-    export WISEKMA="/home/yourname/codebase/wisekma"
     export EXTRA_CMAKE_MODULES_DIRS="/home/yourname/codebase/cmake"
     export LIBXML2="/usr/include/libxml2"
     export WKO_BUILD="ia64-glibc27-gcc41"
-    export LD_LIBRARY_PATH=/usr/local/lib:$IZENELIB/lib:$IDMLIB/lib:$IMLLIB/lib:$IISE_ROOT/lib:$WISEKMA:$IZENECMA/lib:$IZENEJMA/lib:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=/usr/local/lib:$IZENELIB/lib:$IDMLIB/lib:$IZENECMA/lib:$IZENEJMA/lib:$LD_LIBRARY_PATH
 
 如何打包
 ----------
@@ -165,7 +161,6 @@ F1的Ruby driver有2个用途：通过socket向SF1发送API；同步资源文件
 ::
     
     cd $SF1_ROOT
-    ./sf1r-resource pull --force
     cd build
     make
     make package

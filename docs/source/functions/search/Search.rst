@@ -6,4 +6,4 @@
     Query.rst
     Render.rst
     Group.rst
-    QueryIntent.rst
+
