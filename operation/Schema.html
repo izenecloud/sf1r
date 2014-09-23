@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>B5M站点配置说明 &mdash; sf1-doc 0.1 documentation</title>
+  <title>配置样例 &mdash; sf1-doc 0.1 documentation</title>
   
 
   
@@ -30,7 +30,6 @@
 
   
     <link rel="top" title="sf1-doc 0.1 documentation" href="../index.html"/>
-        <link rel="next" title="商品collection配置说明" href="Product.html"/>
         <link rel="prev" title="命令API" href="../API/commands/API.html"/> 
 
   
@@ -85,10 +84,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id4">第三方库安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#sf1">如何下载SF1代码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id6">如何编译SF1代码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id7">如何打包</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id8">编辑打包脚本</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id9">如何运行二进制文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id5">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id6">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id7">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build/HowTo.html#id8">如何运行二进制文件</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../functions/Functions.html">功能介绍</a><ul>
@@ -96,10 +95,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../functions/index/Index.html">索引</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions/word_segment/word_segment.html">分词</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions/sort/sort.html">排序</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../functions/recommend/Recommend.html">推荐</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/QueryCorrection.html">查询纠错</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/Matcher.html">自动比价</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../functions/data-mining/AutoFill.html">自动补全</a></li>
 </ul>
 </li>
 </ul>
@@ -116,13 +111,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id4">原地更新文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id5">获取文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id6">获取文档数量</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id7">记录分组点击</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#label">设置查询分组Label映射</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id8">获取频繁点击分组Label</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id9">获取重复文档</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id10">获取文档摘要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id11">获取相似文档</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../API/document/API.html#id12">访问文档</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../API/collection/API.html">collection日常维护与管理</a><ul>
@@ -149,12 +137,8 @@
 <ul class="simple">
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">B5M站点配置说明</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">配置样例</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#collection">collection集合</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Product.html">商品collection配置说明</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Product.html#id1">字段约定</a></li>
 </ul>
 </li>
 </ul>
@@ -180,7 +164,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>B5M站点配置说明</li>
+    <li>配置样例</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="../_sources/operation/Schema.txt" rel="nofollow"> View page source</a>
@@ -191,479 +175,204 @@
 </div>
           <div role="main">
             
-  <div class="section" id="b5m">
-<h1>B5M站点配置说明<a class="headerlink" href="#b5m" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1>配置样例<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="collection">
 <h2>collection集合<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h2>
-<p>B5M站点根据需求配置collection，分别定义如下：</p>
 <ul class="simple">
-<li>商品相关</li>
+<li>商品</li>
 </ul>
-<p>B5M对商品提供自动比价，比价之前来自每商家的商品被定义为Offer，比价之后聚合的商品被定义为Product，
-Offer和Product均放入不同的collection，分别为b5mo和b5mp，类似的，商品的评论放入b5mc集合中。
-爬虫抓来的商品数据，首先会放入一个离线的计算工具来计算比价信息，然后分别输出结果到b5mo和b5mp中，此外，
-如果有评论信息，也会同时聚合。</p>
-<p>b5mo的主要配置字段如下：</p>
+<p>一个复杂的团购商品Tuan.xml配置样例字段如下，启用了Zambezi索引和Suffix索引</p>
 <div class="highlight-python"><pre>&lt;DocumentSchema&gt;
   &lt;Property name="DOCID" type="string" /&gt;
-  &lt;Property name="Url" type="string"/&gt;
+  &lt;Property name="Url" type="string" /&gt;
+  &lt;Property name="WapUrl" type="string" /&gt;
+  &lt;Property name="WapBuyUrl" type="string" /&gt;
+  &lt;Property name="Source" type="string" /&gt;
+  &lt;Property name="SourceUrl" type="string" /&gt;
+  &lt;Property name="City" type="string" /&gt;
+  &lt;Property name="Category" type="string" /&gt;
+  &lt;Property name="OrigCategory" type="string" /&gt;
+  &lt;Property name="SubCategory" type="string" /&gt;
+  &lt;Property name="Characteristic" type="string" /&gt;
+  &lt;Property name="Destination" type="string" /&gt;
+  &lt;Property name="ThirdCategory" type="string" /&gt;
+  &lt;Property name="Major" type="string" /&gt;
   &lt;Property name="Title" type="string" /&gt;
+  &lt;Property name="ShortTitle" type="string" /&gt;
   &lt;Property name="Picture" type="string" /&gt;
   &lt;Property name="OriginalPicture" type="string" /&gt;
+  &lt;Property name="TimeBegin" type="datetime" /&gt;
+  &lt;Property name="TimeEnd" type="datetime" /&gt;
   &lt;Property name="Price" type="float" /&gt;
-  &lt;Property name="Brand" type="string" /&gt;
-  &lt;Property name="Source" type="string" /&gt;
-  &lt;Property name="Category" type="string" /&gt;
-  &lt;Property name="TargetCategory" type="string" /&gt;
-  &lt;Property name="OriginalCategory" type="string" /&gt;
+  &lt;Property name="PriceOrign" type="float" /&gt;
+  &lt;Property name="Discount" type="float" /&gt;
+  &lt;Property name="Sales" type="int32" /&gt;
+  &lt;Property name="ProductName" type="string" /&gt;
+  &lt;Property name="SpendEndTime" type="datetime" /&gt;
+  &lt;Property name="Refund" type="int32" /&gt;
+  &lt;Property name="Reservation" type="int32" /&gt;
+  &lt;Property name="Tips" type="string" /&gt;
+  &lt;Property name="LimitDesc" type="string" /&gt;
+  &lt;Property name="OnSaleStatus" type="string" /&gt;
+  &lt;Property name="WapOrderUrl" type="string" /&gt;
+  &lt;Property name="BandName" type="string" /&gt;
+  &lt;Property name="MainName" type="string" /&gt;
+  &lt;Property name="MainTel" type="string" /&gt;
+  &lt;Property name="MainAddr" type="string" /&gt;
+  &lt;Property name="MainCoords" type="string" /&gt;
+  &lt;Property name="MainArea" type="string" /&gt;
+  &lt;Property name="MainDPShopId" type="string" /&gt;
+  &lt;Property name="MerchantName" type="string" /&gt;
+  &lt;Property name="MerchantArea" type="string" /&gt;
+  &lt;Property name="MerchantAddr" type="string" /&gt;
+  &lt;Property name="MerchantTel" type="string" /&gt;
+  &lt;Property name="MerchantCoords" type="string" /&gt;
+  &lt;Property name="MerchantDPShopId" type="string" /&gt;
+  &lt;Property name="MerchantOpenTime" type="string" /&gt;
+  &lt;Property name="MerchantTrafficInfo" type="string" /&gt;
+  &lt;Property name="Coupon" type="int32" /&gt;
+  &lt;Property name="Wifi" type="int32" /&gt;
+  &lt;Property name="itemcount" type="int32" /&gt;
+  &lt;Property name="GeoHash" type="string" /&gt;
+  &lt;Property name="ShopCoords" type="double" /&gt;
+  &lt;Property name="TFSPicture" type="string" /&gt;
   &lt;Property name="Attribute" type="string" /&gt;
-  &lt;Property name="Content" type="string" /&gt;
-  &lt;Property name="uuid" type="string" /&gt;
-  &lt;Property name="olduuid" type="string" /&gt;
-  &lt;Property name="mobile" type="int32" /&gt;
-  &lt;Property name="PicPrpt" type="string" /&gt;
+  &lt;Property name="Detail" type="string" /&gt;
+  &lt;Property name="Subway" type="string" /&gt;
+  &lt;Property name="Landmarks" type="string" /&gt;
 &lt;/DocumentSchema&gt;
-
-
 &lt;IndexBundle&gt;
-  &lt;Schema&gt;
-    &lt;Property name="Title"&gt;
+&lt;ShardSchema&gt;
+  &lt;ShardKey name="DOCID" /&gt;
+  &lt;DistributedService type="search" /&gt;
+&lt;/ShardSchema&gt;
+&lt;Schema&gt;
+    &lt;Property name="Source"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="SourceUrl"&gt;
       &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
     &lt;/Property&gt;
-
-    &lt;Property name="uuid"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-
-    &lt;Property name="Category"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.6" /&gt;
-    &lt;/Property&gt;
-
-    &lt;Property name="Price"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-
-    &lt;Property name="Source"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-
-    &lt;Property name="mobile"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-  &lt;/Schema&gt;
-&lt;/IndexBundle&gt;
-
-&lt;MiningBundle&gt;
-  &lt;Schema&gt;
-    &lt;QueryRecommend&gt;
-      &lt;QueryLog /&gt;
-    &lt;/QueryRecommend&gt;
-    &lt;Group&gt;
-      &lt;Property name="TargetCategory" /&gt;
-      &lt;Property name="Source" /&gt;
-    &lt;/Group&gt;
-    &lt;Attr&gt;
-      &lt;Property name="Attribute" /&gt;
-      &lt;Exclude name="ISBN" /&gt;
-    &lt;/Attr&gt;
-    &lt;ProductRanking&gt;
-      &lt;Score type="diversity" property="Source" /&gt;
-      &lt;Score type="merchant" property="Source" /&gt;
-      &lt;Score type="category" property="TargetCategory" weight="1" /&gt;
-      &lt;Score type="relevance" weight="0.01" /&gt;
-    &lt;/ProductRanking&gt;
-    &lt;SuffixMatch&gt;
-      &lt;Property name="Title" /&gt;
-      &lt;TokenizeDictionary path="fmindex_dic" /&gt;
-      &lt;Incremental enable="no" /&gt;
-      &lt;FilterProperty name="TargetCategory" filtertype="group" /&gt;
-      &lt;FilterProperty name="Source" filtertype="group" /&gt;
-      &lt;FilterProperty name="Price" filtertype="numeric" /&gt;
-    &lt;/SuffixMatch&gt;
-  &lt;/Schema&gt;
-&lt;/MiningBundle&gt;</pre>
-</div>
-<p>b5mp的主要配置字段如下:</p>
-<div class="highlight-python"><pre>&lt;DocumentSchema&gt;
-
-  &lt;Property name="DOCID" type="string" /&gt;
-  &lt;Property name="OldOfferIds" type="string" /&gt;
-  &lt;Property name="Url" type="string"/&gt;
-  &lt;Property name="Title" type="string" /&gt;
-  &lt;Property name="Picture" type="string" /&gt;
-  &lt;Property name="OriginalPicture" type="string" /&gt;
-  &lt;Property name="Price" type="float" /&gt;
-  &lt;Property name="Brand" type="string" /&gt;
-  &lt;Property name="Source" type="string" /&gt;
-  &lt;Property name="Category" type="string" /&gt;
-  &lt;Property name="TargetCategory" type="string" /&gt;
-  &lt;Property name="OriginalCategory" type="string" /&gt;
-  &lt;Property name="Attribute" type="string" /&gt;
-  &lt;Property name="Content" type="string" /&gt;
-  &lt;Property name="Xihuan" type="int32" /&gt;
-  &lt;Property name="Fenxiang" type="int32" /&gt;
-  &lt;Property name="Guanzhu" type="int32" /&gt;
-  &lt;Property name="BuyCount" type="int32" /&gt;
-  &lt;Property name="itemcount" type="int32" /&gt;
-  &lt;Property name="Score" type="float" /&gt;
-  &lt;Property name="CommentCount" type="int32" /&gt;
-  &lt;Property name="mobile" type="int32" /&gt;
-  &lt;Property name="PicPrpt" type="string" /&gt;
-&lt;/DocumentSchema&gt;
-
-
-&lt;IndexBundle&gt;
-  &lt;Schema&gt;
-    &lt;Property name="Title"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.8" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Price"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" tokenizer="" rankweight="0.1" range="yes" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Brand"&gt;
-      &lt;Indexing filter="yes" multivalue="yes" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Source"&gt;
-      &lt;Indexing filter="yes" multivalue="yes" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="TargetCategory"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.6" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Category"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.6" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Attribute"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.2" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Xihuan"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Fenxiang"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Guanzhu"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="BuyCount"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="itemcount"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="CommentCount"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Score"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="mobile"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;VirtualProperty name="Combined"&gt;
-      &lt;SubProperty name="Title" /&gt;
-      &lt;SubProperty name="Source" /&gt;
-      &lt;SubProperty name="Category" /&gt;
-    &lt;/VirtualProperty&gt;
-  &lt;/Schema&gt;
-&lt;/IndexBundle&gt;
-
-&lt;MiningBundle&gt;
-  &lt;Schema&gt;
-    &lt;QueryRecommend&gt;
-      &lt;QueryLog /&gt;
-    &lt;/QueryRecommend&gt;
-    &lt;Group&gt;
-      &lt;Property name="TargetCategory" /&gt;
-      &lt;Property name="Brand" /&gt;
-      &lt;Property name="Source" /&gt;
-    &lt;/Group&gt;
-    &lt;Attr&gt;
-      &lt;Property name="Attribute" /&gt;
-      &lt;Exclude name="ISBN" /&gt;
-    &lt;/Attr&gt;
-    &lt;ProductRanking&gt;
-      &lt;Score type="custom" weight="100" /&gt;
-      &lt;Score type="category" property="TargetCategory" weight="10" /&gt;
-      &lt;Score type="relevance" weight="0.001" /&gt;
-      &lt;Score type="diversity" property="Source" /&gt;
-      &lt;Score type="fuzzy" weight="0.1" /&gt;
-      &lt;Score type="popularity" weight="1"&gt;
-        &lt;Score property="itemcount" weight="1" /&gt;
-        &lt;Score property="Score" weight="0.8" /&gt;
-        &lt;Score property="Fenxiang" weight="0.5" /&gt;
-        &lt;Score property="Guanzhu" weight="0.5" /&gt;
-        &lt;Score property="Xihuan" weight="0.5" /&gt;
-        &lt;Score property="BuyCount" weight="0.5" /&gt;
-        &lt;Score property="_ctr" weight="0.5" /&gt;
-        &lt;Score property="DATE" weight="0.2" /&gt;
-      &lt;/Score&gt;
-    &lt;/ProductRanking&gt;
-    &lt;SuffixMatch&gt;
-      &lt;Property name="Title" /&gt;
-      &lt;TokenizeDictionary path="product" /&gt;
-      &lt;Incremental enable="no" /&gt;
-      &lt;FilterProperty name="TargetCategory" filtertype="group" /&gt;
-      &lt;FilterProperty name="Source" filtertype="group" /&gt;
-      &lt;FilterProperty name="Brand" filtertype="group" /&gt;
-      &lt;FilterProperty name="Price" filtertype="numeric" /&gt;
-    &lt;/SuffixMatch&gt;
-  &lt;/Schema&gt;
-&lt;/MiningBundle&gt;
-
-&lt;RecommendBundle&gt;
-  &lt;Schema&gt;
-    &lt;User&gt;
-      &lt;Property name="gender" /&gt;
-      &lt;Property name="age" /&gt;
-      &lt;Property name="area" /&gt;
-    &lt;/User&gt;
-    &lt;Track&gt;
-      &lt;Event name="wish_list" /&gt;
-      &lt;Event name="own" /&gt;
-      &lt;Event name="like" /&gt;
-      &lt;Event name="favorite" /&gt;
-    &lt;/Track&gt;
-  &lt;/Schema&gt;
-&lt;/RecommendBundle&gt;</pre>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">b5mo和b5mp之间通过uuid字段进行关联</p>
-</div>
-<p>b5mc的配置字段如下:</p>
-<div class="highlight-python"><pre>&lt;DocumentSchema&gt;
-
-  &lt;Property name="DOCID" type="string"/&gt;
-
-  &lt;Property name="uuid" type="string"/&gt;
-
-  &lt;Property name="DATE" type="datetime"/&gt;
-
-  &lt;Property name="ComUrl" type="string"/&gt;
-
-  &lt;Property name="ProdDocid" type="string"/&gt;
-
-  &lt;Property name="ProdName" type="string"/&gt;
-
-  &lt;Property name="Source" type="string"/&gt;
-
-  &lt;Property name="UserName" type="string"/&gt;
-
-  &lt;Property name="UsefulVoteTotal" type="int32"/&gt;
-
-  &lt;Property name="UsefulVote" type="int32"/&gt;
-
-  &lt;Property name="Content" type="string"/&gt;
-  &lt;Property name="Advantage" type="string"/&gt;
-  &lt;Property name="Disadvantage" type="string"/&gt;
-
-  &lt;Property name="Title" type="string"/&gt;
-  &lt;Property name="City" type="string"/&gt;
-
-  &lt;Property name="Score" type="int32"/&gt;
-&lt;/DocumentSchema&gt;
-
-&lt;IndexBundle&gt;
-  &lt;Schema&gt;
-    &lt;Property name="Title"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.8"/&gt;
-    &lt;/Property&gt;
-
-    &lt;Property name="Content"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.2"/&gt;
-    &lt;/Property&gt;
-
-    &lt;Property name="Advantage"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.2"/&gt;
-    &lt;/Property&gt;
-
-    &lt;Property name="Disadvantage"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.2"/&gt;
-    &lt;/Property&gt;
-
-    &lt;Property name="Source"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no"/&gt;
-    &lt;/Property&gt;
-
     &lt;Property name="City"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no"/&gt;
-    &lt;/Property&gt;
-
-    &lt;Property name="ProdDocid"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no"/&gt;
-    &lt;/Property&gt;
-
-    &lt;Property name="uuid"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no"/&gt;
-    &lt;/Property&gt;
-
-    &lt;Property name="Score"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no"/&gt;
-    &lt;/Property&gt;
-
-  &lt;/Schema&gt;
-
-&lt;/IndexBundle&gt;
-
-&lt;MiningBundle&gt;
-  &lt;Schema&gt;
-    &lt;Group&gt;
-      &lt;Property name="Score" /&gt;
-      &lt;Property name="Source" /&gt;
-    &lt;/Group&gt;
-    &lt;ProductRanking&gt;
-      &lt;Score type="diversity" property="Source" /&gt;
-    &lt;/ProductRanking&gt;
-    &lt;Summarization&gt;
-      &lt;DocidProperty name="DOCID"/&gt;
-      &lt;UuidProperty name="uuid"/&gt;
-      &lt;ContentProperty name="Content"/&gt;
-      &lt;AdvantageProperty name="Advantage"/&gt;
-      &lt;DisadvantageProperty name="Disadvantage"/&gt;
-      &lt;TitleProperty name="Title"/&gt;
-      &lt;ScoreProperty name="Score"/&gt;
-      &lt;CommentCountProperty name="CommentCount"/&gt;
-      &lt;OpinionProperty name="Opinion" /&gt;
-      &lt;OpinionWorkingPath path="./collection/b5mc/opinion_working/" /&gt;
-      &lt;OpinionSyncId name="b5m" /&gt;
-    &lt;/Summarization&gt;
-  &lt;/Schema&gt;
-&lt;/MiningBundle&gt;</pre>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">b5mc和b5mp之间通过uuid字段进行关联，b5mc和b5mo之间通过ProdDocid字段进行关联</p>
-</div>
-<ul class="simple">
-<li>团购相关</li>
-</ul>
-<p>团购也提供比价，但出于历史原因，并没有采用类似商品的Offer-Product映射关联，而是直接采用online
-计算提供，与Offer对应的集合叫tuanm，与Product对应的集合叫tuana。</p>
-<p>tuanm对应的配置:</p>
-<div class="highlight-python"><pre>&lt;DocumentSchema&gt;
-
-  &lt;Property name="DOCID" type="string" /&gt;
-  &lt;Property name="SourceUrl" type="string" /&gt;
-  &lt;Property name="City" type="string" /&gt;
-  &lt;Property name="Url" type="string"/&gt;
-  &lt;Property name="Title" type="string" /&gt;
-  &lt;Property name="Discount" type="float" /&gt;
-  &lt;Property name="Source" type="string" /&gt;
-  &lt;Property name="MerchantAddr" type="string" /&gt;
-  &lt;Property name="Content" type="string" /&gt;
-  &lt;Property name="Sales" type="int32" /&gt;
-  &lt;Property name="TimeBegin" type="string" /&gt;
-  &lt;Property name="TimeEnd" type="string" /&gt;
-  &lt;Property name="PriceOrign" type="float" /&gt;
-  &lt;Property name="MerchantName" type="string" /&gt;
-  &lt;Property name="MerchantTel" type="string" /&gt;
-  &lt;Property name="MerchantArea" type="string" /&gt;
-  &lt;Property name="Price" type="float" /&gt;
-  &lt;Property name="Category" type="string" /&gt;
-  &lt;Property name="OriginalCategory" type="string" /&gt;
-  &lt;Property name="SubCategory" type="string" /&gt;
-  &lt;Property name="Picture" type="string" /&gt;
-  &lt;Property name="OriginalPicture" type="string" /&gt;
-  &lt;Property name="uuid" type="string" /&gt;
-
-
-&lt;/DocumentSchema&gt;
-
-
-&lt;IndexBundle&gt;
-  &lt;Schema&gt;
-    &lt;Property name="Title"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="uuid"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Price"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-  &lt;/Schema&gt;
-&lt;/IndexBundle&gt;</pre>
-</div>
-<p>tuana对应的配置:</p>
-<div class="highlight-python"><pre>&lt;DocumentSchema&gt;
-
-  &lt;Property name="DOCID" type="string" /&gt;
-  &lt;Property name="SourceUrl" type="string" /&gt;
-  &lt;Property name="City" type="string" /&gt;
-  &lt;Property name="Url" type="string"/&gt;
-  &lt;Property name="Title" type="string" /&gt;
-  &lt;Property name="Discount" type="float" /&gt;
-  &lt;Property name="Source" type="string" /&gt;
-  &lt;Property name="MerchantAddr" type="string" /&gt;
-  &lt;Property name="Content" type="string" /&gt;
-  &lt;Property name="Sales" type="int32" /&gt;
-  &lt;Property name="TimeBegin" type="string" /&gt;
-  &lt;Property name="TimeEnd" type="string" /&gt;
-  &lt;Property name="PriceOrign" type="float" /&gt;
-  &lt;Property name="MerchantName" type="string" /&gt;
-  &lt;Property name="MerchantArea" type="string" /&gt;
-  &lt;Property name="MerchantTel" type="string" /&gt;
-  &lt;Property name="Price" type="float" /&gt;
-  &lt;Property name="Category" type="string" /&gt;
-  &lt;Property name="OriginalCategory" type="string" /&gt;
-  &lt;Property name="SubCategory" type="string" /&gt;
-  &lt;Property name="Picture" type="string" /&gt;
-  &lt;Property name="OriginalPicture" type="string" /&gt;
-  &lt;Property name="itemcount" type="int32" /&gt;
-
-&lt;/DocumentSchema&gt;
-
-
-&lt;IndexBundle&gt;
-  &lt;Schema&gt;
-    &lt;Property name="Title"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.8" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Price"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" tokenizer="" rankweight="0.1" range="yes" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="PriceOrign"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Discount"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Sales"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Source"&gt;
-      &lt;Indexing filter="yes" multivalue="yes" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
     &lt;/Property&gt;
     &lt;Property name="Category"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.6" /&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="10" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="OrigCategory"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="10" /&gt;
     &lt;/Property&gt;
     &lt;Property name="SubCategory"&gt;
       &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.6" /&gt;
     &lt;/Property&gt;
-    &lt;Property name="City"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.2" /&gt;
+    &lt;Property name="Characteristic"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
     &lt;/Property&gt;
-    &lt;Property name="MerchantArea"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.2" /&gt;
+    &lt;Property name="Destination"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="ThirdCategory"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.4" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="Title"&gt;
+      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.4" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="ShortTitle"&gt;
+      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.4" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="ProductName"&gt;
+      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="MainName"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="MainAddr"&gt;
+      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
     &lt;/Property&gt;
     &lt;Property name="MerchantAddr"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="tok_divide, tok_unite" rankweight="0.2" /&gt;
+      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
     &lt;/Property&gt;
-    &lt;Property name="MerchantName"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="tok_divide, tok_unite" rankweight="0.2" /&gt;
+    &lt;Property name="MainArea"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="MerchantArea"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="Price"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" range="yes" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="Discount"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" range="yes" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="MerchantTrafficInfo"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="MainCoords"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="Sales"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="Coupon"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="Wifi"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="Reservation"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
     &lt;/Property&gt;
     &lt;Property name="TimeBegin"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="TimeEnd"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" tokenizer="" rankweight="0.1" /&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
     &lt;/Property&gt;
     &lt;Property name="itemcount"&gt;
       &lt;Indexing filter="yes" multivalue="no" doclen="yes" tokenizer="" rankweight="0.1" /&gt;
     &lt;/Property&gt;
+    &lt;Property name="GeoHash"&gt;
+      &lt;Indexing filter="yes" multivalue="yes" doclen="no" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="ShopCoords"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" range="yes" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="TFSPicture"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="Attribute"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="Subway"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
+    &lt;Property name="Landmarks"&gt;
+      &lt;Indexing filter="yes" multivalue="no" doclen="no" tokenizer="" rankweight="0.1" /&gt;
+    &lt;/Property&gt;
   &lt;/Schema&gt;
+  &lt;ZambeziSchema reverse="y" poolSize="1024M" poolCount="16" vocabSize="32M" indexType="ATTR"&gt;
+    &lt;TokenizeDictionary path="attr_tokenize" /&gt;
+    &lt;VirtualProperty name="Combined" weight="0.8" poolSize="1024M" isAttrToken="yes"&gt;
+      &lt;SubProperty name="Title" /&gt;
+      &lt;SubProperty name="Source" /&gt;
+      &lt;SubProperty name="Category" /&gt;
+      &lt;SubProperty name="OrigCategory" /&gt;
+      &lt;SubProperty name="SourceUrl" /&gt;
+      &lt;SubProperty name="City" /&gt;
+      &lt;SubProperty name="SubCategory" /&gt;
+      &lt;SubProperty name="Characteristic" /&gt;
+      &lt;SubProperty name="Destination" /&gt;
+      &lt;SubProperty name="ThirdCategory" /&gt;
+      &lt;SubProperty name="ShortTitle" /&gt;
+      &lt;SubProperty name="ProductName" /&gt;
+      &lt;SubProperty name="MainName" /&gt;
+      &lt;SubProperty name="MainAddr" /&gt;
+      &lt;SubProperty name="MerchantAddr" /&gt;
+      &lt;SubProperty name="MerchantArea" /&gt;
+      &lt;SubProperty name="MainArea" /&gt;
+      &lt;SubProperty name="MerchantTrafficInfo" /&gt;
+      &lt;SubProperty name="Attribute" /&gt;
+    &lt;/VirtualProperty&gt;
+  &lt;/ZambeziSchema&gt;
 &lt;/IndexBundle&gt;
-
 
 &lt;MiningBundle&gt;
   &lt;Schema&gt;
@@ -671,335 +380,40 @@ Offer和Product均放入不同的collection，分别为b5mo和b5mp，类似的�
       &lt;QueryLog /&gt;
     &lt;/QueryRecommend&gt;
     &lt;Group&gt;
-      &lt;Property name="Category" /&gt;
-      &lt;Property name="SubCategory" /&gt;
       &lt;Property name="Source" /&gt;
+      &lt;Property name="Category" /&gt;
       &lt;Property name="City" /&gt;
-      &lt;Property name="MerchantArea" /&gt;
+      &lt;Property name="Category" /&gt;
+      &lt;Property name="OrigCategory" /&gt;
+      &lt;Property name="SubCategory" /&gt;
+      &lt;Property name="Characteristic" /&gt;
+      &lt;Property name="Destination" /&gt;
+      &lt;Property name="ThirdCategory" /&gt;
       &lt;Property name="Price" /&gt;
+      &lt;Property name="Discount" /&gt;
+      &lt;Property name="MerchantArea" /&gt;
+      &lt;Property name="MerchantTrafficInfo" /&gt;
+      &lt;Property name="Coupon" /&gt;
+      &lt;Property name="Wifi" /&gt;
+      &lt;Property name="Subway" /&gt;
+      &lt;Property name="Landmarks" /&gt;
     &lt;/Group&gt;
-    &lt;ProductRanking&gt;
-      &lt;Score type="custom" weight="10" /&gt;
-      &lt;Score type="category" property="Category" weight="1" /&gt;
-      &lt;Score type="relevance" weight="0.01" /&gt;
+    &lt;ProductRanking debug="y"&gt;
+      &lt;Score type="category" property="Category" weight="100" /&gt;
+      &lt;Score type="diversity" property="Source" /&gt;
+      &lt;Score type="popularity" weight="20"&gt;
+          &lt;Score property="Sales" weight="0.7" min="0" max="300" zoomin="100" /&gt;
+          &lt;Score property="TimeBegin" weight="0.3" min="1229904000" max="1419120000" /&gt;
+      &lt;/Score&gt;
+      &lt;Score type="zambezi" weight="100" min="0" max="3000" zoomin="1000" /&gt;
     &lt;/ProductRanking&gt;
     &lt;SuffixMatch&gt;
       &lt;Property name="Title" /&gt;
-      &lt;TokenizeDictionary path="product" /&gt;
+      &lt;TokenizeDictionary path="title_pca" /&gt;
+      &lt;Normalizer padding="token" max_index_token="20" /&gt;
       &lt;Incremental enable="no" /&gt;
     &lt;/SuffixMatch&gt;
   &lt;/Schema&gt;
-&lt;/MiningBundle&gt;</pre>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">tuana和tuanm之间通过uuid字段进行关联</p>
-</div>
-<ul class="simple">
-<li>票务相关</li>
-</ul>
-<p>票务采用和商品一致的映射关系，对应的collection分别叫ticketo和ticketp。</p>
-<p>ticketo对应的配置：</p>
-<div class="highlight-python"><pre>&lt;DocumentSchema&gt;
-
-  &lt;Property name="DOCID" type="string" /&gt;
-  &lt;Property name="Url" type="string"/&gt;
-  &lt;Property name="PlayProfile" type="string" /&gt;
-  &lt;Property name="PlayPicture" type="string" /&gt;
-  &lt;Property name="SeatPicture" type="string" /&gt;
-  &lt;Property name="PlayAddress" type="string" /&gt;
-  &lt;Property name="TicketPrice" type="float" /&gt;
-  &lt;Property name="LowestTicketPrice" type="float" /&gt;
-  &lt;Property name="Source" type="string" /&gt;
-  &lt;Property name="Category" type="string" /&gt;
-  &lt;Property name="PlayCity" type="string" /&gt;
-  &lt;Property name="PlayName" type="string" /&gt;
-  &lt;Property name="PlayTime" type="datetime" /&gt;
-  &lt;Property name="uuid" type="string" /&gt;
-
-&lt;/DocumentSchema&gt;
-
-
-&lt;IndexBundle&gt;
-  &lt;Schema&gt;
-    &lt;Property name="PlayName"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="uuid"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="TicketPrice"&gt;
-      &lt;Indexing filter="yes" multivalue="yes" doclen="no" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="LowestTicketPrice"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="PlayTime"&gt;
-      &lt;Indexing filter="yes" multivalue="yes" doclen="no" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Source"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-
-  &lt;/Schema&gt;
-&lt;/IndexBundle&gt;</pre>
-</div>
-<p>ticketp对应的配置：</p>
-<div class="highlight-python"><pre>&lt;DocumentSchema&gt;
-
-  &lt;Property name="DOCID" type="string" /&gt;
-  &lt;Property name="Url" type="string"/&gt;
-  &lt;Property name="PlayProfile" type="string" /&gt;
-  &lt;Property name="PlayPicture" type="string" /&gt;
-  &lt;Property name="SeatPicture" type="string" /&gt;
-  &lt;Property name="PlayAddress" type="string" /&gt;
-  &lt;Property name="TicketPrice" type="float" /&gt;
-  &lt;Property name="LowestTicketPrice" type="float" /&gt;
-  &lt;Property name="Source" type="string" /&gt;
-  &lt;Property name="Category" type="string" /&gt;
-  &lt;Property name="PlayCity" type="string" /&gt;
-  &lt;Property name="PlayName" type="string" /&gt;
-  &lt;Property name="PlayTime" type="datetime" /&gt;
-  &lt;Property name="itemcount" type="int32" /&gt;
-&lt;/DocumentSchema&gt;
-
-
-&lt;IndexBundle&gt;
-  &lt;Schema&gt;
-    &lt;Property name="PlayProfile"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="tok_divide, tok_unite" rankweight="0.2" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="PlayAddress"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="TicketPrice"&gt;
-      &lt;Indexing filter="yes" multivalue="yes" doclen="yes" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="LowestTicketPrice"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Source"&gt;
-      &lt;Indexing filter="yes" multivalue="yes" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Category"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.6" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="PlayCity"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.6" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="PlayTime"&gt;
-      &lt;Indexing filter="yes" multivalue="yes" doclen="yes" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="PlayName"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="tok_divide, tok_unite" rankweight="0.8" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="itemcount"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="yes" tokenizer="" rankweight="0.1" /&gt;
-    &lt;/Property&gt;
-  &lt;/Schema&gt;
-&lt;/IndexBundle&gt;
-
-
-&lt;MiningBundle&gt;
-  &lt;Schema&gt;
-    &lt;QueryRecommend&gt;
-      &lt;QueryLog /&gt;
-    &lt;/QueryRecommend&gt;
-    &lt;Group&gt;
-      &lt;Property name="Category" /&gt;
-      &lt;Property name="Source" /&gt;
-      &lt;Property name="PlayTime" /&gt;
-      &lt;Property name="PlayCity" /&gt;
-      &lt;Property name="PlayAddress" /&gt;
-    &lt;/Group&gt;
-    &lt;SuffixMatch&gt;
-      &lt;Property name="PlayName" /&gt;
-      &lt;TokenizeDictionary path="fmindex_dic" /&gt;
-      &lt;Incremental enable="no" /&gt;
-    &lt;/SuffixMatch&gt;
-  &lt;/Schema&gt;
-&lt;/MiningBundle&gt;
-
-&lt;RecommendBundle&gt;
-  &lt;Schema&gt;
-    &lt;User&gt;
-      &lt;Property name="gender" /&gt;
-      &lt;Property name="age" /&gt;
-      &lt;Property name="area" /&gt;
-    &lt;/User&gt;
-    &lt;Track&gt;
-      &lt;Event name="wish_list" /&gt;
-      &lt;Event name="own" /&gt;
-      &lt;Event name="like" /&gt;
-      &lt;Event name="favorite" /&gt;
-    &lt;/Track&gt;
-  &lt;/Schema&gt;
-&lt;/RecommendBundle&gt;</pre>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">ticketo和ticketp之间通过uuid字段进行关联</p>
-</div>
-<ul class="simple">
-<li>色界相关</li>
-</ul>
-<p>色界和逛街共享同一个collection，因此collection名字为guang。色界的数据在送去索引前，会先送到一个
-离线服务里去重，去重后的结果才进行索引；与此同时，去重之前的结果系统并不删除，而是直接归档放入guango collection。</p>
-<p>guang的主要字段配置:</p>
-<div class="highlight-python"><pre>&lt;DocumentSchema&gt;
-
-  &lt;Property name="DOCID" type="string" /&gt;
-  &lt;Property name="UserType" type="string"/&gt;
-  &lt;Property name="UserId" type="string" /&gt;
-  &lt;Property name="UserName" type="string" /&gt;
-  &lt;Property name="Name" type="string" /&gt;
-  &lt;Property name="Content" type="string" /&gt;
-  &lt;Property name="Text" type="string" /&gt;
-  &lt;Property name="Img" type="string" /&gt;
-  &lt;Property name="Url" type="string" /&gt;
-  &lt;Property name="LabelIds" type="string" /&gt;
-  &lt;Property name="LabelNames" type="string" /&gt;
-  &lt;Property name="ShareType" type="string" /&gt;
-  &lt;Property name="ShareSourceType" type="string" /&gt;
-  &lt;Property name="ShareSourceName" type="string" /&gt;
-  &lt;Property name="ShareSourceUrl" type="string" /&gt;
-  &lt;Property name="PriceStart" type="float" /&gt;
-  &lt;Property name="PriceEnd" type="float" /&gt;
-  &lt;Property name="CategoryId" type="string" /&gt;
-  &lt;Property name="CategoryName" type="string" /&gt;
-  &lt;Property name="SplId" type="string" /&gt;
-  &lt;Property name="SplName" type="string" /&gt;
-  &lt;Property name="BrandId" type="string" /&gt;
-  &lt;Property name="BrandName" type="string" /&gt;
-  &lt;Property name="LikeCount" type="int32" /&gt;
-  &lt;Property name="CommentCount" type="int32" /&gt;
-  &lt;Property name="IsEssence" type="int8" /&gt;
-  &lt;Property name="IsHide" type="int8" /&gt;
-  &lt;Property name="CommentPreview" type="string" /&gt;
-  &lt;Property name="ShareDocid" type="string" /&gt;
-  &lt;Property name="ShareUuid" type="string" /&gt;
-  &lt;Property name="UserPreview" type="string" /&gt;
-  &lt;Property name="SpuName" type="string" /&gt;
-  &lt;Property name="IsTop" type="int8" /&gt;
-  &lt;Property name="IsRecommand" type="int8" /&gt;
-  &lt;Property name="OrderSeq" type="int8" /&gt;
-  &lt;Property name="VisitCount" type="int32" /&gt;
-  &lt;Property name="CreateTime" type="datetime" /&gt;
-  &lt;Property name="EssenceTime" type="datetime" /&gt;
-  &lt;Property name="RecommendTime" type="datetime" /&gt;
-  &lt;Property name="TopTime" type="datetime" /&gt;
-  &lt;Property name="GMemCount" type="int32" /&gt;
-&lt;/DocumentSchema&gt;
-
-
-&lt;IndexBundle&gt;
-  &lt;Schema&gt;
-    &lt;Property name="Name"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.8" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="Content"&gt;
-      &lt;Indexing filter="no" multivalue="no" doclen="yes" analyzer="la_sia" tokenizer="" rankweight="0.2" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="UserId"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="UserName"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="BrandName"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="ShareType"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="LikeCount"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="VisitCount"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="IsEssence"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="IsHide"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="IsTop"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="OrderSeq"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="IsRecommand"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="LabelNames"&gt;
-      &lt;Indexing filter="yes" multivalue="yes" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="PriceStart"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="PriceEnd"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="CreateTime"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="EssenceTime"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="RecommendTime"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="TopTime"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-    &lt;Property name="GMemCount"&gt;
-      &lt;Indexing filter="yes" multivalue="no" doclen="no" /&gt;
-    &lt;/Property&gt;
-  &lt;/Schema&gt;
-  &lt;Parameter&gt;
-      &lt;Sia refreshsearchcache="n" refreshcacheinterval="600" topknum="1000" /&gt;
-  &lt;/Parameter&gt;
-&lt;/IndexBundle&gt;
-
-
-&lt;MiningBundle&gt;
-  &lt;Schema&gt;
-    &lt;Group&gt;
-      &lt;Property name="ShareSourceName" /&gt;
-      &lt;Property name="ShareType" /&gt;
-      &lt;Property name="LabelNames" /&gt;
-    &lt;/Group&gt;
-    &lt;ProductRanking debug="n"&gt;
-      &lt;Score type="relevance" weight="0.001" /&gt;
-      &lt;Score type="random" weight="1" /&gt;
-      &lt;Score type="diversity" property="ShareSourceName" /&gt;
-      &lt;Score type="popularity" weight="2"&gt;
-        &lt;Score property="IsTop" weight="1" /&gt;
-        &lt;Score property="TopTime" weight="0.8" /&gt;
-        &lt;Score property="IsRecommand" weight="0.7" /&gt;
-        &lt;Score property="RecommendTime" weight="0.6" /&gt;
-        &lt;Score property="LikeCount" weight="0.5" /&gt;
-        &lt;Score property="VisitCount" weight="0.2" /&gt;
-        &lt;Score property="OrderSeq" weight="0.2" /&gt;
-      &lt;/Score&gt;
-    &lt;/ProductRanking&gt;
-    &lt;TDT enabletdt="no" enablesemantic="yes" &gt;
-      &lt;TokenizeDictionary path="guang" /&gt;
-    &lt;/TDT&gt;
-    &lt;SuffixMatch&gt;
-      &lt;Property name="Content" /&gt;
-      &lt;TokenizeDictionary path="sejie_dic" /&gt;
-      &lt;Incremental enable="no" /&gt;
-      &lt;FilterProperty name="IsHide" filtertype="numeric" /&gt;
-      &lt;FilterProperty name="ShareType" filtertype="group" /&gt;
-    &lt;/SuffixMatch&gt;
-  &lt;/Schema&gt;
-  &lt;Parameter&gt;
-    &lt;DocumentMiningPara cron="0 24 * * *"/&gt;
-    &lt;ProductRankingPara cron="0 * * * *"/&gt;
-  &lt;/Parameter&gt;
 &lt;/MiningBundle&gt;</pre>
 </div>
 </div>
@@ -1010,8 +424,6 @@ Offer和Product均放入不同的collection，分别为b5mo和b5mp，类似的�
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="Product.html" class="btn btn-neutral float-right" title="商品collection配置说明"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../API/commands/API.html" class="btn btn-neutral" title="命令API"><span class="fa fa-arrow-circle-left"></span> Previous</a>

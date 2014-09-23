@@ -85,10 +85,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#id4">第三方库安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sf1ruby-driver">安装SF1的Ruby Driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sf1">如何下载SF1代码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">如何编译SF1代码</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">如何打包</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">编辑打包脚本</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">如何运行二进制文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">如何编译SF1代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">如何打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">编辑打包脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">如何运行二进制文件</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../functions/Functions.html">功能介绍</a><ul>
@@ -193,7 +193,7 @@
             
   <div class="section" id="id1">
 <h1>如何编译安装<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>SF1安装包包括二进制文件和所有依赖的动态链接库，还有一些资源文件，
+<p>SF1R安装包包括二进制文件和所有依赖的动态链接库，还有一些资源文件，
 这些文件主要是用于查询纠错，TG，命名实体识别，文本分类等特征。</p>
 <div class="section" id="id2">
 <h2>依赖包安装<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -219,19 +219,22 @@ SF1在连接MySQL时会出现段错误，需要手动升级到新版本，
 cd /usr/lib64/mysql
 sudo ln -s libmysqlclient.so.18.0.0 libmysqlclient.so</pre>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">最近，我们已经把全部项目升级到C++ 11，因此编译SF1R需要GCC 4.8版本，
+同时，我们不推荐采用Ubuntu系统，因为链接器对于系统循环依赖要求较高。
+推荐使用CentOS/Redhat系统进行编译。</p>
+</div>
 </div>
 <div class="section" id="id4">
 <h2>第三方库安装<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>需要手动安装的第三方库包括：</p>
-<p><a class="reference external" href="https://sourceforge.net/projects/boost/files/boost/1.53.0/boost_1_53_0.tar.bz2/download">boost 1.53</a></p>
-<p><a class="reference external" href="http://fallabs.com/tokyocabinet/">Tokyo Cabinet</a></p>
-<p><a class="reference external" href="http://code.google.com/p/google-glog/downloads/list">google-glog</a></p>
-<p><a class="reference external" href="http://www.apache.org/dyn/closer.cgi?path=/thrift/0.7.0/thrift-0.7.0.tar.gz">thrift</a></p>
-<p><a class="reference external" href="https://ssl.izenesoft.cn/projects/3rdparty-repository">图像依赖库</a></p>
-<p>以上依赖库除了boost外均在3rdparty-repository下有备份，可以直接从该仓库下找到对应的文件编译安装。</p>
+<p><a class="reference external" href="http://www.boost.org">boost 1.56</a></p>
+<p><a class="reference external" href="https://github.com/izenecloud/thirdparty/tree/master/tokyocabinet">Tokyo Cabinet</a></p>
+<p><a class="reference external" href="https://github.com/izenecloud/thirdparty/tree/master/glog">google-glog</a></p>
 <p>另外，不建议采用系统默认的方式安装boost，而应当采用编译安装：</p>
 <div class="highlight-python"><pre>./booststrap.sh
-./b2
+./b2 cxxflags="-std=c++11"
 ./b2 install</pre>
 </div>
 <p>因为默认复制的方式安装boost，会导致符号链接被覆盖，从而影响CMake在打包过程中的依赖判断.</p>
@@ -254,7 +257,7 @@ rake install</pre>
 运行该脚本后，所有SF1相关的代码库都会被下载。</p>
 <div class="highlight-python"><pre>#!/usr/bin/env bash
 
-projects=(driver-ruby cmake izenelib icma ijma wisekma ilplib imllib idmlib sf1r-engine sf1r-logserver)
+projects=(driver-ruby cmake izenelib icma ijma ilplib idmlib sf1r-engine)
 
 element_count=${#projects[@]}
 index=0
@@ -267,15 +270,11 @@ do
     fi
 
     let "index = $index + 1"
-done
-
-#同步SF1资源文件，需要确保ruby driver安装成功
-cd sf1r-engine
-sf1r-resource pull --force</pre>
+done</pre>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>如何编译SF1代码<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>如何编译SF1代码<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>在sf1r-engine目录下，运行如下命令，会编译SF1相关的代码库。</p>
 <div class="highlight-python"><pre>./compile_all.sh 4</pre>
 </div>
@@ -297,34 +296,30 @@ make</pre>
 <div class="highlight-python"><pre>export IZENELIB="/home/yourname/codebase/izenelib"
 export ILPLIB="/home/yourname/codebase/ilplib"
 export IDMLIB="/home/yourname/codebase/idmlib"
-export IMLLIB="/home/yourname/codebase/imllib"
-export IISE_ROOT="/home/yourname/codebase/iise"
 export IZENECMA="/home/yourname/codebase/icma"
 export IZENEJMA="/home/yourname/codebase/ijma"
-export WISEKMA="/home/yourname/codebase/wisekma"
 export EXTRA_CMAKE_MODULES_DIRS="/home/yourname/codebase/cmake"
 export LIBXML2="/usr/include/libxml2"
 export WKO_BUILD="ia64-glibc27-gcc41"
-export LD_LIBRARY_PATH=/usr/local/lib:$IZENELIB/lib:$IDMLIB/lib:$IMLLIB/lib:$IISE_ROOT/lib:$WISEKMA:$IZENECMA/lib:$IZENEJMA/lib:$LD_LIBRARY_PATH</pre>
+export LD_LIBRARY_PATH=/usr/local/lib:$IZENELIB/lib:$IDMLIB/lib:$IZENECMA/lib:$IZENEJMA/lib:$LD_LIBRARY_PATH</pre>
 </div>
 </div>
-<div class="section" id="id7">
-<h2>如何打包<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>如何打包<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>打包好的SF1是针对线上环境，区分于上边描述的开发环境。</p>
 <div class="highlight-python"><pre>cd $SF1_ROOT
-./sf1r-resource pull --force
 cd build
 make
 make package</pre>
 </div>
 <p>运行上面的命令后，会在目录$SF1_ROOT/build下生成压缩包sf1r-engine.tar.gz。</p>
 </div>
-<div class="section" id="id8">
-<h2>编辑打包脚本<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>编辑打包脚本<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>当你要添加其它的第三方库的时候，必须要编辑打包脚本， 请参考 $SF1_ROOT/source/Packaging.cmake</p>
 </div>
-<div class="section" id="id9">
-<h2>如何运行二进制文件<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h2>如何运行二进制文件<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><pre>tar xf sf1r.tar.gz
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PACKAGE_DIR/lib:$PACKAGE_DIR/lib-thirdparty
 cd $PACKAGE_DIR
