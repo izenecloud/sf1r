@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>配置说明 &mdash; sf1-doc 0.1 documentation</title>
+  <title>配置说明 &mdash; sf1r-doc 0.1 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
   
 
   
-    <link rel="top" title="sf1-doc 0.1 documentation" href="../index.html"/>
+    <link rel="top" title="sf1r-doc 0.1 documentation" href="../index.html"/>
         <link rel="next" title="如何编译安装" href="../build/HowTo.html"/>
         <link rel="prev" title="基本概念" href="../basic-concepts/BasicConcepts.html"/> 
 
@@ -45,7 +45,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-search">
-        <a href="../index.html" class="fa fa-home"> sf1-doc</a>
+        <a href="../index.html" class="fa fa-home"> sf1r-doc</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -78,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#system">System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#collection">Collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">分布式搜索配置</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../build/HowTo.html">如何编译安装</a><ul>
@@ -135,7 +136,8 @@
 </ul>
 <ul class="simple">
 </ul>
-<ul class="simple">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tech/Arch.html">技术架构</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../operation/Schema.html">配置样例</a><ul>
@@ -154,7 +156,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">sf1-doc</a>
+        <a href="../index.html">sf1r-doc</a>
       </nav>
 
 
@@ -1555,6 +1557,148 @@ llection</td>
 </tbody>
 </table>
 </div>
+<div class="section" id="id6">
+<h2>分布式搜索配置<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>分布式SF1R采用ZooKeeper做为任务调度，因此我们必须在配置文件里指定Zookeeper的地址：</p>
+<div class="highlight-python"><pre>&lt;DistributedUtil&gt;
+  &lt;ZooKeeper disable="n" servers="10.10.10.1:2181,10.10.10.2:2181,10.10.10.3:2181" sessiontimeout="2000" /&gt;
+&lt;/DistributedUtil&gt;</pre>
+</div>
+<ul class="simple">
+<li>例子</li>
+</ul>
+<p>下边的配置样例中，我们有2个SF1R的节点，一个是Master，同时2个节点都做为Workers。</p>
+<p>SF1R Node1, 同时作为Master和Worker(shard 1)。该节点里部署了多个collection，其中&#8221;product&#8221;是分布式集群。</p>
+<div class="highlight-python"><pre>....
+&lt;DistributedTopology enable="y"&gt;
+  &lt;CurrentSf1rNode nodeid="1" replicaid="1"&gt;
+    &lt;!--master names could be www|stage|beta--&gt;
+    &lt;MasterServer enable="y" name="undefined" /&gt;
+    &lt;WorkerServer enable="y" /&gt;
+  &lt;/CurrentSf1rNode&gt;
+&lt;/DistributedTopology&gt;</pre>
+</div>
+<p>SF1R Node2，作为Worker(shard 2)。</p>
+<div class="highlight-python"><pre>&lt;DistributedTopology enable="y"&gt;
+  &lt;CurrentSf1rNode nodeid="2" replicaid="1"&gt;
+    &lt;MasterServer enable="y" name="undefined" /&gt;
+    &lt;WorkerServer enable="y" /&gt;
+  &lt;/CurrentSf1rNode&gt;
+&lt;/DistributedTopology&gt;</pre>
+</div>
+<p>两个节点的product.xml中，需要加入在`IndexBundle`里加入`ShardSchema`。</p>
+<div class="highlight-python"><pre>....
+ &lt;IndexBundle&gt;
+   &lt;ShardSchema&gt;
+     &lt;ShardKey name="DOCID" /&gt;
+     &lt;DistributedService type="search" shardids="1,2" /&gt;
+     &lt;DistributedService type="recommend" shardids="1,2" /&gt;
+   &lt;/ShardSchema&gt;
+ ....
+ &lt;/IndexBundle&gt;
+ ....</pre>
+</div>
+<ul class="simple">
+<li>分布式SF1R的协调</li>
+</ul>
+<p>Zookeeper在分布式SF1R的名字空间</p>
+<div class="highlight-python"><pre>|                                  # Root of zookeeper namespace
+|--- SF1R-[CLUSTERID]              # Root of distributed SF1 namesapce, [CLUSTERID] is specified by user configuration.
+    |--- Topology
+         |--- Replica1           # A replica of service cluster
+              |--- Node1         # A SF1 node in the replica of cluster, it can be a Master or Worker or both.
+                   |--- Search,Recommend   # A node supply the distributed search and recommend service.
+              |--- Node2
+                   |--- Search
+              |--- Node3
+                   |--- Recommend
+         |--- Replica2
+              |--- Node1
+              |--- Node2
+    |--- Servers           # Each Master service node in topology is a service server. xxx, maybe we can remove this node.
+         |--- Server00000000       # A master node supply Search and Recommend service as master
+              |--- Search,Recommend
+         |--- Server00000001
+    |--- Synchro                 # For synchronization task</pre>
+</div>
+<ul class="simple">
+<li>ZooKeeper的安装，部署，和应用</li>
+<li>介绍</li>
+</ul>
+<p>ZooKeeper 是一个用于对分布式系统进行协作管理的服务程序，它本身也是分布式的。对于我们的分布式系统来说，ZooKeeper就是一个用来进行分布式管理的服务, ZooKeeper提供了一个简单易用的框架，由Service和Client两部分组成。</p>
+<p>ZooKeeper的Service由若干运行的Server组成（1个或多个），这些Server相同且可部署在不同服务器上，每个Server都维护着相同的数据结构（类似于文件目录结构），这个树形结构中的节点叫znode，Server之间会自动同步数据。</p>
+<p>ZooKeeper的Client端可以连接到Service，每个Client对象可以连接到一个指定(或自动分配)的Server，用户通过client可以在Server中创建并维护数据。因为不同的Server维护的是同一份数据的复制，所以不同的client之间，通过ZooKeeper Service，就可以达到共享数据（信息）的目的。</p>
+<p>** ZooKeeper服务的安装和部署</p>
+<p>请参考[ZooKeeper Administrator&#8217;s Guide](<a class="reference external" href="http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html">http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html</a>)。</p>
+<p>至少需要部署3个Zookeeper的服务节点，下边是在单台机器上配置Zookeeper的例子（实际情况下需要部署到不同机器）</p>
+<ul class="simple">
+<li><strong>Server1</strong></li>
+</ul>
+<p>Configuration file</p>
+<p>zookeeper-3.3.3/conf/zoo.cfg</p>
+<p>tickTime=2000
+dataDir=./data
+clientPort=2181
+initLimit=30
+syncLimit=10
+server.1=localhost:2888:3888
+server.2=localhost:2889:3889
+server.3=localhost:2810:3810</p>
+<p>_myid_ file  (config data directory)
+zookeeper-3.3.3/data/myid</p>
+<p>1</p>
+<p>start server</p>
+<p>zookeeper-3.3.3$ ./bin/zkServer.sh start</p>
+<p>stop server</p>
+<p>zookeeper-3.3.3$ ./bin/zkServer.sh stop</p>
+<ul class="simple">
+<li><strong>Server2</strong></li>
+</ul>
+<p>Configuration file</p>
+<p>zookeeper-2/conf/zoo.cfg</p>
+<p>tickTime=2000
+dataDir=./data
+clientPort=2182
+initLimit=30
+syncLimit=10
+server.1=localhost:2888:3888
+server.2=localhost:2889:3889
+server.3=localhost:2810:3810</p>
+<p>_myid_ file (config data directory)
+zookeeper-2/data/myid</p>
+<p>2</p>
+<p>start server</p>
+<p>zookeeper-2$ ./bin/zkServer.sh start</p>
+<ul class="simple">
+<li><strong>Server3</strong></li>
+</ul>
+<p>配置文件
+zookeeper-3/conf/zoo.cfg</p>
+<p>tickTime=2000
+dataDir=./data
+clientPort=2183
+initLimit=30
+syncLimit=10
+server.1=localhost:2888:3888
+server.2=localhost:2889:3889
+server.3=localhost:2810:3810</p>
+<p>_myid_ 文件 (配置data目录)
+zookeeper-3/data/myid
+::
+3</p>
+<p>start server</p>
+<p>zookeeper-3$ ./bin/zkServer.sh start</p>
+<p>### ZooKeeper客户端</p>
+<p>对于SF1R, 我们把Zookeeper的C客户端封装为C++，可以在
+<a class="reference external" href="https://github.com/izenecloud/izenelib/tree/master/include/3rdparty/zookeeper">izenelib</a>
+里看到相关代码</p>
+<p>参考如下头文件：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#include &lt;3rdparty/zookeeper/ZooKeeper.hpp&gt;</span>
+<span class="c">#include &lt;3rdparty/zookeeper/ZooKeeperWatcher.hpp&gt;</span>
+<span class="c">#include &lt;3rdparty/zookeeper/ZooKeeperEvent.hpp&gt;</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -1575,7 +1719,7 @@ llection</td>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2013, Kevin Lin.
+        &copy; Copyright 2014, iZENECloud.
     </p>
   </div>
 
