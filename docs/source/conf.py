@@ -41,8 +41,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'sf1-doc'
-copyright = u'2013, Kevin Lin'
+project = u'sf1r-doc'
+copyright = u'2014, iZENECloud'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

@@ -996,3 +996,213 @@ Deployment
 
 
 
+
+分布式搜索配置
+-------------------
+分布式SF1R采用ZooKeeper做为任务调度，因此我们必须在配置文件里指定Zookeeper的地址：
+::
+
+    <DistributedUtil>
+      <ZooKeeper disable="n" servers="10.10.10.1:2181,10.10.10.2:2181,10.10.10.3:2181" sessiontimeout="2000" />
+    </DistributedUtil>
+
+
+* 例子
+
+下边的配置样例中，我们有2个SF1R的节点，一个是Master，同时2个节点都做为Workers。
+
+
+SF1R Node1, 同时作为Master和Worker(shard 1)。该节点里部署了多个collection，其中"product"是分布式集群。
+
+::
+
+    ....
+    <DistributedTopology enable="y">
+      <CurrentSf1rNode nodeid="1" replicaid="1">
+        <!--master names could be www|stage|beta-->
+        <MasterServer enable="y" name="undefined" />
+        <WorkerServer enable="y" />
+      </CurrentSf1rNode>
+    </DistributedTopology>
+
+
+SF1R Node2，作为Worker(shard 2)。
+::
+
+    <DistributedTopology enable="y">
+      <CurrentSf1rNode nodeid="2" replicaid="1">
+        <MasterServer enable="y" name="undefined" />
+        <WorkerServer enable="y" />
+      </CurrentSf1rNode>
+    </DistributedTopology>
+
+
+两个节点的product.xml中，需要加入在`IndexBundle`里加入`ShardSchema`。
+::
+
+   ....
+    <IndexBundle>
+      <ShardSchema>
+        <ShardKey name="DOCID" />
+        <DistributedService type="search" shardids="1,2" />
+        <DistributedService type="recommend" shardids="1,2" />
+      </ShardSchema>
+    ....
+    </IndexBundle>
+    ....
+
+
+* 分布式SF1R的协调
+
+
+Zookeeper在分布式SF1R的名字空间
+::
+
+  |                                  # Root of zookeeper namespace
+  |--- SF1R-[CLUSTERID]              # Root of distributed SF1 namesapce, [CLUSTERID] is specified by user configuration.
+      |--- Topology
+           |--- Replica1           # A replica of service cluster
+                |--- Node1         # A SF1 node in the replica of cluster, it can be a Master or Worker or both.
+                     |--- Search,Recommend   # A node supply the distributed search and recommend service.    
+                |--- Node2
+                     |--- Search
+                |--- Node3
+                     |--- Recommend
+           |--- Replica2
+                |--- Node1
+                |--- Node2
+      |--- Servers           # Each Master service node in topology is a service server. xxx, maybe we can remove this node.
+           |--- Server00000000       # A master node supply Search and Recommend service as master
+                |--- Search,Recommend
+           |--- Server00000001
+      |--- Synchro                 # For synchronization task
+
+
+
+* ZooKeeper的安装，部署，和应用
+
+* 介绍
+
+
+ZooKeeper 是一个用于对分布式系统进行协作管理的服务程序，它本身也是分布式的。对于我们的分布式系统来说，ZooKeeper就是一个用来进行分布式管理的服务, ZooKeeper提供了一个简单易用的框架，由Service和Client两部分组成。
+
+ZooKeeper的Service由若干运行的Server组成（1个或多个），这些Server相同且可部署在不同服务器上，每个Server都维护着相同的数据结构（类似于文件目录结构），这个树形结构中的节点叫znode，Server之间会自动同步数据。
+
+ZooKeeper的Client端可以连接到Service，每个Client对象可以连接到一个指定(或自动分配)的Server，用户通过client可以在Server中创建并维护数据。因为不同的Server维护的是同一份数据的复制，所以不同的client之间，通过ZooKeeper Service，就可以达到共享数据（信息）的目的。
+
+** ZooKeeper服务的安装和部署
+
+
+请参考[ZooKeeper Administrator's Guide](http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html)。
+
+至少需要部署3个Zookeeper的服务节点，下边是在单台机器上配置Zookeeper的例子（实际情况下需要部署到不同机器）
+
+- **Server1**
+
+Configuration file
+
+zookeeper-3.3.3/conf/zoo.cfg  
+
+::
+
+tickTime=2000
+dataDir=./data
+clientPort=2181
+initLimit=30
+syncLimit=10
+server.1=localhost:2888:3888
+server.2=localhost:2889:3889
+server.3=localhost:2810:3810
+
+
+_myid_ file  (config data directory)
+zookeeper-3.3.3/data/myid
+::
+
+1
+
+
+start server
+::
+
+zookeeper-3.3.3$ ./bin/zkServer.sh start
+
+
+stop server
+::
+
+zookeeper-3.3.3$ ./bin/zkServer.sh stop
+
+
+- **Server2**
+
+Configuration file
+
+zookeeper-2/conf/zoo.cfg  
+::
+
+tickTime=2000
+dataDir=./data
+clientPort=2182
+initLimit=30
+syncLimit=10
+server.1=localhost:2888:3888
+server.2=localhost:2889:3889
+server.3=localhost:2810:3810
+
+_myid_ file (config data directory)
+zookeeper-2/data/myid
+::
+
+2
+
+
+start server
+
+::
+
+zookeeper-2$ ./bin/zkServer.sh start
+
+
+- **Server3**
+
+配置文件
+zookeeper-3/conf/zoo.cfg  
+::
+
+tickTime=2000
+dataDir=./data
+clientPort=2183
+initLimit=30
+syncLimit=10
+server.1=localhost:2888:3888
+server.2=localhost:2889:3889
+server.3=localhost:2810:3810
+
+_myid_ 文件 (配置data目录)
+zookeeper-3/data/myid
+::
+3
+
+
+start server
+::
+
+zookeeper-3$ ./bin/zkServer.sh start
+
+
+### ZooKeeper客户端
+
+对于SF1R, 我们把Zookeeper的C客户端封装为C++，可以在
+`izenelib`_
+里看到相关代码
+
+.. _izenelib: https://github.com/izenecloud/izenelib/tree/master/include/3rdparty/zookeeper
+
+参考如下头文件：
+::
+
+#include <3rdparty/zookeeper/ZooKeeper.hpp> 
+#include <3rdparty/zookeeper/ZooKeeperWatcher.hpp>
+#include <3rdparty/zookeeper/ZooKeeperEvent.hpp>
+
