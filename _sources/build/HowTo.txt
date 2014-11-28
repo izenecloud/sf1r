@@ -83,7 +83,7 @@ F1的Ruby driver有2个用途：通过socket向SF1发送API；同步资源文件
 
 ::
     
-    git clone git@izenesoft.cn:driver-ruby.git
+    git clone https://github.com/izenecloud/driver-ruby.git
     cd driver-ruby
     rake install
 
@@ -100,7 +100,7 @@ F1的Ruby driver有2个用途：通过socket向SF1发送API；同步资源文件
 
     #!/usr/bin/env bash
 
-    projects=(driver-ruby cmake izenelib icma ijma ilplib idmlib sf1r-engine)
+    projects=(driver-ruby cmake izenelib icma ijma ilplib idmlib sf1r-lite)
 
     element_count=${#projects[@]}
     index=0
@@ -109,7 +109,7 @@ F1的Ruby driver有2个用途：通过socket向SF1发送API；同步资源文件
         name=${projects[$index]}
         if [ ! -d $name ];then
             echo "clone $name ..."
-            git clone git@izenesoft.cn:$name.git
+            git clone https://github.com/izenecloud/$name.git
         fi
 
         let "index = $index + 1"
@@ -119,7 +119,7 @@ F1的Ruby driver有2个用途：通过socket向SF1发送API；同步资源文件
 如何编译SF1代码
 ----------------
 
-在sf1r-engine目录下，运行如下命令，会编译SF1相关的代码库。
+在sf1r-lite目录下，运行如下命令，会编译SF1相关的代码库。
 
 ::
     

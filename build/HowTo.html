@@ -78,6 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#system">System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#collection">Collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/HowTo.html#id6">分布式搜索配置</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">如何编译安装</a><ul>
@@ -228,7 +229,7 @@ sudo ln -s libmysqlclient.so.18.0.0 libmysqlclient.so</pre>
 <div class="section" id="sf1ruby-driver">
 <h2>安装SF1的Ruby Driver<a class="headerlink" href="#sf1ruby-driver" title="Permalink to this headline">¶</a></h2>
 <p>F1的Ruby driver有2个用途：通过socket向SF1发送API；同步资源文件。安装方法如下：</p>
-<div class="highlight-python"><pre>git clone git@izenesoft.cn:driver-ruby.git
+<div class="highlight-python"><pre>git clone https://github.com/izenecloud/driver-ruby.git
 cd driver-ruby
 rake install</pre>
 </div>
@@ -243,7 +244,7 @@ rake install</pre>
 运行该脚本后，所有SF1相关的代码库都会被下载。</p>
 <div class="highlight-python"><pre>#!/usr/bin/env bash
 
-projects=(driver-ruby cmake izenelib icma ijma ilplib idmlib sf1r-engine)
+projects=(driver-ruby cmake izenelib icma ijma ilplib idmlib sf1r-lite)
 
 element_count=${#projects[@]}
 index=0
@@ -252,7 +253,7 @@ do
     name=${projects[$index]}
     if [ ! -d $name ];then
         echo "clone $name ..."
-        git clone git@izenesoft.cn:$name.git
+        git clone https://github.com/izenecloud/$name.git
     fi
 
     let "index = $index + 1"
@@ -261,7 +262,7 @@ done</pre>
 </div>
 <div class="section" id="id5">
 <h2>如何编译SF1代码<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>在sf1r-engine目录下，运行如下命令，会编译SF1相关的代码库。</p>
+<p>在sf1r-lite目录下，运行如下命令，会编译SF1相关的代码库。</p>
 <div class="highlight-python"><pre>./compile_all.sh 4</pre>
 </div>
 <div class="admonition note">
